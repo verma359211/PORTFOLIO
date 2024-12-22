@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-
+import { ShootingStars } from "@/../components/ui/shooting-stars";
+import { StarsBackground } from "@/../components/ui/stars-background";
 
 import "./globals.css";
 // import { Bebas_Neue } from "@next/font/google";
@@ -30,9 +31,11 @@ export default function RootLayout({
 				{/* Explicit favicon link */}
 				<link rel="icon" href="/favicon.ico" />
 			</head>
-      <body>
-        {children}
-      </body>
+			<body>
+				<ShootingStars className="fixed inset-0 -z-10 bg-cover bg-center" />
+				<StarsBackground className="fixed inset-0 -z-10 bg-cover bg-center" />
+				{children}
+			</body>
 		</html>
 	);
 }
