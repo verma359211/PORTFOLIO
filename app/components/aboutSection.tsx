@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const AboutSection = () => {
 	return (
-		<div className="min-h-screen text-white p-6 lg:p-24">
+		<div className="text-white p-6 ">
 			<div className="max-w-7xl mx-auto">
 				<div className="grid lg:grid-cols-2 gap-12">
 					{/* Left Column - Title */}

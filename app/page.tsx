@@ -4,8 +4,9 @@ import HeroSection from "./components/hero";
 import AboutSection from "./components/aboutSection";
 import ContactSection from "./components/contact";
 import React from "react";
-import { ShootingStars } from "../components/ui/shooting-stars";
-import { StarsBackground } from "../components/ui/stars-background";
+import MasonryGallery from "./components/gallary";
+
+
 export default function Home() {
 	return (
 		<React.StrictMode>
@@ -14,6 +15,7 @@ export default function Home() {
 				<HeroSection />
 				<FeaturedProjects />
 				<AboutSection />
+				<MasonryGallery />
 				<ContactSection />
 			</div>
 		</React.StrictMode>

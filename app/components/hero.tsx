@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import x from "@/../public/image/hero.jpg"
 // import { Link as ScrollLink } from "react-scroll";
 import Image from "next/image";
 import { Github, Linkedin } from "lucide-react";

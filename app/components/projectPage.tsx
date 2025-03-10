@@ -1,20 +1,48 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { AnimatedTooltip } from "@/../components/ui/animated-tooltip";
+
+const people = [
+	{
+		id: 1,
+		name: "Next.js",
+		image:
+			"https://img.icons8.com/?size=100&id=r2OarXWQc7B6&format=png&color=000000",
+	},
+	{
+		id: 2,
+		name: "Robert Johnson",
+		image:
+			"https://img.icons8.com/?size=100&id=4PiNHtUJVbLs&format=png&color=000000",
+	},
+	{
+		id: 3,
+		name: "Jane Smith",
+		image:
+			"https://img.icons8.com/?size=100&id=hsPbhkOH4FMe&format=png&color=000000",
+	},
+	{
+		id: 4,
+		name: "Emily Davis",
+		image: "https://img.icons8.com/?size=100&id=74402&format=png&color=000000",
+	},
+];
 
 const FeaturedProjects = () => {
   const projects = [
 		{
 			id: 1,
-			title: "Featured Project Name",
+			title: "Banana Type 🍌",
 			category: "Conceptual Work",
 			description:
-				"A detailed description of your featured project. Explain the key features and technologies used in the project. This can be multiple lines long.",
-			year: "2024",
-			role: "Front-end Developer",
-			image: "/image/project.jpg",
-			demoUrl: "#",
-			githubUrl: "#",
+				"A fast-paced multiplayer typing race where speed is king! Type faster than your rivals, climb the leaderboard, and don’t slip—only the quickest fingers win! 🏆⌨️💨",
+			year: "2025",
+			role: "",
+			image:
+				"https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExeTdnZ3c2cHRkczhxcDI2ZHcya3c3eTViZ25vYWFqYnkwc3hqeXYwaSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/8TF4cqmmLbqCScazmf/giphy.gif",
+			demoUrl: "https://bananatype.vercel.app/",
+			githubUrl: "https://github.com/verma359211/bananatype",
 		},
 		{
 			id: 2,
@@ -56,19 +84,21 @@ const FeaturedProjects = () => {
 						<div key={project.id} className="bg-neutral-900 rounded-lg p-6">
 							<div className="grid md:grid-cols-2 gap-8">
 								<div className="relative aspect-video overflow-hidden rounded-lg">
-									<Image
-										src={project.image}
-										alt={project.title}
-										fill
-										className="hover:scale-105 transition-transform duration-300"
-									/>
+									<Link href="https://bananatype.vercel.app/" target="_blank">
+										<Image
+											src={project.image}
+											alt={project.title}
+											fill
+											className="hover:scale-105 transition-transform duration-300"
+										/>
+									</Link>
 								</div>
 
 								<div className="space-y-4">
 									<div className="text-sm text-gray-400">
 										{project.category}
 									</div>
-									<h3 className="text-2xl font-semibold">{project.title}</h3>
+									<h3 className="text-3xl">{project.title}</h3>
 									<p className="text-gray-300">{project.description}</p>
 
 									<div className="space-y-2">
@@ -79,8 +109,9 @@ const FeaturedProjects = () => {
 												<p>{project.year}</p>
 											</div>
 											<div>
-												<p className="text-gray-400">Role</p>
-												<p>{project.role}</p>
+												<div className="flex flex-row items-center justify-center mb-10 w-full">
+													{/* <AnimatedTooltip items={people} /> */}
+												</div>
 											</div>
 										</div>
 									</div>
