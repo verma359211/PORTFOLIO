@@ -46,8 +46,10 @@ const HeroSection = () => {
 								<br />
 								CHANDAN VERMA
 							</h1>
-							<p className="text-lg md:text-xl text-gray-300 max-w-md">
-								Developer Learning one commit at a time.
+							<p className="text-lg md:text-2xl text-gray-200 max-w-md">
+								SDE in Progress:
+								<br />
+								Pushing Code, Pulling Opportunities 🔥
 							</p>
 						</div>
 

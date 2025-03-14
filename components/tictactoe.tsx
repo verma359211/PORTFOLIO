@@ -1,3 +1,4 @@
+"use client"
 import React from 'react'
 import RetroTicTacToe from './tttretro';
 import { Github, Linkedin } from 'lucide-react';
@@ -11,12 +12,13 @@ function Tictactoe() {
 					<div className="md:w-1/2 w-full">
 						<RetroTicTacToe />
 					</div>
-					<div className="md:w-1/2 px-4 space-y-6 w-full ">
+					<div className="md:w-1/2 px-4 w-full  ">
 						<div className="space-y-4">
-							<h1 className="text-4xl md:text-6xl lg:text-7xl leading-tight">
-								Winner🏆 gets my resume
+							<h1 className="text-3xl md:text-4xl lg:text-5xl leading-tight font-['Press_Start_2P'] text-yellow-400">
+								Winner🏆
 							</h1>
-							<p className="text-lg md:text-xl text-gray-300 max-w-md">
+							<p className="text-xl md:text-3xl lg:text-5xl">gets my resume</p>
+							<p className="text-lg md:text-xl text-gray-300 max-w-md pb-4">
 								just kiding HERE is my resume
 							</p>
 						</div>
@@ -24,8 +26,9 @@ function Tictactoe() {
 						{/* Buttons/Links */}
 						<div className="flex items-center gap-4">
 							<Link
-								href="#contact-section"
-								className="bg-[#D3E97A] text-black px-6 py-3 rounded-full font-medium hover:bg-[#bde676] transition-colors flex items-center gap-2"
+								href="/ChandanVerma-Resume.pdf"
+								target="_blank"
+								className="bg-white text-black px-6 py-3 font-medium hover:bg-neutral-400 transition-colors flex items-center gap-2"
 							>
 								DOWNLOAD RESUME
 							</Link>
@@ -35,19 +38,27 @@ function Tictactoe() {
 									href="https://www.linkedin.com/in/cverma7/"
 									className="p-3 bg-zinc-900 rounded-full hover:bg-zinc-800 transition-colors"
 								>
-									<Linkedin size={20} className="text-[#D3E97A]" />
+									<Linkedin size={20} className="text-white" />
 								</Link>
 								<Link
 									href="https://github.com/verma359211"
 									className="p-3 bg-zinc-900 rounded-full hover:bg-zinc-800 transition-colors"
 								>
-									<Github size={20} className="text-[#D3E97A]" />
+									<Github size={20} className="text-white" />
 								</Link>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
+			<style jsx global>{`
+				@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
+				.pixel-text {
+					text-shadow: 2px 2px 0 #000;
+					image-rendering: pixelated;
+				}
+			`}</style>
 		</section>
 	);
 }
