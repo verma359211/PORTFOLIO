@@ -21,8 +21,8 @@ const ProjectsSection: React.FC = () => {
 			description:
 				"A sleek e-commerce platform for selling clothing, built with Next.js, Tailwind CSS and MERN stack. It features secure authentication, a smooth cart system, and Razorpay integration for hassle-free payments. 🚀🛍️",
 			imageUrl: "/image/e-com_Demo.png",
-			githubUrl: "https://github.com/yourusername/ecommerce-project",
-			demoUrl: "https://ecommerce-project.vercel.app",
+			githubUrl: "https://github.com/verma359211/e-com",
+			demoUrl: "https://e-com-roan-three.vercel.app/",
 			isGif: false,
 		},
 		{
