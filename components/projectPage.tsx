@@ -34,10 +34,10 @@ const FeaturedProjects = () => {
 		{
 			id: 1,
 			title: "Banana Type 🍌",
-			category: "Conceptual Work",
+			category: "",
 			description:
 				"A fast-paced multiplayer typing race where speed is king! Type faster than your rivals, climb the leaderboard, and don’t slip—only the quickest fingers win! 🏆⌨️💨",
-			year: "2025",
+			year: "",
 			role: "",
 			image:
 				"https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExeTdnZ3c2cHRkczhxcDI2ZHcya3c3eTViZ25vYWFqYnkwc3hqeXYwaSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/8TF4cqmmLbqCScazmf/giphy.gif",
@@ -46,32 +46,20 @@ const FeaturedProjects = () => {
 		},
 		{
 			id: 2,
-			title: "Featured Project Name",
-			category: "Conceptual Work",
+			title: "EVERLANE 👕",
+			category: "",
 			description:
-				"A detailed description of your featured project. Explain the key features and technologies used in the project. This can be multiple lines long.",
-			year: "2024",
-			role: "Front-end Developer",
-			image: "/image/project.jpg",
-			demoUrl: "#",
-			githubUrl: "#",
-		},
-		{
-			id: 3,
-			title: "Featured Project Name",
-			category: "Conceptual Work",
-			description:
-				"A detailed description of your featured project. Explain the key features and technologies used in the project. This can be multiple lines long.",
-			year: "2024",
-			role: "Front-end Developer",
-			image: "/image/project.jpg",
+				"A sleek e-commerce platform for selling clothing, built with Next.js, Tailwind CSS and MERN stack. It features secure authentication, a smooth cart system, and Razorpay integration for hassle-free payments. 🚀🛍️",
+			year: "",
+			role: "",
+			image: "/image/e-com_Demo.png",
 			demoUrl: "#",
 			githubUrl: "#",
 		},
 	];
 
   return (
-		<section className="py-16 px-4 md:px-8">
+		<section className="py-2 px-4 md:px-8">
 			<div className="max-w-7xl mx-auto">
 				<h2 className="text-5xl mb-4">FEATURED PROJECTS</h2>
 				<p className="text-gray-300 mb-12">
@@ -89,7 +77,7 @@ const FeaturedProjects = () => {
 											src={project.image}
 											alt={project.title}
 											fill
-											className="hover:scale-105 transition-transform duration-300"
+											className="object-cover hover:scale-105 transition-transform duration-300"
 										/>
 									</Link>
 								</div>
@@ -105,7 +93,7 @@ const FeaturedProjects = () => {
 										<h4 className="text-lg font-medium mt-6">PROJECT INFO</h4>
 										<div className="grid grid-cols-2 gap-4">
 											<div>
-												<p className="text-gray-400">Year</p>
+												<p className="text-gray-400">{/* Year */}</p>
 												<p>{project.year}</p>
 											</div>
 											<div>
