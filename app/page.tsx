@@ -12,7 +12,6 @@ import ProjectsSection from "../components/ProjectsSection";
 import Tictactoe from "@/../components/tictactoe";
 
 
-
 export default function Home() {
 	return (
 		<React.StrictMode>
@@ -26,7 +25,14 @@ export default function Home() {
 				<ProjectsSection />
 				<Tictactoe />
 				<AboutSection />
-				<MasonryGallery />
+				<div className="relative h-[70vh] overflow-hidden">
+					<div className="absolute top-0 w-full animate-scroll">
+							{/* Duplicate the gallery for seamless looping */}
+							<MasonryGallery />
+							<MasonryGallery />
+					</div>
+				</div>
+				{/* <MasonryGallery /> */}
 				<ContactSection />
 			</div>
 		</React.StrictMode>

@@ -34,11 +34,11 @@ const AboutSection = () => {
 						</p>
 
 						{/* More About Me Link */}
-						<Link href="/about" className="inline-block group">
+						{/* <Link href="/about" className="inline-block group">
 							<span className="text-[#D0F288] border-b-2 border-transparent group-hover:border-[#D0F288] transition-all duration-300">
 								MORE ABOUT ME
 							</span>
-						</Link>
+						</Link> */}
 					</div>
 				</div>
 			</div>

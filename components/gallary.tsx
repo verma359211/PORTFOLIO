@@ -5,6 +5,11 @@ import Masonry from "react-masonry-css";
 // Image data - replace with your own images
 const galleryImages = [
 	{
+		id: 0,
+		src: "https://i.ibb.co/3yKMLCJJ/hero.jpg",
+		alt: "Portrait 0",
+	},
+	{
 		id: 1,
 		src: "https://i.pinimg.com/736x/15/1d/5b/151d5ba0e5fb5a66e51eed8fba916c3a.jpg",
 		alt: "Portrait 1",
@@ -131,8 +136,8 @@ const MasonryGallery: React.FC = () => {
 	};
 
 	return (
-		<section className="py-12  px-4 md:px-8">
-			<div className="container max-w-5xl mx-auto px-4 py-8">
+		<section className=" px-4 md:px-8 py-0">
+			<div className="container max-w-5xl mx-auto px-4 py-0">
 				<h2 className="text-3xl font-bold text-center mb-8 text-gray-800">
 					{/* Gallery */}
 				</h2>

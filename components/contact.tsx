@@ -60,7 +60,7 @@ const ContactSection = () => {
 							LET'S CONNECT
 						</h1>
 
-						<div className="space-y-4">
+						<div className="pl-12 space-y-4">
 							<p className="text-gray-300">
 								Say hello at{" "}
 								<a
@@ -84,7 +84,7 @@ const ContactSection = () => {
 						</div>
 
 						{/* Social Links */}
-						<div className="flex gap-6">
+						<div className="pl-12 flex gap-6">
 							<Link
 								href="https://www.linkedin.com/in/cverma7/"
 								className="text-[#D0F288] hover:text-[#bde676] transition-colors"
@@ -112,13 +112,13 @@ const ContactSection = () => {
 						</div>
 
 						{/* Copyright */}
-						<div className="pt-8">
+						<div className="pl-12 pt-8">
 							<p className="text-gray-500">© 2023 Chandan Verma</p>
 						</div>
 					</div>
 
 					{/* Right Column - Form */}
-					<div>
+					<div className="">
 						<form className="space-y-6" onSubmit={handleSubmit}>
 							{/* Name Input */}
 							<div className="space-y-2">
