@@ -3,7 +3,7 @@ import Link from "next/link";
 import x from "@/../public/image/hero.jpg"
 // import { Link as ScrollLink } from "react-scroll";
 import Image from "next/image";
-import { Github, Linkedin } from "lucide-react";
+import { Github, Linkedin, Mail, Phone } from "lucide-react";
 import TicTacToe from "./ttt";
 import ImageSlideshow from "./photo";
 
@@ -75,6 +75,18 @@ const HeroSection = () => {
 									className="p-3 bg-zinc-900 rounded-full hover:bg-zinc-800 transition-colors"
 								>
 									<Github size={20} className="text-[#D3E97A]" />
+								</Link>
+								<Link
+									href="mailto:vermachandan2912003@gmail.com"
+									className="p-3 bg-zinc-900 rounded-full hover:bg-zinc-800 transition-colors"
+								>
+									<Mail size={20} className="text-[#D3E97A]" />
+								</Link>
+								<Link
+									href="tel:+916289220590"
+									className="p-3 bg-zinc-900 rounded-full hover:bg-zinc-800 transition-colors"
+								>
+									<Phone size={20} className="text-[#D3E97A]" />
 								</Link>
 							</div>
 						</div>

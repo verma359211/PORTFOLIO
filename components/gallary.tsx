@@ -5,11 +5,6 @@ import Masonry from "react-masonry-css";
 // Image data - replace with your own images
 const galleryImages = [
 	{
-		id: 0,
-		src: "https://i.ibb.co/3yKMLCJJ/hero.jpg",
-		alt: "Portrait 0",
-	},
-	{
 		id: 1,
 		src: "https://i.pinimg.com/736x/15/1d/5b/151d5ba0e5fb5a66e51eed8fba916c3a.jpg",
 		alt: "Portrait 1",

@@ -1,7 +1,7 @@
 "use client"
 import React from 'react'
 import RetroTicTacToe from './tttretro';
-import { Github, Linkedin } from 'lucide-react';
+import { Github, Linkedin, Mail, Phone } from 'lucide-react';
 import Link from 'next/link';
 
 function Tictactoe() {
@@ -45,6 +45,18 @@ function Tictactoe() {
 									className="p-3 bg-zinc-900 rounded-full hover:bg-zinc-800 transition-colors"
 								>
 									<Github size={20} className="text-white" />
+								</Link>
+								<Link
+									href="mailto:vermachandan2912003@gmail.com"
+									className="p-3 bg-zinc-900 rounded-full hover:bg-zinc-800 transition-colors"
+								>
+									<Mail size={20} className="text-white" />
+								</Link>
+								<Link
+									href="tel:+916289220590"
+									className="p-3 bg-zinc-900 rounded-full hover:bg-zinc-800 transition-colors"
+								>
+									<Phone size={20} className="text-white" />
 								</Link>
 							</div>
 						</div>
