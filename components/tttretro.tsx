@@ -10,7 +10,7 @@ export default function RetroTicTacToe() {
 	const [winner, setWinner] = useState<string | null>(null);
 	const [showOverlay, setShowOverlay] = useState(false);
 	const [resetTimer, setResetTimer] = useState<NodeJS.Timeout | null>(null);
-	const [resetCountdown, setResetCountdown] = useState(5);
+	const [resetCountdown, setResetCountdown] = useState(3);
 
 	const calculateWinner = useCallback((squares: (string | null)[]) => {
 		const lines = [
@@ -131,7 +131,7 @@ export default function RetroTicTacToe() {
 
 	const startResetTimer = () => {
 		if (resetTimer) clearTimeout(resetTimer);
-		setResetCountdown(5);
+		setResetCountdown(3);
 		const timer = setTimeout(() => {
 			resetGame();
 		}, 5000);
