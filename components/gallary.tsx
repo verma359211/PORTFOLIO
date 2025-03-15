@@ -35,11 +35,6 @@ const galleryImages = [
 		alt: "Portrait 6",
 	},
 	{
-		id: 7,
-		src: "https://i.pinimg.com/736x/8a/7e/83/8a7e835498907976b985f2183753854e.jpg",
-		alt: "Portrait 7",
-	},
-	{
 		id: 8,
 		src: "https://i.pinimg.com/736x/51/35/3c/51353cac082a606c196051b8bb46a025.jpg",
 		alt: "Portrait 8",

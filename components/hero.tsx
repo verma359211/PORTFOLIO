@@ -15,8 +15,6 @@ const HeroSection = () => {
 		"https://i.pinimg.com/736x/25/bb/e8/25bbe8aa53d407e1dedaa293c9152df3.jpg",
 		"https://i.pinimg.com/736x/50/ce/88/50ce88d635b8c1e6a662b335b7fe938c.jpg",
 		"https://i.pinimg.com/736x/60/df/82/60df82535df018288d47807f35f57953.jpg",
-		"https://i.pinimg.com/736x/8a/7e/83/8a7e835498907976b985f2183753854e.jpg",
-		"https://i.pinimg.com/736x/79/b7/61/79b761266ee372d5d9b6ff9c66c70cbc.jpg",
 		"https://i.pinimg.com/736x/e3/97/87/e3978737002d6dabc9a7652d124596c6.jpg",
 		"https://i.pinimg.com/736x/ad/8e/c4/ad8ec44689ee1ed6842c2e34e1890394.jpg",
 		"https://i.pinimg.com/736x/67/75/80/677580c415b3f14c2fb265cddb8e45c2.jpg",
