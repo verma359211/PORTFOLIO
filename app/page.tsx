@@ -10,6 +10,7 @@ import RetroTicTacToe from "../components/tttretro";
 // import ImageSlideshow from "../components/photo";
 import ProjectsSection from "../components/ProjectsSection";
 import Tictactoe from "@/../components/tictactoe";
+import Component from "../components/logocarousel";
 
 
 export default function Home() {
@@ -18,18 +19,18 @@ export default function Home() {
 			<div>
 				<Header />
 				<HeroSection />
-				{/* <section className="py-12">
-					<LogoCarousel />
-				</section> */}
+				<section className="pb-6">
+					<Component />
+				</section>
 				{/* <FeaturedProjects /> */}
 				<ProjectsSection />
 				<Tictactoe />
 				<AboutSection />
 				<div className="relative h-[70vh] overflow-hidden">
 					<div className="absolute top-0 w-full animate-scroll">
-							{/* Duplicate the gallery for seamless looping */}
-							<MasonryGallery />
-							<MasonryGallery />
+						{/* Duplicate the gallery for seamless looping */}
+						<MasonryGallery />
+						<MasonryGallery />
 					</div>
 				</div>
 				{/* <MasonryGallery /> */}

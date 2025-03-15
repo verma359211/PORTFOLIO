@@ -57,7 +57,7 @@ const HeroSection = () => {
 						<div className="flex items-center gap-4">
 							<Link
 								href="#contact-section"
-								className="bg-[#D3E97A] text-black px-6 py-3 rounded-full font-medium hover:bg-[#bde676] transition-colors flex items-center gap-2"
+								className="bg-[#D3E97A] text-black px-4 sm:px-6 py-3 rounded-full font-medium hover:bg-[#bde676] transition-colors flex items-center gap-2"
 							>
 								CONTACT ME
 								<span className="w-2 h-2 bg-black rounded-full"></span>

@@ -41,7 +41,7 @@ const galleryImages = [
 	},
 	{
 		id: 8,
-		src: "https://i.pinimg.com/736x/79/b7/61/79b761266ee372d5d9b6ff9c66c70cbc.jpg",
+		src: "https://i.pinimg.com/736x/51/35/3c/51353cac082a606c196051b8bb46a025.jpg",
 		alt: "Portrait 8",
 	},
 	{
@@ -113,11 +113,6 @@ const galleryImages = [
 		id: 22,
 		src: "https://i.pinimg.com/736x/d8/6f/89/d86f895098d41dac2b2654c416c1aa99.jpg",
 		alt: "Portrait 22",
-	},
-	{
-		id: 23,
-		src: "https://i.pinimg.com/736x/51/35/3c/51353cac082a606c196051b8bb46a025.jpg",
-		alt: "Portrait 23",
 	},
 ];
 
