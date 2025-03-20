@@ -17,16 +17,6 @@ const ProjectsSection: React.FC = () => {
 	const projects: Project[] = [
 		{
 			id: "1",
-			title: "E-Commerce Platform",
-			description:
-				"A sleek e-commerce platform for selling clothing, built with Next.js, Tailwind CSS and MERN stack. It features secure authentication, a smooth cart system, and Razorpay integration for hassle-free payments. 🚀🛍️",
-			imageUrl: "/image/e-com_Demo.png",
-			githubUrl: "https://github.com/verma359211/e-com",
-			demoUrl: "https://e-com-roan-three.vercel.app/",
-			isGif: false,
-		},
-		{
-			id: "2",
 			title: "Banana type",
 			description:
 				"A fast-paced multiplayer typing race where speed is king! Type faster than your rivals, climb the leaderboard, and don’t slip—only the quickest fingers win! 🏆⌨️💨",
@@ -35,6 +25,16 @@ const ProjectsSection: React.FC = () => {
 			githubUrl: "https://github.com/yourusername/task-management",
 			demoUrl: "https://task-management.vercel.app",
 			isGif: true,
+		},
+		{
+			id: "2",
+			title: "E-Commerce Platform",
+			description:
+				"A sleek e-commerce platform for selling clothing, built with Next.js, Tailwind CSS and MERN stack. It features secure authentication, a smooth cart system, and Razorpay integration for hassle-free payments. 🚀🛍️",
+			imageUrl: "/image/e-com_Demo.png",
+			githubUrl: "https://github.com/verma359211/e-com",
+			demoUrl: "https://e-com-roan-three.vercel.app/",
+			isGif: false,
 		},
 		{
 			id: "3",

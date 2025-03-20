@@ -16,7 +16,7 @@ import Component from "../components/logocarousel";
 export default function Home() {
 	return (
 		<React.StrictMode>
-			<div>
+			<div className="">
 				<Header />
 				<HeroSection />
 				<section className="pb-6">
