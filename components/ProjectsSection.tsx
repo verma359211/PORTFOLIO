@@ -38,6 +38,16 @@ const ProjectsSection: React.FC = () => {
 		},
 		{
 			id: "3",
+			title: "Whispr",
+			description:
+				"Wishpr is an anonymous messaging app built with the MERN stack. Create an account to get your unique shareable link — anyone with the link can send you anonymous messages. Clean UI, secure auth, and zero identity reveal. 🔐💌",
+			imageUrl: "/image/whispr.png",
+			githubUrl: "https://github.com/verma359211/Whispr",
+			demoUrl: "https://whispr-lilac.vercel.app/",
+			isGif: false,
+		},
+		{
+			id: "4",
 			title: "Bug Traking system",
 			description:
 				"Interactive weather dashboard with forecasts and historical data visualization.",
