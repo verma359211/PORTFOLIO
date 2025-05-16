@@ -22,8 +22,8 @@ const ProjectsSection: React.FC = () => {
 				"A fast-paced multiplayer typing race where speed is king! Type faster than your rivals, climb the leaderboard, and don’t slip—only the quickest fingers win! 🏆⌨️💨",
 			imageUrl:
 				"https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExeTdnZ3c2cHRkczhxcDI2ZHcya3c3eTViZ25vYWFqYnkwc3hqeXYwaSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/8TF4cqmmLbqCScazmf/giphy.gif",
-			githubUrl: "https://github.com/yourusername/task-management",
-			demoUrl: "https://task-management.vercel.app",
+			githubUrl: "https://github.com/verma359211/bananatype",
+			demoUrl: "https://bananatype.vercel.app/",
 			isGif: true,
 		},
 		{
