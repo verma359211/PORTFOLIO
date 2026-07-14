@@ -1,0 +1,950 @@
+.portfolioHero {
+  position: relative;
+  isolation: isolate;
+  min-height: 100svh;
+  overflow: hidden;
+  background: radial-gradient(
+      circle at 48% 42%,
+      rgba(255, 255, 255, 0.44),
+      transparent 34%
+    ),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.28), rgba(225, 211, 193, 0.2)),
+    var(--hero-bg);
+  color: var(--hero-ink);
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+}
+
+.gridBackdrop {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0;
+  animation: heroFade 720ms ease forwards;
+  background-image: linear-gradient(
+    to bottom,
+    var(--hero-grid) 1px,
+    transparent 1px
+  );
+  background-size: 100% 41.2%;
+  background-position: 0 6.05rem;
+}
+
+.gridBackdrop::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(
+      to right,
+      transparent calc(3.45rem - 1px),
+      var(--hero-grid) calc(3.45rem - 1px),
+      var(--hero-grid) 3.45rem,
+      transparent 3.45rem
+    ),
+    linear-gradient(
+      to right,
+      transparent calc(27.35% - 1px),
+      var(--hero-grid) calc(27.35% - 1px),
+      var(--hero-grid) 27.35%,
+      transparent 27.35%
+    ),
+    linear-gradient(
+      to right,
+      transparent calc(68.45% - 1px),
+      var(--hero-grid) calc(68.45% - 1px),
+      var(--hero-grid) 68.45%,
+      transparent 68.45%
+    ),
+    linear-gradient(
+      to right,
+      transparent calc(100% - 2.75rem - 1px),
+      var(--hero-grid) calc(100% - 2.75rem - 1px),
+      var(--hero-grid) calc(100% - 2.75rem),
+      transparent calc(100% - 2.75rem)
+    );
+}
+
+.gridBackdrop::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+      circle at 50% 50%,
+      transparent 0 38%,
+      rgba(244, 239, 231, 0.36) 71%
+    ),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.36), transparent 24%);
+}
+
+.crosshair {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  opacity: 0.44;
+}
+
+.crosshair::before,
+.crosshair::after {
+  content: "";
+  position: absolute;
+  background: rgba(10, 48, 40, 0.48);
+}
+
+.crosshair::before {
+  top: 8px;
+  left: 2px;
+  width: 14px;
+  height: 1px;
+}
+
+.crosshair::after {
+  top: 2px;
+  left: 8px;
+  width: 1px;
+  height: 14px;
+}
+
+.crosshairOne {
+  left: 3.05rem;
+  top: 5.65rem;
+}
+
+.crosshairTwo {
+  left: 27.35%;
+  top: 5.65rem;
+}
+
+.crosshairThree {
+  left: 68.45%;
+  top: 5.65rem;
+}
+
+.crosshairFour {
+  right: 2.75rem;
+  top: 5.65rem;
+}
+
+.crosshairFive {
+  left: 3.05rem;
+  top: 51.25%;
+}
+
+.crosshairSix {
+  right: 2.75rem;
+  top: 51.25%;
+}
+
+.header {
+  position: relative;
+  z-index: 10;
+  display: grid;
+  height: clamp(5rem, 9.6vh, 6rem);
+  grid-template-columns: minmax(8rem, 0.7fr) minmax(18rem, 1.8fr) minmax(
+      4.75rem,
+      0.7fr
+    );
+  align-items: center;
+  padding-inline: clamp(2rem, 5.5vw, 5.8rem);
+}
+
+.logo {
+  width: max-content;
+  color: var(--hero-emerald);
+  font-size: clamp(2.2rem, 3.1vw, 3.25rem);
+  font-weight: 950;
+  letter-spacing: -0.1em;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(1.5rem, 4.6vw, 5.4rem);
+  justify-self: center;
+  width: min(100%, 47rem);
+}
+
+.navLink,
+.mobileWorkLink {
+  position: relative;
+  color: var(--hero-ink);
+  font-size: clamp(1rem, 1.15vw, 1.22rem);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  text-decoration: none;
+}
+
+.navLink::after,
+.mobileWorkLink::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.38rem;
+  height: 1px;
+  transform: scaleX(0);
+  transform-origin: left;
+  background: currentColor;
+  transition: transform 180ms ease;
+}
+
+.navLink:hover::after,
+.mobileWorkLink:hover::after {
+  transform: scaleX(1);
+}
+
+.mobileWorkLink {
+  display: none;
+  justify-self: end;
+  margin-right: 0.85rem;
+}
+
+.menuWrap {
+  position: relative;
+  justify-self: end;
+}
+
+.menuButton {
+  display: inline-flex;
+  width: clamp(3.1rem, 3.8vw, 3.85rem);
+  height: clamp(3.1rem, 3.8vw, 3.85rem);
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 999px;
+  background: var(--hero-emerald);
+  color: #fff8ec;
+  box-shadow: 0 16px 30px rgba(0, 75, 63, 0.18);
+  cursor: pointer;
+  transition:
+    transform 180ms ease,
+    background 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.menuButton:hover {
+  transform: translateY(-2px);
+  background: var(--hero-emerald-dark);
+  box-shadow: 0 18px 36px rgba(0, 75, 63, 0.22);
+}
+
+.menuIcon {
+  display: grid;
+  gap: 5px;
+  width: 22px;
+}
+
+.menuIcon span {
+  display: block;
+  height: 2px;
+  border-radius: 999px;
+  background: currentColor;
+}
+
+.menuPanel {
+  position: absolute;
+  top: calc(100% + 0.9rem);
+  right: 0;
+  display: grid;
+  width: 13.5rem;
+  gap: 0.28rem;
+  padding: 0.55rem;
+  border: 1px solid var(--hero-border);
+  border-radius: 1.25rem;
+  background: rgba(251, 248, 243, 0.96);
+  box-shadow: var(--hero-shadow);
+  backdrop-filter: blur(18px);
+  animation: heroMenuIn 180ms ease both;
+}
+
+.menuPanelLink {
+  border-radius: 0.9rem;
+  padding: 0.85rem 0.95rem;
+  color: var(--hero-ink);
+  font-size: 0.96rem;
+  font-weight: 650;
+  text-decoration: none;
+  transition:
+    background 160ms ease,
+    color 160ms ease,
+    transform 160ms ease;
+}
+
+.menuPanelLink:hover {
+  transform: translateX(2px);
+  background: rgba(0, 75, 63, 0.08);
+  color: var(--hero-emerald);
+}
+
+.heroStage {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  min-height: calc(100svh - clamp(5rem, 9.6vh, 6rem));
+  grid-template-columns: minmax(16rem, 0.92fr) minmax(30rem, 1.34fr) minmax(
+      17rem,
+      0.86fr
+    );
+  column-gap: clamp(1.25rem, 3vw, 4rem);
+  padding: clamp(1.2rem, 2.4vw, 2.6rem) clamp(2rem, 5.5vw, 5.8rem)
+    clamp(1.8rem, 4.7vw, 4.3rem);
+}
+
+.createWord {
+  position: absolute;
+  z-index: 0;
+  top: clamp(0.15rem, 1.25vw, 1.45rem);
+  left: clamp(2.3rem, 5.2vw, 5.8rem);
+  color: rgba(10, 48, 40, 0.92);
+  font-size: clamp(10rem, 19.7vw, 20.8rem);
+  font-weight: 950;
+  letter-spacing: -0.078em;
+  line-height: 0.78;
+  opacity: 0;
+  white-space: nowrap;
+  animation: heroCreateIn 820ms 80ms ease forwards;
+  user-select: text;
+}
+
+.intro {
+  position: relative;
+  z-index: 5;
+  grid-column: 1;
+  align-self: start;
+  max-width: 28rem;
+  margin-top: clamp(9rem, 24vh, 15.5rem);
+  opacity: 0;
+  animation: heroRise 720ms 180ms ease forwards;
+}
+
+.role {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: clamp(0.9rem, 1.2vw, 1.2rem);
+  align-items: start;
+  margin: 0 0 clamp(3rem, 6.4vh, 4.3rem);
+  color: var(--hero-ink);
+  font-size: clamp(1rem, 1.2vw, 1.22rem);
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  line-height: 1.45;
+  text-transform: uppercase;
+}
+
+.roleDot {
+  width: 0.75rem;
+  height: 0.75rem;
+  margin-top: 0.42rem;
+  border-radius: 999px;
+  background: var(--hero-emerald);
+  box-shadow: 0 0 0 5px rgba(0, 75, 63, 0.05);
+}
+
+.introCopy {
+  margin: 0;
+  color: #102f29;
+  font-size: clamp(1.25rem, 1.55vw, 1.7rem);
+  font-weight: 450;
+  letter-spacing: -0.055em;
+  line-height: 1.34;
+}
+
+.artworkWrap {
+  position: absolute;
+  z-index: 3;
+  left: 50%;
+  bottom: clamp(4rem, 10vh, 5.8rem);
+  width: clamp(34rem, 45.5vw, 48.75rem);
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.artworkHalo {
+  position: absolute;
+  inset: 8%;
+  z-index: -1;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(84, 52, 26, 0.2), transparent 66%);
+  filter: blur(34px);
+}
+
+.artworkImage {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  opacity: 0;
+  transform-origin: 50% 58%;
+  animation: heroArtworkIn 820ms 140ms cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}
+
+.nameBlock {
+  position: absolute;
+  z-index: 6;
+  left: clamp(2.3rem, 5.5vw, 5.8rem);
+  bottom: clamp(2.75rem, 6vh, 4rem);
+  opacity: 0;
+  animation: heroRise 780ms 260ms ease forwards;
+}
+
+.copyright {
+  display: block;
+  margin-bottom: clamp(1rem, 2.4vh, 1.55rem);
+  color: var(--hero-ink);
+  font-size: clamp(1rem, 1.2vw, 1.22rem);
+  font-weight: 650;
+  letter-spacing: -0.05em;
+}
+
+.name {
+  margin: 0;
+  color: var(--hero-emerald-dark);
+  font-size: clamp(5.05rem, 7.05vw, 8.45rem);
+  font-weight: 950;
+  letter-spacing: -0.085em;
+  line-height: 0.84;
+  text-transform: uppercase;
+  text-shadow: 0 0.08em 0.18em rgba(244, 239, 231, 0.24);
+}
+
+.cards {
+  position: relative;
+  z-index: 7;
+  grid-column: 3;
+  align-self: center;
+  justify-self: center;
+  display: flex;
+  width: min(100%, 20.2rem);
+  flex-direction: column;
+  gap: clamp(1.15rem, 2.7vh, 1.75rem);
+  margin-top: clamp(4.1rem, 10vh, 6rem);
+}
+
+.projectCard,
+.contactCard {
+  text-decoration: none;
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease,
+    background 220ms ease;
+  opacity: 0;
+  animation: heroRise 680ms ease forwards;
+}
+
+.projectCard {
+  display: block;
+  padding: clamp(1.05rem, 1.42vw, 1.3rem);
+  border: 1px solid var(--hero-border);
+  border-radius: var(--hero-radius);
+  background: var(--hero-card);
+  box-shadow: var(--hero-shadow);
+  color: var(--hero-ink);
+  backdrop-filter: blur(18px);
+  animation-delay: 360ms;
+}
+
+.projectCard:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 30px 64px rgba(35, 28, 20, 0.16);
+}
+
+.projectCardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: clamp(0.9rem, 1.25vw, 1.2rem);
+  font-size: clamp(1.05rem, 1.2vw, 1.25rem);
+  font-weight: 650;
+  letter-spacing: -0.04em;
+}
+
+.dots {
+  display: flex;
+  gap: 0.24rem;
+  align-items: center;
+  color: var(--hero-emerald);
+}
+
+.dots span {
+  width: 0.27rem;
+  height: 0.27rem;
+  border-radius: 999px;
+  background: currentColor;
+}
+
+.projectImageWrap {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1600 / 1291;
+  border-radius: 0.82rem;
+  background: var(--hero-emerald-dark);
+}
+
+.projectImage {
+  object-fit: cover;
+  transition: transform 420ms ease;
+}
+
+.projectCard:hover .projectImage {
+  transform: scale(1.035);
+}
+
+.projectFooter {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 0.78rem;
+  align-items: center;
+  padding-top: clamp(0.95rem, 1.35vw, 1.25rem);
+}
+
+.projectDot {
+  width: 0.73rem;
+  height: 0.73rem;
+  border-radius: 999px;
+  background: var(--hero-emerald);
+}
+
+.projectTitle {
+  margin: 0 0 0.18rem;
+  color: var(--hero-ink);
+  font-size: clamp(1.02rem, 1.2vw, 1.2rem);
+  font-weight: 650;
+  letter-spacing: -0.045em;
+  line-height: 1.15;
+}
+
+.projectCategory {
+  margin: 0;
+  color: #233a34;
+  font-size: clamp(0.8rem, 0.9vw, 0.95rem);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1.25;
+}
+
+.projectArrow,
+.contactArrow {
+  transition: transform 200ms ease;
+}
+
+.projectCard:hover .projectArrow,
+.contactCard:hover .contactArrow {
+  transform: translate(4px, -4px);
+}
+
+.contactCard {
+  display: grid;
+  min-height: clamp(11.4rem, 20.8vh, 13.55rem);
+  padding: clamp(1.28rem, 1.62vw, 1.55rem);
+  border-radius: calc(var(--hero-radius) - 1px);
+  background: radial-gradient(
+      circle at 82% 6%,
+      rgba(255, 255, 255, 0.12),
+      transparent 34%
+    ),
+    linear-gradient(135deg, var(--hero-emerald), var(--hero-emerald-dark));
+  box-shadow: 0 24px 46px rgba(0, 75, 63, 0.18);
+  color: #fff8ec;
+  animation-delay: 470ms;
+}
+
+.contactCard:hover {
+  transform: translateY(-5px);
+  background: radial-gradient(
+      circle at 82% 6%,
+      rgba(255, 255, 255, 0.16),
+      transparent 34%
+    ),
+    linear-gradient(135deg, #005848, #00382f);
+  box-shadow: 0 28px 56px rgba(0, 75, 63, 0.25);
+}
+
+.spark {
+  font-size: 1.55rem;
+  line-height: 1;
+}
+
+.contactText {
+  max-width: 16rem;
+  margin: clamp(1.05rem, 2.35vh, 1.42rem) 0 clamp(0.9rem, 2.15vh, 1.18rem);
+  font-size: clamp(1.25rem, 1.6vw, 1.58rem);
+  font-weight: 450;
+  letter-spacing: -0.055em;
+  line-height: 1.2;
+}
+
+.contactDivider {
+  height: 1px;
+  background: rgba(255, 248, 236, 0.34);
+}
+
+.contactAction {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: clamp(1rem, 2.1vh, 1.25rem);
+  font-size: clamp(0.9rem, 1vw, 1rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  text-transform: uppercase;
+}
+
+.navLink:focus-visible,
+.mobileWorkLink:focus-visible,
+.logo:focus-visible,
+.menuButton:focus-visible,
+.menuPanelLink:focus-visible,
+.projectCard:focus-visible,
+.contactCard:focus-visible {
+  outline: 3px solid rgba(0, 75, 63, 0.35);
+  outline-offset: 5px;
+}
+
+@media (max-width: 1180px) {
+  .gridBackdrop {
+    background-size:
+      32% 100%,
+      100% 34%;
+    background-position:
+      2rem 0,
+      0 5.2rem;
+  }
+
+  .header {
+    height: 5.25rem;
+    grid-template-columns: minmax(6rem, 0.5fr) minmax(17rem, 1.4fr) minmax(
+        4rem,
+        0.5fr
+      );
+    padding-inline: clamp(1.6rem, 4vw, 3rem);
+  }
+
+  .heroStage {
+    min-height: auto;
+    grid-template-columns: minmax(0, 0.9fr) minmax(20rem, 1.1fr);
+    grid-template-areas:
+      "intro art"
+      "name art"
+      "cards cards";
+    gap: clamp(1.2rem, 3vw, 2.6rem);
+    padding: clamp(1.4rem, 3.5vw, 2.4rem) clamp(1.6rem, 4vw, 3rem)
+      clamp(2.5rem, 5vw, 4rem);
+  }
+
+  .createWord {
+    top: 1rem;
+    left: clamp(1.4rem, 4vw, 3rem);
+    font-size: clamp(7.2rem, 17vw, 12rem);
+  }
+
+  .intro {
+    grid-area: intro;
+    margin-top: clamp(3rem, 7vw, 5rem);
+  }
+
+  .artworkWrap {
+    position: relative;
+    grid-area: art;
+    left: auto;
+    bottom: auto;
+    justify-self: center;
+    width: min(62vw, 40rem);
+    transform: none;
+  }
+
+  .nameBlock {
+    position: relative;
+    grid-area: name;
+    left: auto;
+    bottom: auto;
+    margin-top: -0.25rem;
+  }
+
+  .name {
+    font-size: clamp(5rem, 11.4vw, 7.4rem);
+  }
+
+  .cards {
+    grid-area: cards;
+    justify-self: center;
+    display: grid;
+    width: min(100%, 48rem);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.95fr);
+    gap: 1.2rem;
+    margin-top: 0.4rem;
+  }
+
+  .contactCard {
+    min-height: auto;
+  }
+}
+
+@media (min-width: 1181px) and (max-height: 820px) {
+  .cards {
+    gap: 1.15rem;
+  }
+
+  .contactCard {
+    min-height: 10.9rem;
+  }
+
+  .nameBlock {
+    bottom: 3.85rem;
+  }
+
+  .copyright {
+    margin-bottom: 0.8rem;
+  }
+
+  .name {
+    font-size: clamp(4.65rem, 6.65vw, 7.6rem);
+  }
+}
+
+@media (max-width: 760px) {
+  .portfolioHero {
+    min-height: auto;
+  }
+
+  .gridBackdrop {
+    background-size:
+      56% 100%,
+      100% 24%;
+    background-position:
+      1.25rem 0,
+      0 4.4rem;
+  }
+
+  .crosshairOne,
+  .crosshairTwo,
+  .crosshairThree,
+  .crosshairFour,
+  .crosshairFive,
+  .crosshairSix {
+    display: none;
+  }
+
+  .header {
+    height: 4.7rem;
+    grid-template-columns: auto 1fr auto;
+    padding-inline: 20px;
+  }
+
+  .logo {
+    font-size: 2.35rem;
+  }
+
+  .nav {
+    display: none;
+  }
+
+  .mobileWorkLink {
+    display: inline-flex;
+  }
+
+  .menuButton {
+    width: 3.15rem;
+    height: 3.15rem;
+  }
+
+  .menuPanel {
+    right: 0;
+    width: min(15.5rem, calc(100vw - 40px));
+  }
+
+  .heroStage {
+    display: flex;
+    min-height: auto;
+    flex-direction: column;
+    gap: 1.45rem;
+    padding: 2rem 20px 2.75rem;
+  }
+
+  .createWord {
+    top: 5.9rem;
+    left: -0.6rem;
+    font-size: clamp(5.15rem, 29vw, 8rem);
+    letter-spacing: -0.115em;
+    opacity: 0;
+  }
+
+  .intro {
+    order: 1;
+    max-width: none;
+    margin-top: 1.45rem;
+  }
+
+  .role {
+    margin-bottom: 2rem;
+    font-size: clamp(0.98rem, 4.2vw, 1.15rem);
+    line-height: 1.42;
+  }
+
+  .introCopy {
+    font-size: clamp(1.45rem, 6vw, 2.05rem);
+    line-height: 1.18;
+  }
+
+  .artworkWrap {
+    order: 2;
+    width: min(96%, 30rem);
+    margin: -0.65rem auto -1.35rem;
+  }
+
+  .nameBlock {
+    order: 3;
+    margin-top: -1.1rem;
+  }
+
+  .copyright {
+    margin-bottom: 0.8rem;
+    font-size: 1rem;
+  }
+
+  .name {
+    max-width: 100%;
+    font-size: clamp(3.55rem, 18.2vw, 6.8rem);
+    letter-spacing: -0.105em;
+    line-height: 0.86;
+  }
+
+  .cards {
+    order: 4;
+    display: flex;
+    width: 100%;
+    max-width: none;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 0.35rem;
+  }
+
+  .projectCard {
+    padding: 1rem;
+    border-radius: 1.15rem;
+  }
+
+  .contactCard {
+    min-height: 12.5rem;
+    border-radius: 1.15rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .mobileWorkLink {
+    display: none;
+  }
+
+  .name {
+    font-size: clamp(3.3rem, 18.4vw, 4rem);
+  }
+
+  .introCopy {
+    font-size: 1.34rem;
+  }
+
+  .projectFooter {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .projectArrow {
+    grid-column: 2;
+    justify-self: end;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gridBackdrop,
+  .intro,
+  .artworkImage,
+  .nameBlock,
+  .projectCard,
+  .contactCard,
+  .menuPanel {
+    animation: none;
+    opacity: 1;
+  }
+
+  .createWord {
+    animation: none;
+    opacity: 0.052;
+    transform: none;
+  }
+
+  .navLink::after,
+  .mobileWorkLink::after,
+  .menuButton,
+  .menuPanelLink,
+  .projectCard,
+  .contactCard,
+  .projectImage,
+  .projectArrow,
+  .contactArrow {
+    transition: none;
+  }
+
+  .menuButton:hover,
+  .menuPanelLink:hover,
+  .projectCard:hover,
+  .contactCard:hover {
+    transform: none;
+  }
+}
+
+@keyframes heroFade {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes heroCreateIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 0.058;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroRise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroArtworkIn {
+  from {
+    opacity: 0;
+    transform: scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes heroMenuIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}

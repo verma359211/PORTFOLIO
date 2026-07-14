@@ -1,0 +1,12 @@
+:root {
+  --hero-bg: #f4efe7;
+  --hero-ink: #0a3028;
+  --hero-emerald: #004b3f;
+  --hero-emerald-dark: #003d34;
+  --hero-muted: #6f716c;
+  --hero-grid: rgba(10, 48, 40, 0.12);
+  --hero-card: rgba(251, 248, 243, 0.92);
+  --hero-border: rgba(10, 48, 40, 0.10);
+  --hero-shadow: 0 22px 55px rgba(35, 28, 20, 0.10);
+  --hero-radius: 20px;
+}

@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -7,10 +6,12 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: "Bebas Neue", sans-serif;
+  overflow-x: hidden;
 }
 
 @layer utilities {
@@ -30,7 +31,6 @@ body {
     /* Additional custom styles */
   }
 }
-
 
 @layer base {
   :root {
@@ -58,6 +58,16 @@ body {
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
+    --hero-bg: #f4efe7;
+    --hero-ink: #0a3028;
+    --hero-emerald: #004b3f;
+    --hero-emerald-dark: #003d34;
+    --hero-muted: #6f716c;
+    --hero-grid: rgba(10, 48, 40, 0.12);
+    --hero-card: rgba(251, 248, 243, 0.92);
+    --hero-border: rgba(10, 48, 40, 0.1);
+    --hero-shadow: 0 22px 55px rgba(35, 28, 20, 0.1);
+    --hero-radius: 20px;
   }
 }
 

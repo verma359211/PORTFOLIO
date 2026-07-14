@@ -1,0 +1,16 @@
+{
+  "hero_art": {
+    "preferred": "/assets/hero/chandan-developer-fisheye.webp",
+    "fallback": "/assets/hero/chandan-developer-fisheye.png",
+    "width": 2400,
+    "height": 2400,
+    "transparent": true
+  },
+  "project_cover": {
+    "preferred": "/assets/hero/gtrestro-project-cover.webp",
+    "fallback": "/assets/hero/gtrestro-project-cover.png",
+    "width": 1600,
+    "height": 1291
+  },
+  "reference": "hero-reference-approved.png"
+}
