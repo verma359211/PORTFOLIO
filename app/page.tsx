@@ -8,13 +8,18 @@ import ProjectsSection from "../components/ProjectsSection";
 import Tictactoe from "@/../components/tictactoe";
 import Component from "../components/logocarousel";
 import PortfolioHero from "../components/portfolioHero";
+import ExperienceShowcaseSection from "../components/experienceShowcaseSection";
 import StartupPosShowcase from "../components/startupPosShowcase";
+import styles from "./page.module.css";
 
 export default function Home() {
   return (
     <React.StrictMode>
       <div className="">
-        <PortfolioHero />
+        <div className={styles.heroExperienceFlow}>
+          <PortfolioHero />
+          <ExperienceShowcaseSection />
+        </div>
         <StartupPosShowcase />
         <section className="overflow-hidden pb-6">
           <Component />

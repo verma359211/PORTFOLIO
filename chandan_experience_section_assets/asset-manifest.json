@@ -1,0 +1,48 @@
+{
+  "section_reference": "experience-section-reference-approved.png",
+  "public_base": "/assets/experience",
+  "assets": {
+    "logo": {
+      "preferred": "/assets/experience/gtrestro-original-logo.webp",
+      "source": "/assets/experience/gtrestro-original-logo-source.png",
+      "width": 1200,
+      "height": 1258
+    },
+    "journey_team": {
+      "preferred": "/assets/experience/journey-team-illustration.webp",
+      "fallback": "/assets/experience/journey-team-illustration.png",
+      "width": 2200,
+      "height": 1444
+    },
+    "handshake": {
+      "preferred": "/assets/experience/focus-handshake-illustration.webp",
+      "fallback": "/assets/experience/focus-handshake-illustration.png",
+      "width": 1800,
+      "height": 1342
+    },
+    "puzzle_hand": {
+      "preferred": "/assets/experience/timeline-puzzle-hand.webp",
+      "fallback": "/assets/experience/timeline-puzzle-hand.png",
+      "width": 1200,
+      "height": 812
+    },
+    "contribution_team": {
+      "preferred": "/assets/experience/contribution-team-illustration.webp",
+      "fallback": "/assets/experience/contribution-team-illustration.png",
+      "width": 1900,
+      "height": 1273
+    },
+    "reflection_avatar": {
+      "preferred": "/assets/experience/developer-reflection-avatar.webp",
+      "fallback": "/assets/experience/developer-reflection-avatar.png",
+      "width": 900,
+      "height": 900
+    },
+    "dashboard_laptop": {
+      "preferred": "/assets/experience/gtrestro-dashboard-laptop.webp",
+      "fallback": "/assets/experience/gtrestro-dashboard-laptop.png",
+      "width": 1900,
+      "height": 1110
+    }
+  }
+}

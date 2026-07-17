@@ -3,13 +3,7 @@
   isolation: isolate;
   min-height: 100svh;
   overflow: hidden;
-  background: radial-gradient(
-      circle at 48% 42%,
-      rgba(255, 255, 255, 0.44),
-      transparent 34%
-    ),
-    linear-gradient(135deg, rgba(255, 255, 255, 0.28), rgba(225, 211, 193, 0.2)),
-    var(--hero-bg);
+  background: transparent;
   color: var(--hero-ink);
   font-family:
     Inter,
@@ -28,59 +22,15 @@
   z-index: 0;
   opacity: 0;
   animation: heroFade 720ms ease forwards;
-  background-image: linear-gradient(
-    to bottom,
-    var(--hero-grid) 1px,
-    transparent 1px
-  );
-  background-size: 100% 41.2%;
-  background-position: 0 6.05rem;
+  background-image: none;
 }
 
 .gridBackdrop::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: linear-gradient(
-      to right,
-      transparent calc(3.45rem - 1px),
-      var(--hero-grid) calc(3.45rem - 1px),
-      var(--hero-grid) 3.45rem,
-      transparent 3.45rem
-    ),
-    linear-gradient(
-      to right,
-      transparent calc(27.35% - 1px),
-      var(--hero-grid) calc(27.35% - 1px),
-      var(--hero-grid) 27.35%,
-      transparent 27.35%
-    ),
-    linear-gradient(
-      to right,
-      transparent calc(68.45% - 1px),
-      var(--hero-grid) calc(68.45% - 1px),
-      var(--hero-grid) 68.45%,
-      transparent 68.45%
-    ),
-    linear-gradient(
-      to right,
-      transparent calc(100% - 2.75rem - 1px),
-      var(--hero-grid) calc(100% - 2.75rem - 1px),
-      var(--hero-grid) calc(100% - 2.75rem),
-      transparent calc(100% - 2.75rem)
-    );
+  display: none;
 }
 
 .gridBackdrop::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-      circle at 50% 50%,
-      transparent 0 38%,
-      rgba(244, 239, 231, 0.36) 71%
-    ),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.36), transparent 24%);
+  display: none;
 }
 
 .crosshair {
@@ -113,22 +63,22 @@
 
 .crosshairOne {
   left: 3.05rem;
-  top: 5.65rem;
+  top: 5.08rem;
 }
 
 .crosshairTwo {
   left: 27.35%;
-  top: 5.65rem;
+  top: 5.08rem;
 }
 
 .crosshairThree {
   left: 68.45%;
-  top: 5.65rem;
+  top: 5.08rem;
 }
 
 .crosshairFour {
   right: 2.75rem;
-  top: 5.65rem;
+  top: 5.08rem;
 }
 
 .crosshairFive {
@@ -145,19 +95,19 @@
   position: relative;
   z-index: 10;
   display: grid;
-  height: clamp(5rem, 9.6vh, 6rem);
+  height: clamp(4.5rem, 8.65vh, 5.4rem);
   grid-template-columns: minmax(8rem, 0.7fr) minmax(18rem, 1.8fr) minmax(
       4.75rem,
       0.7fr
     );
   align-items: center;
-  padding-inline: clamp(2rem, 5.5vw, 5.8rem);
+  padding-inline: clamp(1.8rem, 5vw, 5.25rem);
 }
 
 .logo {
   width: max-content;
   color: var(--hero-emerald);
-  font-size: clamp(2.2rem, 3.1vw, 3.25rem);
+  font-size: clamp(2rem, 2.8vw, 2.95rem);
   font-weight: 950;
   letter-spacing: -0.1em;
   line-height: 1;
@@ -168,16 +118,16 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: clamp(1.5rem, 4.6vw, 5.4rem);
+  gap: clamp(1.35rem, 4.15vw, 4.85rem);
   justify-self: center;
-  width: min(100%, 47rem);
+  width: min(100%, 42.5rem);
 }
 
 .navLink,
 .mobileWorkLink {
   position: relative;
   color: var(--hero-ink);
-  font-size: clamp(1rem, 1.15vw, 1.22rem);
+  font-size: clamp(0.92rem, 1.04vw, 1.1rem);
   font-weight: 500;
   letter-spacing: -0.04em;
   text-decoration: none;
@@ -215,8 +165,8 @@
 
 .menuButton {
   display: inline-flex;
-  width: clamp(3.1rem, 3.8vw, 3.85rem);
-  height: clamp(3.1rem, 3.8vw, 3.85rem);
+  width: clamp(2.8rem, 3.42vw, 3.45rem);
+  height: clamp(2.8rem, 3.42vw, 3.45rem);
   align-items: center;
   justify-content: center;
   border: 0;
@@ -289,23 +239,23 @@
   position: relative;
   z-index: 1;
   display: grid;
-  min-height: calc(100svh - clamp(5rem, 9.6vh, 6rem));
+  min-height: calc(100svh - clamp(4.5rem, 8.65vh, 5.4rem));
   grid-template-columns: minmax(16rem, 0.92fr) minmax(30rem, 1.34fr) minmax(
       17rem,
       0.86fr
     );
-  column-gap: clamp(1.25rem, 3vw, 4rem);
-  padding: clamp(1.2rem, 2.4vw, 2.6rem) clamp(2rem, 5.5vw, 5.8rem)
-    clamp(1.8rem, 4.7vw, 4.3rem);
+  column-gap: clamp(1.15rem, 2.7vw, 3.6rem);
+  padding: clamp(1.1rem, 2.15vw, 2.35rem) clamp(1.8rem, 5vw, 5.25rem)
+    clamp(1.6rem, 4.25vw, 3.85rem);
 }
 
 .createWord {
   position: absolute;
   z-index: 0;
-  top: clamp(0.15rem, 1.25vw, 1.45rem);
-  left: clamp(2.3rem, 5.2vw, 5.8rem);
+  top: clamp(0.15rem, 1.1vw, 1.3rem);
+  left: clamp(2.05rem, 4.7vw, 5.25rem);
   color: rgba(10, 48, 40, 0.92);
-  font-size: clamp(10rem, 19.7vw, 20.8rem);
+  font-size: clamp(9rem, 17.75vw, 18.75rem);
   font-weight: 950;
   letter-spacing: -0.078em;
   line-height: 0.78;
@@ -320,8 +270,8 @@
   z-index: 5;
   grid-column: 1;
   align-self: start;
-  max-width: 28rem;
-  margin-top: clamp(9rem, 24vh, 15.5rem);
+  max-width: 25.25rem;
+  margin-top: clamp(8.1rem, 21.6vh, 14rem);
   opacity: 0;
   animation: heroRise 720ms 180ms ease forwards;
 }
@@ -329,11 +279,11 @@
 .role {
   display: grid;
   grid-template-columns: auto 1fr;
-  gap: clamp(0.9rem, 1.2vw, 1.2rem);
+  gap: clamp(0.8rem, 1.08vw, 1.08rem);
   align-items: start;
-  margin: 0 0 clamp(3rem, 6.4vh, 4.3rem);
+  margin: 0 0 clamp(2.7rem, 5.75vh, 3.85rem);
   color: var(--hero-ink);
-  font-size: clamp(1rem, 1.2vw, 1.22rem);
+  font-size: clamp(0.9rem, 1.08vw, 1.1rem);
   font-weight: 700;
   letter-spacing: -0.045em;
   line-height: 1.45;
@@ -341,9 +291,9 @@
 }
 
 .roleDot {
-  width: 0.75rem;
-  height: 0.75rem;
-  margin-top: 0.42rem;
+  width: 0.68rem;
+  height: 0.68rem;
+  margin-top: 0.38rem;
   border-radius: 999px;
   background: var(--hero-emerald);
   box-shadow: 0 0 0 5px rgba(0, 75, 63, 0.05);
@@ -352,7 +302,7 @@
 .introCopy {
   margin: 0;
   color: #102f29;
-  font-size: clamp(1.25rem, 1.55vw, 1.7rem);
+  font-size: clamp(1.12rem, 1.4vw, 1.53rem);
   font-weight: 450;
   letter-spacing: -0.055em;
   line-height: 1.34;
@@ -362,8 +312,8 @@
   position: absolute;
   z-index: 3;
   left: 50%;
-  bottom: clamp(4rem, 10vh, 5.8rem);
-  width: clamp(34rem, 45.5vw, 48.75rem);
+  bottom: clamp(3.6rem, 9vh, 5.25rem);
+  width: clamp(30.6rem, 41vw, 43.9rem);
   transform: translateX(-50%);
   pointer-events: none;
 }
@@ -389,17 +339,17 @@
 .nameBlock {
   position: absolute;
   z-index: 6;
-  left: clamp(2.3rem, 5.5vw, 5.8rem);
-  bottom: clamp(2.75rem, 6vh, 4rem);
+  left: clamp(2.05rem, 5vw, 5.25rem);
+  bottom: clamp(2.45rem, 5.4vh, 3.6rem);
   opacity: 0;
   animation: heroRise 780ms 260ms ease forwards;
 }
 
 .copyright {
   display: block;
-  margin-bottom: clamp(1rem, 2.4vh, 1.55rem);
+  margin-bottom: clamp(0.9rem, 2.15vh, 1.4rem);
   color: var(--hero-ink);
-  font-size: clamp(1rem, 1.2vw, 1.22rem);
+  font-size: clamp(0.9rem, 1.08vw, 1.1rem);
   font-weight: 650;
   letter-spacing: -0.05em;
 }
@@ -407,7 +357,7 @@
 .name {
   margin: 0;
   color: var(--hero-emerald-dark);
-  font-size: clamp(5.05rem, 7.05vw, 8.45rem);
+  font-size: clamp(4.55rem, 6.35vw, 7.6rem);
   font-weight: 950;
   letter-spacing: -0.085em;
   line-height: 0.84;
@@ -422,10 +372,10 @@
   align-self: center;
   justify-self: center;
   display: flex;
-  width: min(100%, 20.2rem);
+  width: min(100%, 18.2rem);
   flex-direction: column;
-  gap: clamp(1.15rem, 2.7vh, 1.75rem);
-  margin-top: clamp(4.1rem, 10vh, 6rem);
+  gap: clamp(1.05rem, 2.45vh, 1.55rem);
+  margin-top: clamp(3.7rem, 9vh, 5.4rem);
 }
 
 .projectCard,
@@ -441,7 +391,7 @@
 
 .projectCard {
   display: block;
-  padding: clamp(1.05rem, 1.42vw, 1.3rem);
+  padding: clamp(0.95rem, 1.28vw, 1.18rem);
   border: 1px solid var(--hero-border);
   border-radius: var(--hero-radius);
   background: var(--hero-card);
@@ -460,8 +410,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: clamp(0.9rem, 1.25vw, 1.2rem);
-  font-size: clamp(1.05rem, 1.2vw, 1.25rem);
+  margin-bottom: clamp(0.8rem, 1.12vw, 1.08rem);
+  font-size: clamp(0.95rem, 1.08vw, 1.12rem);
   font-weight: 650;
   letter-spacing: -0.04em;
 }
@@ -500,14 +450,14 @@
 .projectFooter {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr) auto;
-  gap: 0.78rem;
+  gap: 0.7rem;
   align-items: center;
-  padding-top: clamp(0.95rem, 1.35vw, 1.25rem);
+  padding-top: clamp(0.85rem, 1.2vw, 1.12rem);
 }
 
 .projectDot {
-  width: 0.73rem;
-  height: 0.73rem;
+  width: 0.66rem;
+  height: 0.66rem;
   border-radius: 999px;
   background: var(--hero-emerald);
 }
@@ -515,7 +465,7 @@
 .projectTitle {
   margin: 0 0 0.18rem;
   color: var(--hero-ink);
-  font-size: clamp(1.02rem, 1.2vw, 1.2rem);
+  font-size: clamp(0.92rem, 1.08vw, 1.08rem);
   font-weight: 650;
   letter-spacing: -0.045em;
   line-height: 1.15;
@@ -524,7 +474,7 @@
 .projectCategory {
   margin: 0;
   color: #233a34;
-  font-size: clamp(0.8rem, 0.9vw, 0.95rem);
+  font-size: clamp(0.72rem, 0.82vw, 0.86rem);
   font-weight: 500;
   letter-spacing: -0.03em;
   line-height: 1.25;
@@ -542,8 +492,8 @@
 
 .contactCard {
   display: grid;
-  min-height: clamp(11.4rem, 20.8vh, 13.55rem);
-  padding: clamp(1.28rem, 1.62vw, 1.55rem);
+  min-height: clamp(10.25rem, 18.7vh, 12.2rem);
+  padding: clamp(1.15rem, 1.45vw, 1.4rem);
   border-radius: calc(var(--hero-radius) - 1px);
   background: radial-gradient(
       circle at 82% 6%,
@@ -568,14 +518,14 @@
 }
 
 .spark {
-  font-size: 1.55rem;
+  font-size: 1.4rem;
   line-height: 1;
 }
 
 .contactText {
-  max-width: 16rem;
-  margin: clamp(1.05rem, 2.35vh, 1.42rem) 0 clamp(0.9rem, 2.15vh, 1.18rem);
-  font-size: clamp(1.25rem, 1.6vw, 1.58rem);
+  max-width: 14.4rem;
+  margin: clamp(0.95rem, 2.1vh, 1.28rem) 0 clamp(0.8rem, 1.95vh, 1.06rem);
+  font-size: clamp(1.12rem, 1.44vw, 1.42rem);
   font-weight: 450;
   letter-spacing: -0.055em;
   line-height: 1.2;
@@ -591,8 +541,8 @@
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  padding-top: clamp(1rem, 2.1vh, 1.25rem);
-  font-size: clamp(0.9rem, 1vw, 1rem);
+  padding-top: clamp(0.9rem, 1.9vh, 1.12rem);
+  font-size: clamp(0.82rem, 0.9vw, 0.9rem);
   font-weight: 700;
   letter-spacing: -0.035em;
   text-transform: uppercase;
@@ -620,12 +570,12 @@
   }
 
   .header {
-    height: 5.25rem;
+    height: 4.75rem;
     grid-template-columns: minmax(6rem, 0.5fr) minmax(17rem, 1.4fr) minmax(
         4rem,
         0.5fr
       );
-    padding-inline: clamp(1.6rem, 4vw, 3rem);
+    padding-inline: clamp(1.45rem, 3.6vw, 2.7rem);
   }
 
   .heroStage {
@@ -635,20 +585,20 @@
       "intro art"
       "name art"
       "cards cards";
-    gap: clamp(1.2rem, 3vw, 2.6rem);
-    padding: clamp(1.4rem, 3.5vw, 2.4rem) clamp(1.6rem, 4vw, 3rem)
-      clamp(2.5rem, 5vw, 4rem);
+    gap: clamp(1.08rem, 2.7vw, 2.35rem);
+    padding: clamp(1.25rem, 3.15vw, 2.15rem) clamp(1.45rem, 3.6vw, 2.7rem)
+      clamp(2.25rem, 4.5vw, 3.6rem);
   }
 
   .createWord {
     top: 1rem;
     left: clamp(1.4rem, 4vw, 3rem);
-    font-size: clamp(7.2rem, 17vw, 12rem);
+    font-size: clamp(6.5rem, 15.3vw, 10.8rem);
   }
 
   .intro {
     grid-area: intro;
-    margin-top: clamp(3rem, 7vw, 5rem);
+    margin-top: clamp(2.7rem, 6.3vw, 4.5rem);
   }
 
   .artworkWrap {
@@ -657,7 +607,7 @@
     left: auto;
     bottom: auto;
     justify-self: center;
-    width: min(62vw, 40rem);
+    width: min(56vw, 36rem);
     transform: none;
   }
 
@@ -670,14 +620,14 @@
   }
 
   .name {
-    font-size: clamp(5rem, 11.4vw, 7.4rem);
+    font-size: clamp(4.5rem, 10.3vw, 6.65rem);
   }
 
   .cards {
     grid-area: cards;
     justify-self: center;
     display: grid;
-    width: min(100%, 48rem);
+    width: min(100%, 43.2rem);
     grid-template-columns: minmax(0, 1fr) minmax(0, 0.95fr);
     gap: 1.2rem;
     margin-top: 0.4rem;
@@ -694,11 +644,11 @@
   }
 
   .contactCard {
-    min-height: 10.9rem;
+    min-height: 9.8rem;
   }
 
   .nameBlock {
-    bottom: 3.85rem;
+    bottom: 3.45rem;
   }
 
   .copyright {
@@ -706,7 +656,7 @@
   }
 
   .name {
-    font-size: clamp(4.65rem, 6.65vw, 7.6rem);
+    font-size: clamp(4.2rem, 6vw, 6.85rem);
   }
 }
 

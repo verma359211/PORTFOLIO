@@ -1,0 +1,84 @@
+.heroExperienceFlow {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: radial-gradient(
+      circle at 48% 18%,
+      rgba(255, 255, 255, 0.44),
+      transparent 28%
+    ),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.28), rgba(225, 211, 193, 0.2)),
+    var(--hero-bg);
+}
+
+.heroExperienceFlow::before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: linear-gradient(
+      to bottom,
+      var(--hero-grid) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to right,
+      transparent calc(3.45rem - 1px),
+      var(--hero-grid) calc(3.45rem - 1px),
+      var(--hero-grid) 3.45rem,
+      transparent 3.45rem
+    ),
+    linear-gradient(
+      to right,
+      transparent calc(27.35% - 1px),
+      var(--hero-grid) calc(27.35% - 1px),
+      var(--hero-grid) 27.35%,
+      transparent 27.35%
+    ),
+    linear-gradient(
+      to right,
+      transparent calc(68.45% - 1px),
+      var(--hero-grid) calc(68.45% - 1px),
+      var(--hero-grid) 68.45%,
+      transparent 68.45%
+    ),
+    linear-gradient(
+      to right,
+      transparent calc(100% - 2.75rem - 1px),
+      var(--hero-grid) calc(100% - 2.75rem - 1px),
+      var(--hero-grid) calc(100% - 2.75rem),
+      transparent calc(100% - 2.75rem)
+    );
+  background-size:
+    100% 39.4%,
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    100% 100%;
+  background-position:
+    0 5.45rem,
+    0 0,
+    0 0,
+    0 0,
+    0 0;
+  opacity: 1;
+}
+
+.heroExperienceFlow::after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.36),
+    transparent 16rem
+  );
+}
+
+.heroExperienceFlow > * {
+  position: relative;
+  z-index: 1;
+}

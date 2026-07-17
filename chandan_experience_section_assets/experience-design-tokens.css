@@ -1,0 +1,15 @@
+:root {
+  --experience-bg: #f5f0e8;
+  --experience-surface: #fbf8f2;
+  --experience-ink: #0a332b;
+  --experience-ink-soft: #243b35;
+  --experience-green: #004b3f;
+  --experience-green-dark: #003c33;
+  --experience-green-light: #62d45f;
+  --experience-red: #d7191c;
+  --experience-red-dark: #bd1014;
+  --experience-border: rgba(10, 51, 43, 0.10);
+  --experience-shadow: 0 14px 36px rgba(36, 28, 20, 0.08);
+  --experience-radius: 20px;
+  --experience-gap: clamp(12px, 1.25vw, 18px);
+}

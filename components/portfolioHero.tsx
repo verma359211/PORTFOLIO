@@ -14,11 +14,11 @@ const HERO_ASSETS = {
 const HERO_LINKS = {
   work: "#work-section",
   about: "#about-section",
-  experience: "#startup-build",
+  experience: "#experience",
   contact: "#contact-section",
 };
 
-const GT_RESTRO_CASE_STUDY_HREF = "#startup-build";
+const GT_RESTRO_CASE_STUDY_HREF = "#gtrestro-case-study";
 
 const NAV_ITEMS = [
   { label: "Work", href: HERO_LINKS.work },
