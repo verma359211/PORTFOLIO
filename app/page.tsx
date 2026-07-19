@@ -4,11 +4,11 @@ import AboutSection from "../components/aboutSection";
 import MasonryGallery from "../components/gallary";
 import ContactSection from "../components/contact";
 // import ImageSlideshow from "../components/photo";
-import ProjectsSection from "../components/ProjectsSection";
 import Tictactoe from "@/../components/tictactoe";
 import Component from "../components/logocarousel";
 import PortfolioHero from "../components/portfolioHero";
 import ExperienceShowcaseSection from "../components/experienceShowcaseSection";
+import ProjectsShowcaseSection from "../components/projectsShowcaseSection";
 import StartupPosShowcase from "../components/startupPosShowcase";
 import styles from "./page.module.css";
 
@@ -20,12 +20,12 @@ export default function Home() {
           <PortfolioHero />
           <ExperienceShowcaseSection />
         </div>
+        <ProjectsShowcaseSection />
         <StartupPosShowcase />
         <section className="overflow-hidden pb-6">
           <Component />
         </section>
         {/* <FeaturedProjects /> */}
-        <ProjectsSection />
         <Tictactoe />
         <AboutSection />
         <div className="relative h-[70vh] overflow-hidden">

@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "done": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File ./scripts/task-done-sound.ps1"
   },
   "dependencies": {
     "@chakra-ui/react": "^3.0.2",

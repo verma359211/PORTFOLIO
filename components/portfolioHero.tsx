@@ -12,7 +12,7 @@ const HERO_ASSETS = {
 };
 
 const HERO_LINKS = {
-  work: "#work-section",
+  work: "#projects",
   about: "#about-section",
   experience: "#experience",
   contact: "#contact-section",
