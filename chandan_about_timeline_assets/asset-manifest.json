@@ -1,0 +1,142 @@
+{
+  "reference": "about-timeline-reference-approved.png",
+  "publicBase": "/assets/about-timeline",
+  "texture": {
+    "preferred": "/assets/about-timeline/textures/warm-paper-texture.webp",
+    "fallback": "/assets/about-timeline/textures/warm-paper-texture.png",
+    "width": 512,
+    "height": 512
+  },
+  "collageFallbacks": {
+    "01-school-roots-collage": {
+      "preferred": "/assets/about-timeline/chapters/01-school-roots-collage.webp",
+      "fallback": "/assets/about-timeline/chapters/01-school-roots-collage.png",
+      "width": 1500,
+      "height": 1635
+    },
+    "02-college-learning-collage": {
+      "preferred": "/assets/about-timeline/chapters/02-college-learning-collage.webp",
+      "fallback": "/assets/about-timeline/chapters/02-college-learning-collage.png",
+      "width": 1500,
+      "height": 1640
+    },
+    "03-internship-building-collage": {
+      "preferred": "/assets/about-timeline/chapters/03-internship-building-collage.webp",
+      "fallback": "/assets/about-timeline/chapters/03-internship-building-collage.png",
+      "width": 1500,
+      "height": 1572
+    },
+    "04-startup-experience-collage": {
+      "preferred": "/assets/about-timeline/chapters/04-startup-experience-collage.webp",
+      "fallback": "/assets/about-timeline/chapters/04-startup-experience-collage.png",
+      "width": 1500,
+      "height": 1581
+    },
+    "05-now-next-collage": {
+      "preferred": "/assets/about-timeline/chapters/05-now-next-collage.webp",
+      "fallback": "/assets/about-timeline/chapters/05-now-next-collage.png",
+      "width": 1500,
+      "height": 1313
+    }
+  },
+  "individualMedia": {
+    "01-school-main": {
+      "preferred": "/assets/about-timeline/chapters/01-school-main.webp",
+      "fallback": "/assets/about-timeline/chapters/01-school-main.png",
+      "width": 1200,
+      "height": 1354
+    },
+    "01-school-support-kite": {
+      "preferred": "/assets/about-timeline/chapters/01-school-support-kite.webp",
+      "fallback": "/assets/about-timeline/chapters/01-school-support-kite.png",
+      "width": 1200,
+      "height": 1236
+    },
+    "01-school-support-notes": {
+      "preferred": "/assets/about-timeline/chapters/01-school-support-notes.webp",
+      "fallback": "/assets/about-timeline/chapters/01-school-support-notes.png",
+      "width": 1200,
+      "height": 1981
+    },
+    "02-college-main": {
+      "preferred": "/assets/about-timeline/chapters/02-college-main.webp",
+      "fallback": "/assets/about-timeline/chapters/02-college-main.png",
+      "width": 1200,
+      "height": 1214
+    },
+    "02-college-support-notebook": {
+      "preferred": "/assets/about-timeline/chapters/02-college-support-notebook.webp",
+      "fallback": "/assets/about-timeline/chapters/02-college-support-notebook.png",
+      "width": 1200,
+      "height": 1504
+    },
+    "02-college-support-paper": {
+      "preferred": "/assets/about-timeline/chapters/02-college-support-paper.webp",
+      "fallback": "/assets/about-timeline/chapters/02-college-support-paper.png",
+      "width": 1200,
+      "height": 2009
+    },
+    "03-internship-main": {
+      "preferred": "/assets/about-timeline/chapters/03-internship-main.webp",
+      "fallback": "/assets/about-timeline/chapters/03-internship-main.png",
+      "width": 1200,
+      "height": 1000
+    },
+    "03-internship-support-code": {
+      "preferred": "/assets/about-timeline/chapters/03-internship-support-code.webp",
+      "fallback": "/assets/about-timeline/chapters/03-internship-support-code.png",
+      "width": 1200,
+      "height": 1085
+    },
+    "03-internship-support-architecture": {
+      "preferred": "/assets/about-timeline/chapters/03-internship-support-architecture.webp",
+      "fallback": "/assets/about-timeline/chapters/03-internship-support-architecture.png",
+      "width": 1200,
+      "height": 830
+    },
+    "04-startup-main": {
+      "preferred": "/assets/about-timeline/chapters/04-startup-main.webp",
+      "fallback": "/assets/about-timeline/chapters/04-startup-main.png",
+      "width": 1200,
+      "height": 1008
+    },
+    "04-startup-support-code": {
+      "preferred": "/assets/about-timeline/chapters/04-startup-support-code.webp",
+      "fallback": "/assets/about-timeline/chapters/04-startup-support-code.png",
+      "width": 1200,
+      "height": 784
+    },
+    "04-startup-support-team-note": {
+      "preferred": "/assets/about-timeline/chapters/04-startup-support-team-note.webp",
+      "fallback": "/assets/about-timeline/chapters/04-startup-support-team-note.png",
+      "width": 1200,
+      "height": 1158
+    },
+    "05-now-main": {
+      "preferred": "/assets/about-timeline/chapters/05-now-main.webp",
+      "fallback": "/assets/about-timeline/chapters/05-now-main.png",
+      "width": 1200,
+      "height": 927
+    },
+    "05-now-support-product-ui": {
+      "preferred": "/assets/about-timeline/chapters/05-now-support-product-ui.webp",
+      "fallback": "/assets/about-timeline/chapters/05-now-support-product-ui.png",
+      "width": 1200,
+      "height": 614
+    },
+    "05-now-support-dark-ui": {
+      "preferred": "/assets/about-timeline/chapters/05-now-support-dark-ui.webp",
+      "fallback": "/assets/about-timeline/chapters/05-now-support-dark-ui.png",
+      "width": 1200,
+      "height": 1166
+    }
+  },
+  "decor": {
+    "leaf-sprig": "/assets/about-timeline/decor/leaf-sprig.svg",
+    "mountain-sketch": "/assets/about-timeline/decor/mountain-sketch.svg",
+    "red-heart": "/assets/about-timeline/decor/red-heart.svg",
+    "green-underline": "/assets/about-timeline/decor/green-underline.svg",
+    "red-underline": "/assets/about-timeline/decor/red-underline.svg",
+    "spark-stars": "/assets/about-timeline/decor/spark-stars.svg"
+  }
+}

@@ -1,0 +1,9 @@
+Implement the About timeline using the full specification and assets inside `chandan_about_timeline_assets`.
+
+Inspect the existing portfolio first, then read CODEX-PROMPT.md, ASSET-GUIDE.md, RESPONSIVE-AND-INTERACTION-SPEC.md, about-timeline-design-tokens.css, about-timeline-content.example.ts and asset-manifest.json completely.
+
+Use about-timeline-reference-approved.png as the approved desktop reference. Replace the existing About section, preserve all other sections, copy assets into the real public directory, and implement the five-chapter layered photo timeline with automatic stack reordering, hover/focus expansion, accessible mobile controls and reduced-motion support.
+
+The supplied photos are concept placeholders. Do not present them as real photos of Chandan. Keep all chapter media centralized for later replacement.
+
+Continue until formatter, lint, type-check and production build pass, then report files changed, asset paths, navigation, unresolved personal fields and command results.

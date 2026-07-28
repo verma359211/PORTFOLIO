@@ -51,8 +51,11 @@ const ContactSection = () => {
   };
 
   return (
-    <div className="text-white py-16" id="contact-section">
-      <div className="max-w-[1440px] mx-auto px-6">
+    <div
+      className="px-[var(--page-gutter)] py-20 text-[#0a3028] md:py-24"
+      id="contact-section"
+    >
+      <div className="mx-auto max-w-[1540px]">
         <div className="grid lg:grid-cols-2 gap-16">
           {/* Left Column */}
           <div className="space-y-8">
@@ -61,7 +64,7 @@ const ContactSection = () => {
             </h1>
 
             <div className="pl-12 space-y-4">
-              <p className="text-gray-300">
+              <p className="text-[#56635d]">
                 Say hello at{" "}
                 <a
                   href="mailto:vermachandan2912003@gmail.com"
@@ -71,7 +74,7 @@ const ContactSection = () => {
                 </a>
               </p>
 
-              <p className="text-gray-300">
+              <p className="text-[#56635d]">
                 For more info, here&apos;s my{" "}
                 <Link
                   href="/ChandanVerma-Resume-2024.pdf"
@@ -122,7 +125,7 @@ const ContactSection = () => {
             <form className="space-y-6" onSubmit={handleSubmit}>
               {/* Name Input */}
               <div className="space-y-2">
-                <label htmlFor="name" className="text-gray-300">
+                <label htmlFor="name" className="text-[#405049]">
                   Name
                 </label>
                 <input
@@ -131,13 +134,13 @@ const ContactSection = () => {
                   value={formData.name}
                   onChange={handleChange}
                   placeholder="John Doe"
-                  className="w-full p-3 bg-zinc-900 rounded-md focus:outline-none focus:ring-2 focus:ring-[#D0F288] transition-all"
+                  className="w-full rounded-md border border-[#0a3028]/15 bg-[#fffaf4]/85 p-3 text-[#0a3028] shadow-sm transition-all placeholder:text-[#78837e] focus:outline-none focus:ring-2 focus:ring-[#0a5a43]"
                 />
               </div>
 
               {/* Email Input */}
               <div className="space-y-2">
-                <label htmlFor="email" className="text-gray-300">
+                <label htmlFor="email" className="text-[#405049]">
                   Email
                 </label>
                 <input
@@ -145,13 +148,13 @@ const ContactSection = () => {
                   id="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full p-3 bg-zinc-900 rounded-md focus:outline-none focus:ring-2 focus:ring-[#D0F288] transition-all"
+                  className="w-full rounded-md border border-[#0a3028]/15 bg-[#fffaf4]/85 p-3 text-[#0a3028] shadow-sm transition-all focus:outline-none focus:ring-2 focus:ring-[#0a5a43]"
                 />
               </div>
 
               {/* Subject Input */}
               <div className="space-y-2">
-                <label htmlFor="subject" className="text-gray-300">
+                <label htmlFor="subject" className="text-[#405049]">
                   Subject
                 </label>
                 <input
@@ -159,13 +162,13 @@ const ContactSection = () => {
                   id="subject"
                   value={formData.subject}
                   onChange={handleChange}
-                  className="w-full p-3 bg-zinc-900 rounded-md focus:outline-none focus:ring-2 focus:ring-[#D0F288] transition-all"
+                  className="w-full rounded-md border border-[#0a3028]/15 bg-[#fffaf4]/85 p-3 text-[#0a3028] shadow-sm transition-all focus:outline-none focus:ring-2 focus:ring-[#0a5a43]"
                 />
               </div>
 
               {/* Message Input */}
               <div className="space-y-2">
-                <label htmlFor="message" className="text-gray-300">
+                <label htmlFor="message" className="text-[#405049]">
                   Message
                 </label>
                 <textarea
@@ -173,21 +176,21 @@ const ContactSection = () => {
                   value={formData.message}
                   onChange={handleChange}
                   rows={6}
-                  className="w-full p-3 bg-zinc-900 rounded-md focus:outline-none focus:ring-2 focus:ring-[#D0F288] transition-all resize-none"
+                  className="w-full resize-none rounded-md border border-[#0a3028]/15 bg-[#fffaf4]/85 p-3 text-[#0a3028] shadow-sm transition-all focus:outline-none focus:ring-2 focus:ring-[#0a5a43]"
                 />
               </div>
 
               {/* Submit Button */}
               <button
                 type="submit"
-                className="bg-[#D0F288] text-black px-8 py-3 rounded-full font-medium hover:bg-[#bde676] transition-all"
+                className="rounded-full bg-[#0a5a43] px-8 py-3 font-medium text-white transition-all hover:bg-[#003e32]"
                 disabled={isSubmitting}
               >
                 {isSubmitting ? "Submitting..." : "SUBMIT"}
               </button>
             </form>
             {submitStatus && (
-              <p className="text-gray-300 mt-4">{submitStatus}</p>
+              <p className="mt-4 text-[#56635d]">{submitStatus}</p>
             )}
           </div>
         </div>

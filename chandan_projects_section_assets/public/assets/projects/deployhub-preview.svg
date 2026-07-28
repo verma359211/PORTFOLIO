@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+<defs>
+  <filter id="grain" x="-10%" y="-10%" width="120%" height="120%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="7" result="noise"/>
+    <feColorMatrix in="noise" type="saturate" values="0"/>
+    <feComponentTransfer>
+      <feFuncA type="table" tableValues="0 0.055"/>
+    </feComponentTransfer>
+  </filter>
+  <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+    <feDropShadow dx="12" dy="12" stdDeviation="0" flood-color="#111111" flood-opacity="1"/>
+  </filter>
+  
+</defs>
+<rect width="1600" height="1000" fill="#FFF9EF"/>
+<text x="80" y="160" font-family="Arial, Helvetica, sans-serif" font-size="82" font-weight="900" fill="#111111" text-anchor="start"><tspan x="80" dy="0">DEPLOY.</tspan><tspan x="80" dy="88">SCALE.</tspan><tspan x="80" dy="88">REPEAT.</tspan></text><path d="M1190 185 C1125 125 1005 170 1010 275 C925 292 907 414 1012 440 H1278 C1370 428 1382 314 1302 281 C1304 214 1252 174 1190 185Z" fill="none" stroke="#111111" stroke-width="18"/><path d="M1145 390 V260 M1088 315 L1145 260 L1202 315" fill="none" stroke="#111111" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/><rect x="90" y="475" width="1420" height="420" rx="12" fill="#111111" filter="url(#softShadow)"/><text x="145" y="555" font-family="monospace" font-size="38" font-weight="800" fill="#82F25B" text-anchor="start" letter-spacing="0">&gt; git push</text><text x="145" y="635" font-family="monospace" font-size="38" font-weight="800" fill="#FFFFFF" text-anchor="start" letter-spacing="0">&gt; building...</text><text x="145" y="715" font-family="monospace" font-size="38" font-weight="800" fill="#FFFFFF" text-anchor="start" letter-spacing="0">&gt; running tests...</text><text x="145" y="795" font-family="monospace" font-size="38" font-weight="800" fill="#FFFFFF" text-anchor="start" letter-spacing="0">&gt; deployed</text><rect x="490" y="759" width="42" height="42" fill="#19A64A"/><path d="M500 780 L513 793 L534 766" fill="none" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round"/><rect width="1600" height="1000" fill="#FFFFFF" filter="url(#grain)" opacity="0.16"/></svg>

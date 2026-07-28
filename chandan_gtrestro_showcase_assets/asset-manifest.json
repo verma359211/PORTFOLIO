@@ -1,0 +1,36 @@
+{
+  "reference": "gtrestro-showcase-reference-approved.png",
+  "publicBase": "/assets/gtrestro-showcase",
+  "assets": {
+    "deviceComposite": {
+      "preferred": "/assets/gtrestro-showcase/gtrestro-device-composite.webp",
+      "fallback": "/assets/gtrestro-showcase/gtrestro-device-composite.png",
+      "width": 2800,
+      "height": 1728
+    },
+    "laptop": {
+      "preferred": "/assets/gtrestro-showcase/gtrestro-cloud-dashboard-laptop.webp",
+      "fallback": "/assets/gtrestro-showcase/gtrestro-cloud-dashboard-laptop.png",
+      "width": 2400,
+      "height": 1919
+    },
+    "mobile": {
+      "preferred": "/assets/gtrestro-showcase/gtrestro-mobile-ordering.webp",
+      "fallback": "/assets/gtrestro-showcase/gtrestro-mobile-ordering.png",
+      "width": 1200,
+      "height": 2330
+    },
+    "tablet": {
+      "preferred": "/assets/gtrestro-showcase/gtrestro-electron-pos-tablet.webp",
+      "fallback": "/assets/gtrestro-showcase/gtrestro-electron-pos-tablet.png",
+      "width": 1200,
+      "height": 1965
+    },
+    "logo": {
+      "preferred": "/assets/gtrestro-showcase/gtrestro-logo-original.webp",
+      "source": "/assets/gtrestro-showcase/gtrestro-logo-original-source.png",
+      "width": 1200,
+      "height": 1258
+    }
+  }
+}

@@ -1,0 +1,15 @@
+:root {
+  --projects-bg: #f6f0e7;
+  --projects-card: #fff9ef;
+  --projects-black: #111111;
+  --projects-lime: #c8f020;
+  --projects-purple: #6936c9;
+  --projects-purple-dark: #271245;
+  --projects-green: #0b5a45;
+  --projects-mint: #55c9b3;
+  --projects-red: #e6534b;
+  --projects-muted: #64615b;
+  --projects-border: 3px solid var(--projects-black);
+  --projects-shadow: 9px 9px 0 var(--projects-black);
+  --projects-gap: clamp(14px, 1.25vw, 20px);
+}

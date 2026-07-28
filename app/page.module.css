@@ -1,6 +1,7 @@
-.heroExperienceFlow {
+.pageSurface {
   position: relative;
   isolation: isolate;
+  min-height: 100vh;
   overflow: hidden;
   background: radial-gradient(
       circle at 48% 18%,
@@ -9,9 +10,10 @@
     ),
     linear-gradient(135deg, rgba(255, 255, 255, 0.28), rgba(225, 211, 193, 0.2)),
     var(--hero-bg);
+  color: var(--hero-ink);
 }
 
-.heroExperienceFlow::before {
+.pageSurface::before {
   content: "";
   pointer-events: none;
   position: absolute;
@@ -24,10 +26,10 @@
     ),
     linear-gradient(
       to right,
-      transparent calc(3.45rem - 1px),
-      var(--hero-grid) calc(3.45rem - 1px),
-      var(--hero-grid) 3.45rem,
-      transparent 3.45rem
+      transparent calc(var(--page-gutter) - 1px),
+      var(--hero-grid) calc(var(--page-gutter) - 1px),
+      var(--hero-grid) var(--page-gutter),
+      transparent var(--page-gutter)
     ),
     linear-gradient(
       to right,
@@ -45,13 +47,13 @@
     ),
     linear-gradient(
       to right,
-      transparent calc(100% - 2.75rem - 1px),
-      var(--hero-grid) calc(100% - 2.75rem - 1px),
-      var(--hero-grid) calc(100% - 2.75rem),
-      transparent calc(100% - 2.75rem)
+      transparent calc(100% - var(--page-gutter) - 1px),
+      var(--hero-grid) calc(100% - var(--page-gutter) - 1px),
+      var(--hero-grid) calc(100% - var(--page-gutter)),
+      transparent calc(100% - var(--page-gutter))
     );
   background-size:
-    100% 39.4%,
+    100% clamp(340px, 28vw, 430px),
     100% 100%,
     100% 100%,
     100% 100%,
@@ -62,23 +64,86 @@
     0 0,
     0 0,
     0 0;
-  opacity: 1;
+  opacity: 0.72;
 }
 
-.heroExperienceFlow::after {
+.pageSurface::after {
   content: "";
   pointer-events: none;
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0.36),
-    transparent 16rem
-  );
+  background: radial-gradient(
+      circle at 16% 46%,
+      rgba(255, 255, 255, 0.28),
+      transparent 26rem
+    ),
+    radial-gradient(
+      circle at 82% 73%,
+      rgba(225, 211, 193, 0.18),
+      transparent 30rem
+    );
 }
 
-.heroExperienceFlow > * {
+.pageSurface > * {
   position: relative;
   z-index: 1;
+}
+
+.heroExperienceFlow {
+  position: relative;
+}
+
+.logoBand {
+  overflow: hidden;
+  padding: clamp(2.5rem, 4vw, 4rem) var(--page-gutter);
+  color: var(--hero-ink);
+}
+
+.galleryWindow {
+  position: relative;
+  height: 70vh;
+  margin-inline: var(--page-gutter);
+  overflow: hidden;
+  border-radius: clamp(1.25rem, 2vw, 2rem);
+}
+
+@media (max-width: 699px) {
+  .pageSurface::before {
+    background-image: linear-gradient(
+        to bottom,
+        var(--hero-grid) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        to right,
+        transparent 19px,
+        var(--hero-grid) 19px,
+        var(--hero-grid) 20px,
+        transparent 20px
+      ),
+      linear-gradient(
+        to right,
+        transparent calc(100% - 21px),
+        var(--hero-grid) calc(100% - 21px),
+        var(--hero-grid) calc(100% - 20px),
+        transparent calc(100% - 20px)
+      );
+    background-size:
+      100% 300px,
+      100% 100%,
+      100% 100%;
+    background-position:
+      0 4.25rem,
+      0 0,
+      0 0;
+  }
+
+  .logoBand {
+    padding-block: 2.75rem;
+  }
+
+  .galleryWindow {
+    height: 58vh;
+  }
 }

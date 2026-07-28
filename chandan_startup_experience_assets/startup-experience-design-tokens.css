@@ -1,0 +1,17 @@
+:root {
+  --startup-bg: #f7f2ea;
+  --startup-surface: #fffaf4;
+  --startup-ink: #0b3b31;
+  --startup-ink-dark: #18201d;
+  --startup-green: #0a5a43;
+  --startup-green-dark: #003e32;
+  --startup-green-soft: #edf5e9;
+  --startup-lime: #67b53d;
+  --startup-red: #d7261f;
+  --startup-red-dark: #b91d18;
+  --startup-border: rgba(11, 59, 49, 0.10);
+  --startup-divider: rgba(11, 59, 49, 0.12);
+  --startup-shadow: 0 14px 36px rgba(27, 23, 18, 0.08);
+  --startup-radius: 22px;
+  --startup-gap: clamp(14px, 1.4vw, 22px);
+}

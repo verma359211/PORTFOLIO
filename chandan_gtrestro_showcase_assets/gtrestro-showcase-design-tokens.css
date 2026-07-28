@@ -1,0 +1,15 @@
+:root {
+  --gtrestro-showcase-bg: #f8f5ef;
+  --gtrestro-showcase-surface: #fffdf8;
+  --gtrestro-showcase-ink: #17242b;
+  --gtrestro-showcase-green: #08752f;
+  --gtrestro-showcase-green-dark: #075427;
+  --gtrestro-showcase-green-soft: #eaf5e7;
+  --gtrestro-showcase-lime: #83ca4b;
+  --gtrestro-showcase-muted: #58615f;
+  --gtrestro-showcase-border: rgba(8, 117, 47, 0.25);
+  --gtrestro-showcase-divider: rgba(23, 36, 43, 0.12);
+  --gtrestro-showcase-shadow: 0 18px 55px rgba(39, 48, 42, 0.08);
+  --gtrestro-showcase-radius: 24px;
+  --gtrestro-showcase-gap: clamp(18px, 1.8vw, 32px);
+}

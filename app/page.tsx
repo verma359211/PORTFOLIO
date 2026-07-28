@@ -9,26 +9,24 @@ import Component from "../components/logocarousel";
 import PortfolioHero from "../components/portfolioHero";
 import ExperienceShowcaseSection from "../components/experienceShowcaseSection";
 import ProjectsShowcaseSection from "../components/projectsShowcaseSection";
-import StartupPosShowcase from "../components/startupPosShowcase";
 import styles from "./page.module.css";
 
 export default function Home() {
   return (
     <React.StrictMode>
-      <div className="">
+      <main className={styles.pageSurface}>
         <div className={styles.heroExperienceFlow}>
           <PortfolioHero />
           <ExperienceShowcaseSection />
         </div>
         <ProjectsShowcaseSection />
-        <StartupPosShowcase />
-        <section className="overflow-hidden pb-6">
+        <section className={styles.logoBand} aria-label="Technology stack">
           <Component />
         </section>
         {/* <FeaturedProjects /> */}
         <Tictactoe />
         <AboutSection />
-        <div className="relative h-[70vh] overflow-hidden">
+        <div className={styles.galleryWindow}>
           <div className="absolute top-0 w-full animate-scroll">
             {/* Duplicate the gallery for seamless looping */}
             <MasonryGallery />
@@ -37,7 +35,7 @@ export default function Home() {
         </div>
         {/* <MasonryGallery /> */}
         <ContactSection />
-      </div>
+      </main>
     </React.StrictMode>
   );
 }

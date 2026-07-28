@@ -101,7 +101,7 @@
       0.7fr
     );
   align-items: center;
-  padding-inline: clamp(1.8rem, 5vw, 5.25rem);
+  padding-inline: var(--page-gutter);
 }
 
 .logo {
@@ -245,7 +245,7 @@
       0.86fr
     );
   column-gap: clamp(1.15rem, 2.7vw, 3.6rem);
-  padding: clamp(1.1rem, 2.15vw, 2.35rem) clamp(1.8rem, 5vw, 5.25rem)
+  padding: clamp(1.1rem, 2.15vw, 2.35rem) var(--page-gutter)
     clamp(1.6rem, 4.25vw, 3.85rem);
 }
 
@@ -253,7 +253,7 @@
   position: absolute;
   z-index: 0;
   top: clamp(0.15rem, 1.1vw, 1.3rem);
-  left: clamp(2.05rem, 4.7vw, 5.25rem);
+  left: var(--page-gutter);
   color: rgba(10, 48, 40, 0.92);
   font-size: clamp(9rem, 17.75vw, 18.75rem);
   font-weight: 950;
@@ -339,7 +339,7 @@
 .nameBlock {
   position: absolute;
   z-index: 6;
-  left: clamp(2.05rem, 5vw, 5.25rem);
+  left: var(--page-gutter);
   bottom: clamp(2.45rem, 5.4vh, 3.6rem);
   opacity: 0;
   animation: heroRise 780ms 260ms ease forwards;

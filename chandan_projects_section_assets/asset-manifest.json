@@ -1,0 +1,41 @@
+{
+  "reference": "projects-section-reference-approved.png",
+  "publicBase": "/assets/projects",
+  "assets": {
+    "banana-type-preview": {
+      "preferred": "/assets/projects/banana-type-preview.webp",
+      "svgMaster": "/assets/projects/banana-type-preview.svg",
+      "pngFallback": "/assets/projects/banana-type-preview.png",
+      "width": 1600,
+      "height": 1000
+    },
+    "ecommerce-preview": {
+      "preferred": "/assets/projects/ecommerce-preview.webp",
+      "svgMaster": "/assets/projects/ecommerce-preview.svg",
+      "pngFallback": "/assets/projects/ecommerce-preview.png",
+      "width": 1600,
+      "height": 1000
+    },
+    "deployhub-preview": {
+      "preferred": "/assets/projects/deployhub-preview.webp",
+      "svgMaster": "/assets/projects/deployhub-preview.svg",
+      "pngFallback": "/assets/projects/deployhub-preview.png",
+      "width": 1600,
+      "height": 1000
+    },
+    "bug-tracker-preview": {
+      "preferred": "/assets/projects/bug-tracker-preview.webp",
+      "svgMaster": "/assets/projects/bug-tracker-preview.svg",
+      "pngFallback": "/assets/projects/bug-tracker-preview.png",
+      "width": 1600,
+      "height": 1000
+    },
+    "rag-pipeline-preview": {
+      "preferred": "/assets/projects/rag-pipeline-preview.webp",
+      "svgMaster": "/assets/projects/rag-pipeline-preview.svg",
+      "pngFallback": "/assets/projects/rag-pipeline-preview.png",
+      "width": 1600,
+      "height": 1000
+    }
+  }
+}

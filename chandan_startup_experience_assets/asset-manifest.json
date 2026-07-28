@@ -1,0 +1,24 @@
+{
+  "reference": "startup-experience-reference-approved.png",
+  "publicBase": "/assets/startup-experience",
+  "assets": {
+    "developerIllustration": {
+      "preferred": "/assets/startup-experience/startup-developer-illustration.webp",
+      "fallback": "/assets/startup-experience/startup-developer-illustration.png",
+      "width": 2200,
+      "height": 1845
+    },
+    "dashboard": {
+      "preferred": "/assets/startup-experience/gtrestro-dashboard-preview.webp",
+      "fallback": "/assets/startup-experience/gtrestro-dashboard-preview.png",
+      "width": 2400,
+      "height": 1124
+    },
+    "focusTarget": {
+      "preferred": "/assets/startup-experience/focus-target-illustration.webp",
+      "fallback": "/assets/startup-experience/focus-target-illustration.png",
+      "width": 1400,
+      "height": 1551
+    }
+  }
+}

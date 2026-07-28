@@ -68,6 +68,7 @@ body {
     --hero-border: rgba(10, 48, 40, 0.1);
     --hero-shadow: 0 22px 55px rgba(35, 28, 20, 0.1);
     --hero-radius: 20px;
+    --page-gutter: clamp(20px, 3.3vw, 48px);
   }
 }
 

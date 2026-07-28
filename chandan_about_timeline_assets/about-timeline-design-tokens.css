@@ -1,0 +1,15 @@
+:root {
+  --about-bg: #f8f3ea;
+  --about-surface: #fffaf2;
+  --about-paper: #f3eadb;
+  --about-ink: #183d32;
+  --about-body: #2f3934;
+  --about-muted: #6f746e;
+  --about-red: #b54a3b;
+  --about-green: #214b3c;
+  --about-line: rgba(33, 75, 60, 0.28);
+  --about-soft-shadow: 0 18px 44px rgba(52, 42, 29, 0.12);
+  --about-photo-shadow: 0 12px 24px rgba(45, 35, 23, 0.18);
+  --about-radius: 24px;
+  --about-gap: clamp(18px, 1.7vw, 30px);
+}
