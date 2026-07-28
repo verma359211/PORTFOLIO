@@ -29,11 +29,11 @@
   background-repeat: repeat;
   background-size: 512px 512px;
   mix-blend-mode: multiply;
-  opacity: 0.1;
+  opacity: 0.055;
 }
 
 .inner {
-  width: min(100%, 1540px);
+  width: min(100%, 1740px);
   margin: 0 auto;
 }
 
