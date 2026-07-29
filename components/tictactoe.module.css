@@ -1,0 +1,440 @@
+.gameSection {
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(
+      circle at 83% 24%,
+      rgba(255, 255, 255, 0.34),
+      transparent 26rem
+    ),
+    linear-gradient(
+      145deg,
+      rgba(207, 222, 211, 0.72),
+      rgba(229, 220, 205, 0.62)
+    );
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.48),
+    inset 0 -1px 0 rgba(10, 48, 40, 0.08);
+  padding: clamp(3.5rem, 4.5vw, 4.75rem) var(--page-gutter);
+  color: var(--hero-ink);
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+}
+
+.gameSection::before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  top: 12%;
+  right: -8rem;
+  width: 24rem;
+  aspect-ratio: 1;
+  border: 1px solid rgba(10, 48, 40, 0.08);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 4rem rgba(10, 90, 67, 0.025),
+    0 0 0 8rem rgba(10, 90, 67, 0.018);
+}
+
+.inner {
+  position: relative;
+  display: grid;
+  width: min(100%, var(--content-max));
+  grid-template-columns: minmax(0, 0.9fr) minmax(25rem, 1fr);
+  gap: clamp(3rem, 5.5vw, 6rem);
+  align-items: center;
+  margin: 0 auto;
+}
+
+.intro {
+  max-width: 34rem;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin: 0 0 1.35rem;
+  color: var(--hero-emerald);
+  font-size: 0.76rem;
+  font-weight: 850;
+  letter-spacing: 0.12em;
+}
+
+.eyebrow svg {
+  width: 1rem;
+  height: 1rem;
+  color: #79b957;
+}
+
+.intro h2 {
+  display: grid;
+  margin: 0;
+  color: var(--hero-ink);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(3.2rem, 4.8vw, 5.7rem);
+  font-weight: 900;
+  letter-spacing: -0.075em;
+  line-height: 0.86;
+}
+
+.intro h2 span {
+  color: var(--hero-emerald);
+}
+
+.description {
+  max-width: 32rem;
+  margin: 1.4rem 0 0;
+  color: #46534e;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(0.96rem, 0.98vw, 1.08rem);
+  line-height: 1.6;
+}
+
+.instructions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: 1.5rem;
+}
+
+.instructions span {
+  border: 1px solid rgba(10, 48, 40, 0.12);
+  border-radius: 999px;
+  background: rgba(255, 250, 244, 0.64);
+  color: #52605a;
+  padding: 0.48rem 0.68rem;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.67rem;
+  font-weight: 750;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  margin-top: 1.7rem;
+}
+
+.downloadButton,
+.rewardDownload {
+  display: inline-flex;
+  min-height: 3.15rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  border-radius: 999px;
+  background: var(--hero-emerald);
+  box-shadow: 0 14px 28px rgba(0, 75, 63, 0.16);
+  color: #fffaf4;
+  padding: 0.8rem 1.2rem;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 850;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition:
+    background 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+.downloadButton:hover,
+.downloadButton:focus-visible,
+.rewardDownload:hover,
+.rewardDownload:focus-visible {
+  outline: none;
+  background: var(--hero-emerald-dark);
+  box-shadow: 0 18px 34px rgba(0, 75, 63, 0.22);
+  transform: translateY(-3px);
+}
+
+.downloadButton:focus-visible,
+.rewardDownload:focus-visible,
+.socialLink:focus-visible,
+.dialogClose:focus-visible {
+  outline: 3px solid rgba(10, 90, 67, 0.3);
+  outline-offset: 4px;
+}
+
+.downloadButton svg,
+.rewardDownload svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.socialLinks {
+  display: flex;
+  gap: 0.55rem;
+}
+
+.socialLink {
+  display: grid;
+  width: 2.8rem;
+  aspect-ratio: 1;
+  place-items: center;
+  border: 1px solid rgba(10, 48, 40, 0.14);
+  border-radius: 50%;
+  background: rgba(255, 250, 244, 0.7);
+  color: var(--hero-ink);
+  transition:
+    background 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.socialLink:hover {
+  background: var(--hero-emerald);
+  color: #fffaf4;
+  transform: translateY(-3px);
+}
+
+.socialLink svg {
+  width: 1.08rem;
+  height: 1.08rem;
+}
+
+.gameFrame {
+  position: relative;
+  width: min(100%, 34rem);
+  justify-self: end;
+  border: 1px solid rgba(10, 48, 40, 0.12);
+  border-radius: clamp(24px, 2vw, 34px);
+  background: linear-gradient(145deg, #0b4639, #052f28);
+  box-shadow:
+    0 32px 70px rgba(10, 48, 40, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  padding: clamp(1.25rem, 2.2vw, 2rem);
+}
+
+.liveBadge {
+  position: absolute;
+  z-index: 3;
+  top: 1.25rem;
+  right: 1.25rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  border: 1px solid rgba(255, 250, 244, 0.16);
+  border-radius: 999px;
+  background: rgba(255, 250, 244, 0.08);
+  color: rgba(255, 250, 244, 0.75);
+  padding: 0.42rem 0.62rem;
+  font-size: 0.62rem;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.liveBadge span {
+  width: 0.48rem;
+  height: 0.48rem;
+  border-radius: 50%;
+  background: #a7df76;
+  box-shadow: 0 0 0 4px rgba(167, 223, 118, 0.1);
+  animation: livePulse 1.8s ease-out infinite;
+}
+
+@keyframes livePulse {
+  0%,
+  45% {
+    box-shadow: 0 0 0 4px rgba(167, 223, 118, 0.1);
+  }
+
+  75% {
+    box-shadow: 0 0 0 9px rgba(167, 223, 118, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 4px rgba(167, 223, 118, 0.1);
+  }
+}
+
+.rewardBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  display: grid;
+  place-items: center;
+  overflow-y: auto;
+  padding: 1.25rem;
+  background: rgba(4, 25, 21, 0.74);
+  backdrop-filter: blur(14px);
+}
+
+.rewardDialog {
+  position: relative;
+  width: min(100%, 35rem);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  border-radius: 30px;
+  background: linear-gradient(145deg, #fffdf8, #f0e8dc);
+  box-shadow: 0 38px 100px rgba(0, 0, 0, 0.34);
+  color: var(--hero-ink);
+  padding: clamp(2rem, 5vw, 3.5rem);
+  text-align: center;
+}
+
+.rewardDialog::before,
+.rewardDialog::after {
+  content: "✦  ·  ✦  ·  ✦";
+  position: absolute;
+  color: rgba(10, 90, 67, 0.18);
+  font-size: 1.25rem;
+  letter-spacing: 0.45em;
+}
+
+.rewardDialog::before {
+  top: 1.5rem;
+  left: 1.5rem;
+  transform: rotate(-18deg);
+}
+
+.rewardDialog::after {
+  right: 1.5rem;
+  bottom: 1.5rem;
+  transform: rotate(16deg);
+}
+
+.dialogClose {
+  position: absolute;
+  z-index: 2;
+  top: 1rem;
+  right: 1rem;
+  display: grid;
+  width: 2.55rem;
+  aspect-ratio: 1;
+  place-items: center;
+  border: 1px solid rgba(10, 48, 40, 0.12);
+  border-radius: 50%;
+  background: rgba(255, 250, 244, 0.72);
+  color: var(--hero-ink);
+  cursor: pointer;
+}
+
+.dialogClose svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.trophy {
+  display: grid;
+  width: 5rem;
+  aspect-ratio: 1;
+  place-items: center;
+  margin: 0 auto 1.25rem;
+  border-radius: 50%;
+  background: #b7dc83;
+  box-shadow: 0 15px 30px rgba(10, 90, 67, 0.16);
+  color: var(--hero-emerald);
+}
+
+.trophy svg {
+  width: 2.4rem;
+  height: 2.4rem;
+}
+
+.rewardEyebrow {
+  margin: 0 0 0.7rem;
+  color: var(--hero-emerald);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.7rem;
+  font-weight: 850;
+  letter-spacing: 0.13em;
+}
+
+.rewardDialog h2 {
+  margin: 0;
+  color: var(--hero-ink);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(2.8rem, 7vw, 4.6rem);
+  font-weight: 900;
+  letter-spacing: -0.07em;
+  line-height: 0.92;
+}
+
+.rewardDialog > p:not(.rewardEyebrow) {
+  max-width: 27rem;
+  margin: 1.15rem auto 1.6rem;
+  color: #52605a;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.55;
+}
+
+@media (max-width: 999px) {
+  .inner {
+    grid-template-columns: 1fr;
+  }
+
+  .intro {
+    max-width: 44rem;
+  }
+
+  .gameFrame {
+    width: min(100%, 43rem);
+    justify-self: center;
+  }
+}
+
+@media (max-width: 699px) {
+  .gameSection {
+    padding: 4.5rem 20px;
+  }
+
+  .inner {
+    gap: 2.75rem;
+  }
+
+  .intro h2 {
+    font-size: clamp(2.85rem, 13.5vw, 4rem);
+  }
+
+  .description {
+    font-size: 1rem;
+  }
+
+  .actions {
+    align-items: stretch;
+  }
+
+  .downloadButton {
+    width: 100%;
+  }
+
+  .socialLinks {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .gameFrame {
+    padding: 1.25rem 0.7rem 1.5rem;
+  }
+
+  .liveBadge {
+    top: 0.8rem;
+    right: 0.8rem;
+  }
+
+  .rewardDialog {
+    border-radius: 24px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .downloadButton,
+  .rewardDownload,
+  .socialLink {
+    transition: none;
+  }
+
+  .liveBadge span {
+    animation: none;
+  }
+}

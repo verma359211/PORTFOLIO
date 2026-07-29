@@ -77,6 +77,7 @@ const StartupExperienceSection = () => {
       id={content.sectionId}
       className={styles.startupSection}
       aria-labelledby="startup-experience-heading"
+      data-section-reveal
     >
       <div className={styles.shell}>
         <div className={styles.layout}>
@@ -193,6 +194,7 @@ const FeaturedGTProjectCard = () => {
       </div>
 
       <div className={styles.dashboardFrame}>
+        <span className={styles.previewLabel}>Product preview</span>
         <Image
           src={featuredProject.image}
           width={featuredProject.width}

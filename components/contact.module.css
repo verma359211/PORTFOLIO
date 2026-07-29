@@ -1,0 +1,631 @@
+.contactSection {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(4.5rem, 6vw, 6rem) clamp(12px, 1.25vw, 20px) 1.25rem;
+  color: #fffaf4;
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+}
+
+.shell {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  min-height: min(760px, 82svh);
+  overflow: hidden;
+  border: 1px solid rgba(255, 250, 244, 0.18);
+  border-radius: clamp(28px, 2.6vw, 44px);
+  background: radial-gradient(
+      circle at 11% 18%,
+      rgba(183, 220, 131, 0.12),
+      transparent 23rem
+    ),
+    linear-gradient(145deg, #0a5a43, #003e32 76%);
+  box-shadow:
+    0 38px 90px rgba(10, 48, 40, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.backgroundWord {
+  pointer-events: none;
+  position: absolute;
+  z-index: -1;
+  bottom: -0.16em;
+  left: -0.02em;
+  color: transparent;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(11rem, 27vw, 31rem);
+  font-weight: 900;
+  letter-spacing: -0.09em;
+  line-height: 0.7;
+  opacity: 0.075;
+  -webkit-text-stroke: 2px #fffaf4;
+  white-space: nowrap;
+}
+
+.orbitOne,
+.orbitTwo {
+  pointer-events: none;
+  position: absolute;
+  z-index: -1;
+  border: 1px solid rgba(255, 250, 244, 0.09);
+  border-radius: 50%;
+}
+
+.orbitOne {
+  top: -13rem;
+  right: -8rem;
+  width: 32rem;
+  aspect-ratio: 1;
+  box-shadow:
+    0 0 0 5rem rgba(255, 250, 244, 0.018),
+    0 0 0 10rem rgba(255, 250, 244, 0.012);
+}
+
+.orbitTwo {
+  bottom: -12rem;
+  left: 34%;
+  width: 24rem;
+  aspect-ratio: 1;
+}
+
+.layout {
+  display: grid;
+  width: min(
+    calc(100vw - var(--page-gutter) - var(--page-gutter)),
+    var(--content-max)
+  );
+  min-height: inherit;
+  grid-template-columns: minmax(0, 0.92fr) minmax(29rem, 1.08fr);
+  gap: clamp(2.5rem, 4.2vw, 5rem);
+  align-items: center;
+  margin: 0 auto;
+  padding-block: clamp(2.5rem, 4vw, 4.5rem);
+}
+
+.invitation {
+  display: flex;
+  min-width: 0;
+  min-height: 540px;
+  flex-direction: column;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.72rem;
+  margin: 0 0 1.2rem;
+  color: rgba(255, 250, 244, 0.74);
+  font-size: 0.72rem;
+  font-weight: 850;
+  letter-spacing: 0.14em;
+}
+
+.eyebrow span {
+  width: 0.62rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #b7dc83;
+  box-shadow: 0 0 0 5px rgba(183, 220, 131, 0.12);
+}
+
+.invitation h2 {
+  display: grid;
+  margin: 0;
+  color: #fffaf4;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(3.7rem, 5.7vw, 6.8rem);
+  font-weight: 900;
+  letter-spacing: -0.075em;
+  line-height: 0.82;
+}
+
+.accentWord {
+  position: relative;
+  width: max-content;
+  color: #b7dc83;
+}
+
+.accentWord::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -0.12em;
+  left: 0;
+  height: 0.12em;
+  border-radius: 999px;
+  background: #fffaf4;
+  opacity: 0.5;
+  transform: rotate(-1.5deg);
+}
+
+.lead {
+  max-width: 32rem;
+  margin: clamp(1.35rem, 2vw, 2rem) 0 0;
+  color: rgba(255, 250, 244, 0.72);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(0.94rem, 0.98vw, 1.06rem);
+  line-height: 1.62;
+}
+
+.directActions {
+  display: grid;
+  gap: 0.72rem;
+  margin-top: clamp(1.6rem, 2.3vw, 2.25rem);
+}
+
+.directLink {
+  display: grid;
+  min-width: 0;
+  grid-template-columns: 2.45rem minmax(0, 1fr) 1.1rem;
+  gap: 0.85rem;
+  align-items: center;
+  border-top: 1px solid rgba(255, 250, 244, 0.16);
+  color: #fffaf4;
+  padding: 0.72rem 0.2rem;
+  text-decoration: none;
+}
+
+.actionIcon {
+  display: grid;
+  width: 2.45rem;
+  aspect-ratio: 1;
+  place-items: center;
+  border: 1px solid rgba(255, 250, 244, 0.18);
+  border-radius: 50%;
+  background: rgba(255, 250, 244, 0.06);
+}
+
+.actionIcon svg,
+.linkArrow {
+  width: 1rem;
+  height: 1rem;
+}
+
+.directLink small,
+.directLink strong {
+  display: block;
+  min-width: 0;
+}
+
+.directLink small {
+  margin-bottom: 0.2rem;
+  color: #b7dc83;
+  font-size: 0.61rem;
+  font-weight: 850;
+  letter-spacing: 0.11em;
+}
+
+.directLink strong {
+  overflow: hidden;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(0.82rem, 0.84vw, 0.94rem);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.linkArrow {
+  transition: transform 180ms ease;
+}
+
+.directLink:hover .linkArrow,
+.directLink:focus-visible .linkArrow {
+  transform: translate(3px, -3px);
+}
+
+.directLink:focus-visible {
+  border-radius: 10px;
+  outline: 3px solid rgba(183, 220, 131, 0.5);
+  outline-offset: 4px;
+}
+
+.invitationFooter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 2rem;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 1.5rem;
+}
+
+.invitationFooter > p {
+  margin: 0;
+  color: rgba(255, 250, 244, 0.45);
+  font-size: 0.64rem;
+}
+
+.socialLinks {
+  display: flex;
+  gap: 0.55rem;
+}
+
+.socialLinks a {
+  display: grid;
+  width: 2.4rem;
+  aspect-ratio: 1;
+  place-items: center;
+  border: 1px solid rgba(255, 250, 244, 0.18);
+  border-radius: 50%;
+  background: rgba(255, 250, 244, 0.06);
+  color: #fffaf4;
+  transition:
+    background 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.socialLinks a:hover,
+.socialLinks a:focus-visible {
+  outline: none;
+  background: #b7dc83;
+  color: #0a5a43;
+  transform: translateY(-3px);
+}
+
+.socialLinks a:focus-visible {
+  outline: 3px solid rgba(183, 220, 131, 0.4);
+  outline-offset: 3px;
+}
+
+.socialLinks svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.formCard {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(10, 48, 40, 0.13);
+  border-radius: clamp(24px, 2vw, 34px);
+  background: radial-gradient(
+      circle at 88% 8%,
+      rgba(183, 220, 131, 0.2),
+      transparent 12rem
+    ),
+    linear-gradient(145deg, #fffdf8, #efe8dc);
+  box-shadow:
+    0 30px 70px rgba(1, 39, 32, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  color: #0a3028;
+  padding: clamp(1.35rem, 2.15vw, 2.35rem);
+  animation: formRise 700ms 120ms cubic-bezier(0.2, 0.75, 0.25, 1) both;
+}
+
+.formHeader {
+  display: flex;
+  gap: 1.5rem;
+  align-items: start;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(10, 48, 40, 0.13);
+  margin-bottom: clamp(1.25rem, 1.7vw, 1.75rem);
+  padding-bottom: clamp(1rem, 1.4vw, 1.35rem);
+}
+
+.formHeader p {
+  margin: 0 0 0.65rem;
+  color: #0a5a43;
+  font-size: 0.65rem;
+  font-weight: 850;
+  letter-spacing: 0.12em;
+}
+
+.formHeader h3 {
+  max-width: 31rem;
+  margin: 0;
+  color: #0a3028;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(1.85rem, 2.2vw, 2.65rem);
+  font-weight: 900;
+  letter-spacing: -0.055em;
+  line-height: 0.96;
+}
+
+.formIndex {
+  flex: 0 0 auto;
+  border: 1px solid rgba(10, 48, 40, 0.15);
+  border-radius: 999px;
+  color: #607069;
+  padding: 0.42rem 0.58rem;
+  font-size: 0.58rem;
+  font-weight: 800;
+}
+
+.form {
+  display: grid;
+  gap: clamp(0.9rem, 1.2vw, 1.15rem);
+}
+
+.fieldGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(0.85rem, 1.1vw, 1.1rem);
+}
+
+.field {
+  display: grid;
+  min-width: 0;
+  gap: 0.48rem;
+}
+
+.field > span {
+  color: #405049;
+  font-size: 0.69rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid rgba(10, 48, 40, 0.2);
+  border-radius: 0;
+  background: transparent;
+  color: #0a3028;
+  padding: 0.58rem 0.1rem 0.68rem;
+  font: inherit;
+  font-size: 0.84rem;
+  line-height: 1.45;
+  outline: none;
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.field textarea {
+  min-height: 7rem;
+  resize: vertical;
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+  color: #8a948f;
+}
+
+.field input:focus,
+.field textarea:focus {
+  border-color: #0a5a43;
+  box-shadow: 0 1px 0 #0a5a43;
+}
+
+.submitRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 1.5rem;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.35rem;
+}
+
+.submitRow button {
+  display: inline-flex;
+  min-height: 3rem;
+  align-items: center;
+  gap: 1rem;
+  border: 0;
+  border-radius: 999px;
+  background: #0a5a43;
+  box-shadow: 0 14px 28px rgba(10, 90, 67, 0.18);
+  color: #fffaf4;
+  cursor: pointer;
+  padding: 0.5rem 0.55rem 0.5rem 1.25rem;
+  font-size: 0.77rem;
+  font-weight: 850;
+  text-transform: uppercase;
+  transition:
+    background 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+.submitRow button:hover:not(:disabled),
+.submitRow button:focus-visible {
+  outline: none;
+  background: #003e32;
+  box-shadow: 0 18px 34px rgba(10, 90, 67, 0.24);
+  transform: translateY(-2px);
+}
+
+.submitRow button:focus-visible {
+  outline: 3px solid rgba(10, 90, 67, 0.28);
+  outline-offset: 4px;
+}
+
+.submitRow button:disabled {
+  cursor: wait;
+  opacity: 0.68;
+}
+
+.sendIcon {
+  display: grid;
+  width: 2.1rem;
+  aspect-ratio: 1;
+  place-items: center;
+  border-radius: 50%;
+  background: #b7dc83;
+  color: #0a5a43;
+}
+
+.sendIcon svg {
+  width: 0.95rem;
+  height: 0.95rem;
+}
+
+.submitRow > p {
+  margin: 0;
+  color: #718078;
+  font-size: 0.7rem;
+}
+
+.submitRow > p a {
+  color: #0a5a43;
+  font-weight: 750;
+}
+
+.formStatus {
+  margin: 0;
+  border-radius: 12px;
+  padding: 0.75rem 0.85rem;
+  font-size: 0.76rem;
+  line-height: 1.4;
+}
+
+.success {
+  background: rgba(90, 160, 80, 0.12);
+  color: #28633d;
+}
+
+.error {
+  background: rgba(185, 70, 63, 0.11);
+  color: #8d322d;
+}
+
+@keyframes formRise {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (max-width: 1179px) {
+  .shell {
+    min-height: 0;
+  }
+
+  .layout {
+    width: min(calc(100% - 3rem), var(--content-max));
+    min-height: 0;
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+  }
+
+  .invitation {
+    min-height: 0;
+  }
+
+  .invitation h2 {
+    font-size: clamp(4.4rem, 10vw, 7rem);
+  }
+
+  .invitationFooter {
+    margin-top: 2.75rem;
+  }
+}
+
+@media (max-width: 699px) {
+  .contactSection {
+    padding: 4.5rem 10px 10px;
+  }
+
+  .shell {
+    border-radius: 25px;
+  }
+
+  .layout {
+    width: 100%;
+    gap: 2.75rem;
+    padding: 2rem 1.2rem 1.2rem;
+  }
+
+  .invitation h2 {
+    font-size: clamp(3.35rem, 15vw, 4.35rem);
+    line-height: 0.84;
+  }
+
+  .lead {
+    font-size: 0.98rem;
+  }
+
+  .directLink {
+    grid-template-columns: 2.5rem minmax(0, 1fr) 1rem;
+    gap: 0.7rem;
+  }
+
+  .actionIcon {
+    width: 2.5rem;
+  }
+
+  .directLink strong {
+    overflow-wrap: anywhere;
+    text-overflow: clip;
+    white-space: normal;
+  }
+
+  .invitationFooter {
+    display: grid;
+  }
+
+  .formCard {
+    border-radius: 22px;
+    padding: 1.25rem;
+  }
+
+  .fieldGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .formHeader h3 {
+    font-size: clamp(2rem, 10vw, 2.65rem);
+  }
+
+  .formIndex {
+    display: none;
+  }
+
+  .submitRow {
+    align-items: stretch;
+  }
+
+  .submitRow button {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 360px) {
+  .layout {
+    padding-inline: 1rem;
+  }
+
+  .invitation h2 {
+    font-size: clamp(3rem, 15vw, 3.5rem);
+  }
+
+  .directLink strong {
+    font-size: 0.8rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .formCard {
+    animation: none;
+  }
+
+  .directLink,
+  .linkArrow,
+  .socialLinks a,
+  .submitRow button {
+    transition: none;
+  }
+
+  .directLink:hover .linkArrow,
+  .directLink:focus-visible .linkArrow,
+  .socialLinks a:hover,
+  .socialLinks a:focus-visible,
+  .submitRow button:hover:not(:disabled),
+  .submitRow button:focus-visible {
+    transform: none;
+  }
+}

@@ -1,254 +1,222 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { RefreshCw } from "lucide-react";
+import { useCallback, useEffect, useState } from "react";
 
-export default function RetroTicTacToe() {
-	const [board, setBoard] = useState(Array(9).fill(null));
-	const [isXNext, setIsXNext] = useState(true); // X is computer, O is player
-	const [winner, setWinner] = useState<string | null>(null);
-	const [showOverlay, setShowOverlay] = useState(false);
-	const [resetTimer, setResetTimer] = useState<NodeJS.Timeout | null>(null);
-	const [resetCountdown, setResetCountdown] = useState(3);
+import styles from "./tttretro.module.css";
+import { useHydratedReducedMotion } from "./useHydratedReducedMotion";
 
-	const calculateWinner = useCallback((squares: (string | null)[]) => {
-		const lines = [
-			[0, 1, 2],
-			[3, 4, 5],
-			[6, 7, 8],
-			[0, 3, 6],
-			[1, 4, 7],
-			[2, 5, 8],
-			[0, 4, 8],
-			[2, 4, 6],
-		];
-		for (let i = 0; i < lines.length; i++) {
-			const [a, b, c] = lines[i];
-			if (
-				squares[a] &&
-				squares[a] === squares[b] &&
-				squares[a] === squares[c]
-			) {
-				return squares[a];
-			}
-		}
-		return null;
-	}, []);
+type Mark = "X" | "O";
+type Cell = Mark | null;
+type Outcome = Mark | "draw" | null;
 
-	const isBoardFull = useCallback((squares: (string | null)[]) => {
-		return squares.every((square) => square !== null);
-	}, []);
+const WINNING_LINES = [
+  [0, 1, 2],
+  [3, 4, 5],
+  [6, 7, 8],
+  [0, 3, 6],
+  [1, 4, 7],
+  [2, 5, 8],
+  [0, 4, 8],
+  [2, 4, 6],
+] as const;
 
-	const makeComputerMove = useCallback(() => {
-		// Make a copy of the board
-		const squares = [...board];
+function getOutcome(board: Cell[]): Outcome {
+  for (const [a, b, c] of WINNING_LINES) {
+    if (board[a] && board[a] === board[b] && board[a] === board[c]) {
+      return board[a];
+    }
+  }
 
-		// Find an empty square randomly
-		const emptySquares = squares
-			.map((square, index) => (square === null ? index : -1))
-			.filter((index) => index !== -1);
+  return board.every(Boolean) ? "draw" : null;
+}
 
-		if (emptySquares.length > 0) {
-			const randomIndex = Math.floor(Math.random() * emptySquares.length);
-			const computerMove = emptySquares[randomIndex];
-			squares[computerMove] = "X";
-			setBoard(squares);
-			setIsXNext(false);
+export default function RetroTicTacToe({
+  onPlayerWin,
+}: {
+  onPlayerWin?: () => void;
+}) {
+  const [board, setBoard] = useState<Cell[]>(Array(9).fill(null));
+  const [isComputerTurn, setIsComputerTurn] = useState(true);
+  const [outcome, setOutcome] = useState<Outcome>(null);
+  const reducedMotion = useHydratedReducedMotion();
 
-			// Check if computer won
-			const computerWinner = calculateWinner(squares);
-			if (computerWinner) {
-				setWinner(computerWinner);
-				setShowOverlay(true);
-				startResetTimer();
-			} else if (isBoardFull(squares)) {
-				setWinner("draw");
-				setShowOverlay(true);
-				startResetTimer();
-			}
-		}
-	}, [board, calculateWinner, isBoardFull]);
+  const finishGame = useCallback(
+    (result: Exclude<Outcome, null>) => {
+      setOutcome(result);
+      if (result === "O") onPlayerWin?.();
+    },
+    [onPlayerWin],
+  );
 
-	// Computer makes first move when game starts
-	useEffect(() => {
-		if (isXNext && board.every((square) => square === null)) {
-			// Slight delay for the first move to make it feel more natural
-			const timer = setTimeout(() => {
-				makeComputerMove();
-			}, 500);
+  useEffect(() => {
+    if (!isComputerTurn || outcome) return;
 
-			return () => clearTimeout(timer);
-		}
-	}, [isXNext, board, makeComputerMove]);
+    const delay = board.every((cell) => cell === null) ? 620 : 420;
+    const timer = window.setTimeout(() => {
+      const available = board
+        .map((cell, index) => (cell === null ? index : -1))
+        .filter((index) => index !== -1);
 
-	// Computer makes move after player
-	useEffect(() => {
-		if (isXNext && !board.every((square) => square === null) && !winner) {
-			// Slight delay for computer's move to make it feel more natural
-			const timer = setTimeout(() => {
-				makeComputerMove();
-			}, 500);
+      if (available.length === 0) {
+        finishGame("draw");
+        return;
+      }
 
-			return () => clearTimeout(timer);
-		}
-	}, [isXNext, board, winner, makeComputerMove]);
+      const nextBoard = [...board];
+      const move = available[Math.floor(Math.random() * available.length)];
+      nextBoard[move] = "X";
+      setBoard(nextBoard);
 
-	// Reset countdown timer
-	useEffect(() => {
-		if (showOverlay && resetCountdown > 0) {
-			const countdownTimer = setTimeout(() => {
-				setResetCountdown(resetCountdown - 1);
-			}, 1000);
+      const result = getOutcome(nextBoard);
+      if (result) finishGame(result);
+      else setIsComputerTurn(false);
+    }, delay);
 
-			return () => clearTimeout(countdownTimer);
-		} else if (showOverlay && resetCountdown === 0) {
-			resetGame();
-		}
-	}, [showOverlay, resetCountdown]);
+    return () => window.clearTimeout(timer);
+  }, [board, finishGame, isComputerTurn, outcome]);
 
-	const handleClick = (index: number) => {
-		// If square is filled or game is over or it's computer's turn, do nothing
-		if (board[index] || winner || isXNext) return;
+  const handleMove = (index: number) => {
+    if (board[index] || outcome || isComputerTurn) return;
 
-		const squares = [...board];
-		squares[index] = "O";
-		setBoard(squares);
-		setIsXNext(true);
+    const nextBoard = [...board];
+    nextBoard[index] = "O";
+    setBoard(nextBoard);
 
-		// Check if player won
-		const playerWinner = calculateWinner(squares);
-		if (playerWinner) {
-			setWinner(playerWinner);
-			setShowOverlay(true);
-			startResetTimer();
-		} else if (isBoardFull(squares)) {
-			setWinner("draw");
-			setShowOverlay(true);
-			startResetTimer();
-		}
-	};
+    const result = getOutcome(nextBoard);
+    if (result) finishGame(result);
+    else setIsComputerTurn(true);
+  };
 
-	const startResetTimer = () => {
-		if (resetTimer) clearTimeout(resetTimer);
-		setResetCountdown(3);
-		const timer = setTimeout(() => {
-			resetGame();
-		}, 5000);
-		setResetTimer(timer);
-	};
+  const resetGame = () => {
+    setBoard(Array(9).fill(null));
+    setIsComputerTurn(true);
+    setOutcome(null);
+  };
 
-	const resetGame = () => {
-		setBoard(Array(9).fill(null));
-		setIsXNext(true);
-		setWinner(null);
-		setShowOverlay(false);
-		if (resetTimer) clearTimeout(resetTimer);
-		setResetTimer(null);
-		setResetCountdown(5);
-	};
+  const status =
+    outcome === "X"
+      ? "The bot took this round"
+      : outcome === "O"
+        ? "You unlocked the résumé"
+        : outcome === "draw"
+          ? "A perfectly balanced draw"
+          : isComputerTurn
+            ? "The bot is thinking"
+            : "Your move";
 
-	const renderSquare = (index: number) => {
-		return (
-			<motion.div
-				className="w-28 h-28 bg-gray-800 flex items-center justify-center border-2 border-gray-700"
-				onClick={() => handleClick(index)}
-				whileHover={{ backgroundColor: "rgba(31, 41, 55, 0.8)" }}
-				whileTap={{ scale: 0.95 }}
-				initial={{ opacity: 0 }}
-				animate={{ opacity: 1 }}
-				transition={{ duration: 0.2 }}
-			>
-				{board[index] && (
-					<motion.div
-						className={`text-4xl font-bold ${board[index] === "X" ? "text-red-500" : "text-blue-400"} pixel-text`}
-						initial={{ scale: 0, rotate: -180 }}
-						animate={{ scale: 1, rotate: 0 }}
-						transition={{ type: "spring", stiffness: 260, damping: 20 }}
-					>
-						{board[index]}
-					</motion.div>
-				)}
-			</motion.div>
-		);
-	};
+  return (
+    <div className={styles.game}>
+      <div className={styles.gameHeader}>
+        <div>
+          <p>PLAYER O</p>
+          <h3>TIC—TAC—TOE</h3>
+        </div>
+        <span className={styles.scoreTag}>BEST OF ONE</span>
+      </div>
 
-	return (
-		<div className="flex flex-col items-center justify-center bg p-4 font-['Press_Start_2P']">
-			<h1 className="text-2xl font-bold mb-8 text-yellow-400 pixel-text">
-				TIC-TAC-TOE
-			</h1>
+      <div className={styles.boardWrap}>
+        <div className={styles.board} aria-label="Tic-tac-toe board">
+          {board.map((mark, index) => (
+            <motion.button
+              key={index}
+              type="button"
+              className={styles.square}
+              onClick={() => handleMove(index)}
+              disabled={Boolean(mark) || Boolean(outcome) || isComputerTurn}
+              aria-label={
+                mark
+                  ? `Square ${index + 1}: ${mark}`
+                  : `Play square ${index + 1}`
+              }
+              initial={
+                reducedMotion
+                  ? false
+                  : { opacity: 0, y: 12, scale: 0.92, rotate: -2 }
+              }
+              animate={{ opacity: 1, y: 0, scale: 1, rotate: 0 }}
+              transition={{
+                duration: 0.34,
+                delay: index * 0.035,
+                ease: [0.2, 0.75, 0.25, 1],
+              }}
+              whileHover={
+                reducedMotion || mark || outcome || isComputerTurn
+                  ? undefined
+                  : { scale: 0.97 }
+              }
+              whileTap={reducedMotion ? undefined : { scale: 0.92 }}
+            >
+              <AnimatePresence mode="wait">
+                {mark && (
+                  <motion.span
+                    key={mark}
+                    className={mark === "X" ? styles.markX : styles.markO}
+                    initial={{
+                      opacity: 0,
+                      x: 0,
+                      y: 0,
+                      scale: 0,
+                      rotate: -180,
+                    }}
+                    animate={{
+                      opacity: 1,
+                      x: 0,
+                      y: 0,
+                      scale: 1,
+                      rotate: 0,
+                    }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 260,
+                      damping: 20,
+                    }}
+                  >
+                    {mark}
+                  </motion.span>
+                )}
+              </AnimatePresence>
+            </motion.button>
+          ))}
+        </div>
 
-			<div className="relative">
-				<div className="grid grid-cols-3 gap-1 bg-gray-900 p-1">
-					{Array(9)
-						.fill(null)
-						.map((_, index) => (
-							<div key={index}>{renderSquare(index)}</div>
-						))}
-				</div>
+        <AnimatePresence>
+          {outcome && (
+            <motion.div
+              className={styles.resultOverlay}
+              initial={
+                reducedMotion ? false : { opacity: 0, y: 16, scale: 0.94 }
+              }
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 8, scale: 0.98 }}
+              transition={{ type: "spring", stiffness: 280, damping: 24 }}
+            >
+              <p>{status}</p>
+              <motion.button
+                type="button"
+                onClick={resetGame}
+                whileHover={reducedMotion ? undefined : { y: -2, scale: 1.03 }}
+                whileTap={reducedMotion ? undefined : { scale: 0.96 }}
+              >
+                <RefreshCw aria-hidden="true" />
+                Play again
+              </motion.button>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
 
-				<AnimatePresence>
-					{showOverlay && (
-						<motion.div
-							className="absolute inset-0 backdrop-blur-md bg-gray-900/80 flex flex-col items-center justify-center z-10 border-4 border-yellow-500"
-							initial={{ opacity: 0 }}
-							animate={{ opacity: 1 }}
-							exit={{ opacity: 0 }}
-						>
-							<motion.div
-								className="text-yellow-400 text-2xl font-bold mb-6 pixel-text"
-								initial={{ y: -20, opacity: 0 }}
-								animate={{ y: 0, opacity: 1 }}
-								transition={{ delay: 0.2 }}
-							>
-								{winner === "X" && "COMPUTER WINS!"}
-								{winner === "O" && "YOU WIN!"}
-								{winner === "draw" && "IT'S A DRAW!"}
-							</motion.div>
-
-							<motion.button
-								className="px-6 py-3 bg-gray-800 text-yellow-400 font-bold flex items-center gap-2 hover:bg-gray-700 transition-colors border-2 border-yellow-500"
-								onClick={resetGame}
-								initial={{ y: 20, opacity: 0 }}
-								animate={{ y: 0, opacity: 1 }}
-								transition={{ delay: 0.4 }}
-								whileHover={{ scale: 1.05 }}
-								whileTap={{ scale: 0.95 }}
-							>
-								<RefreshCw className="w-5 h-5" />
-								REPLAY ({resetCountdown}s)
-							</motion.button>
-						</motion.div>
-					)}
-				</AnimatePresence>
-			</div>
-
-			<div className="mt-8 text-gray-400">
-				{!winner && (
-					<p className="text-lg pixel-text">
-						{isXNext ? (
-							<motion.span
-								animate={{ opacity: [0.5, 1, 0.5] }}
-								transition={{ repeat: Infinity, duration: 1.5 }}
-							>
-								COMPUTER THINKING...
-							</motion.span>
-						) : (
-							"YOUR TURN"
-						)}
-					</p>
-				)}
-			</div>
-
-			<style jsx global>{`
-				@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
-
-				.pixel-text {
-					text-shadow: 2px 2px 0 #000;
-					image-rendering: pixelated;
-				}
-			`}</style>
-		</div>
-	);
+      <div className={styles.status} aria-live="polite">
+        {!outcome && isComputerTurn && (
+          <span className={styles.thinkingDots} aria-hidden="true">
+            <i />
+            <i />
+            <i />
+          </span>
+        )}
+        {status}
+      </div>
+    </div>
+  );
 }

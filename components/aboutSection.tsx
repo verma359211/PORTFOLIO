@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { ChevronLeft, ChevronRight, Images, X } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight, Images, X } from "lucide-react";
 import React, {
   type CSSProperties,
   type KeyboardEvent,
@@ -14,7 +14,6 @@ import React, {
 import { createPortal } from "react-dom";
 
 import {
-  ABOUT_TIMELINE_ASSETS,
   type AboutTimelineChapter,
   type AboutTimelineMedia,
   aboutTimelineContent,
@@ -28,6 +27,23 @@ type ExpandedChapter = {
 
 type LayerStyle = CSSProperties & {
   "--photo-rotation": string;
+};
+
+const CHAPTER_ACCENT_NOTES: Partial<
+  Record<AboutTimelineChapter["id"], { text: string; tone: "green" | "orange" }>
+> = {
+  school: {
+    text: "Always questioning.\nAlways exploring.",
+    tone: "green",
+  },
+  startup: {
+    text: "Real users.\nReal feedback.\nReal lessons.",
+    tone: "orange",
+  },
+  "now-next": {
+    text: "Grateful for the journey.\nExcited for what’s next.",
+    tone: "green",
+  },
 };
 
 function useMediaQuery(query: string) {
@@ -121,6 +137,7 @@ function AboutSection() {
       id={aboutTimelineContent.sectionId}
       className={styles.aboutSection}
       aria-labelledby="about-timeline-heading"
+      data-section-reveal
     >
       <div className={styles.paperTexture} aria-hidden="true" />
       <div className={styles.inner}>
@@ -162,21 +179,7 @@ function AboutSection() {
         </noscript>
 
         <footer className={styles.closing}>
-          <Image
-            src={ABOUT_TIMELINE_ASSETS.decor.leafSprig}
-            alt=""
-            width={118}
-            height={64}
-            aria-hidden="true"
-          />
           <p>{aboutTimelineContent.closingLine}</p>
-          <Image
-            src={ABOUT_TIMELINE_ASSETS.decor.redHeart}
-            alt=""
-            width={36}
-            height={34}
-            aria-hidden="true"
-          />
         </footer>
 
         <p className={styles.placeholderNotice}>
@@ -206,22 +209,6 @@ function AboutTimelineHeader() {
           <span aria-hidden="true" />
         </div>
         <h2 id="about-timeline-heading">{aboutTimelineContent.heading}</h2>
-        <Image
-          className={styles.greenUnderline}
-          src={ABOUT_TIMELINE_ASSETS.decor.greenUnderline}
-          alt=""
-          width={180}
-          height={20}
-          aria-hidden="true"
-        />
-        <Image
-          className={styles.sparkStars}
-          src={ABOUT_TIMELINE_ASSETS.decor.sparkStars}
-          alt=""
-          width={74}
-          height={58}
-          aria-hidden="true"
-        />
       </div>
 
       <div className={styles.introduction}>
@@ -230,41 +217,18 @@ function AboutTimelineHeader() {
           I learn by building, solve real problems, and ship{" "}
           <span className={styles.meaningfulWork}>meaningful work</span>.
         </p>
-        <p className={styles.thankYou}>
-          {aboutTimelineContent.thankYou}
-          <Image
-            src={ABOUT_TIMELINE_ASSETS.decor.redHeart}
-            alt=""
-            width={24}
-            height={22}
-            aria-hidden="true"
-          />
-        </p>
+        <p className={styles.thankYou}>{aboutTimelineContent.thankYou}</p>
       </div>
 
       <div className={styles.noteScene} aria-label="Personal note">
         <div className={styles.pinnedNote}>
           <span className={styles.pin} aria-hidden="true" />
-          <span className={styles.tape} aria-hidden="true" />
+          <strong>How I work</strong>
           {aboutTimelineContent.pinnedNote.map((line) => (
             <span key={line}>{line}</span>
           ))}
-          <Image
-            src={ABOUT_TIMELINE_ASSETS.decor.leafSprig}
-            alt=""
-            width={70}
-            height={40}
-            aria-hidden="true"
-          />
+          <span className={styles.noteUnderline} aria-hidden="true" />
         </div>
-        <Image
-          className={styles.mountainSketch}
-          src={ABOUT_TIMELINE_ASSETS.decor.mountainSketch}
-          alt=""
-          width={190}
-          height={130}
-          aria-hidden="true"
-        />
       </div>
     </header>
   );
@@ -295,6 +259,8 @@ function TimelineChapter({
   isExpanded,
   onOpen,
 }: TimelineChapterProps) {
+  const accentNote = CHAPTER_ACCENT_NOTES[chapter.id];
+
   return (
     <li
       className={`${styles.chapter} ${
@@ -308,6 +274,11 @@ function TimelineChapter({
           <p>{chapter.period}</p>
         </div>
       </div>
+      {chapterIndex < aboutTimelineContent.chapters.length - 1 && (
+        <span className={styles.timelineArrow} aria-hidden="true">
+          <ArrowRight strokeWidth={1.7} />
+        </span>
+      )}
 
       <TimelineMediaStack
         chapter={chapter}
@@ -319,6 +290,19 @@ function TimelineChapter({
         isExpanded={isExpanded}
         onOpen={onOpen}
       />
+
+      {accentNote && (
+        <span
+          className={`${styles.chapterAccentNote} ${
+            accentNote.tone === "orange"
+              ? styles.chapterAccentOrange
+              : styles.chapterAccentGreen
+          }`}
+          aria-hidden="true"
+        >
+          {accentNote.text}
+        </span>
+      )}
 
       <div className={styles.chapterCopy}>
         <h4>{chapter.title}</h4>
@@ -485,7 +469,9 @@ function LayeredPhoto({
 
   return (
     <span
-      className={`${styles.photoLayer} ${styles[`layer${stackPosition}`]}`}
+      className={`${styles.photoLayer} ${styles[`layer${stackPosition}`]} ${
+        isTop ? styles.topLayer : ""
+      }`}
       style={layerStyle}
     >
       <span className={styles.photoTape} />

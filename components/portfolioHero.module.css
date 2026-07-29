@@ -62,7 +62,7 @@
 }
 
 .crosshairOne {
-  left: 3.05rem;
+  left: var(--page-gutter);
   top: 5.08rem;
 }
 
@@ -77,17 +77,17 @@
 }
 
 .crosshairFour {
-  right: 2.75rem;
+  right: var(--page-gutter);
   top: 5.08rem;
 }
 
 .crosshairFive {
-  left: 3.05rem;
+  left: var(--page-gutter);
   top: 51.25%;
 }
 
 .crosshairSix {
-  right: 2.75rem;
+  right: var(--page-gutter);
   top: 51.25%;
 }
 

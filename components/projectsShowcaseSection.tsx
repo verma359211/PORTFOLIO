@@ -64,6 +64,7 @@ const ProjectsShowcaseSection = () => {
       id="projects"
       className={styles.projectsSection}
       aria-labelledby="projects-heading"
+      data-section-reveal
     >
       <div className={styles.inner}>
         <ProjectsIntro />

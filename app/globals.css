@@ -68,7 +68,11 @@ body {
     --hero-border: rgba(10, 48, 40, 0.1);
     --hero-shadow: 0 22px 55px rgba(35, 28, 20, 0.1);
     --hero-radius: 20px;
-    --page-gutter: clamp(20px, 3.3vw, 48px);
+    --content-max: 1540px;
+    --page-gutter: max(
+      clamp(20px, 3.3vw, 48px),
+      calc((100vw - var(--content-max)) / 2)
+    );
   }
 }
 
@@ -92,4 +96,26 @@ body {
 
 .animate-scroll {
   animation: scroll 50s linear infinite;
+}
+
+html.motion-ready [data-section-reveal] {
+  opacity: 0;
+  transform: translateY(34px);
+  transition:
+    opacity 680ms cubic-bezier(0.2, 0.75, 0.25, 1),
+    transform 680ms cubic-bezier(0.2, 0.75, 0.25, 1);
+}
+
+html.motion-ready [data-section-reveal][data-reveal-state="visible"] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.motion-ready [data-section-reveal],
+  html.motion-ready [data-section-reveal][data-reveal-state="visible"] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }

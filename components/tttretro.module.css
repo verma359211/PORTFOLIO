@@ -1,0 +1,238 @@
+.game {
+  width: min(100%, 27rem);
+  margin: 0 auto;
+  color: #fffaf4;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+}
+
+.gameHeader {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+  padding-inline: 0.25rem;
+}
+
+.gameHeader p {
+  margin: 0 0 0.4rem;
+  color: #a7df76;
+  font-size: 0.62rem;
+  font-weight: 850;
+  letter-spacing: 0.14em;
+}
+
+.gameHeader h3 {
+  margin: 0;
+  color: #fffaf4;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(1.5rem, 2.6vw, 2.35rem);
+  font-weight: 850;
+  letter-spacing: -0.045em;
+}
+
+.scoreTag {
+  border: 1px solid rgba(255, 250, 244, 0.18);
+  border-radius: 999px;
+  color: rgba(255, 250, 244, 0.58);
+  padding: 0.42rem 0.58rem;
+  font-size: 0.56rem;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+}
+
+.boardWrap {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 250, 244, 0.12);
+  border-radius: 22px;
+  background: rgba(255, 250, 244, 0.06);
+  padding: clamp(0.65rem, 1.4vw, 0.95rem);
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(0.45rem, 0.8vw, 0.65rem);
+}
+
+.square {
+  display: grid;
+  min-width: 0;
+  aspect-ratio: 1;
+  place-items: center;
+  border: 1px solid rgba(255, 250, 244, 0.12);
+  border-radius: clamp(12px, 1vw, 17px);
+  background: rgba(255, 250, 244, 0.075);
+  color: #fffaf4;
+  cursor: pointer;
+  transition:
+    border-color 170ms ease,
+    background 170ms ease,
+    box-shadow 170ms ease;
+}
+
+.square:hover:not(:disabled),
+.square:focus-visible {
+  border-color: rgba(167, 223, 118, 0.58);
+  background: rgba(167, 223, 118, 0.1);
+  box-shadow: inset 0 0 24px rgba(167, 223, 118, 0.06);
+  outline: none;
+}
+
+.square:focus-visible {
+  outline: 3px solid rgba(167, 223, 118, 0.35);
+  outline-offset: 3px;
+}
+
+.square:disabled {
+  cursor: default;
+}
+
+.markX,
+.markO {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(2.5rem, 5.5vw, 4.6rem);
+  font-weight: 900;
+  line-height: 1;
+  transform-origin: center;
+  will-change: transform, opacity;
+}
+
+.markX {
+  color: rgba(255, 250, 244, 0.78);
+}
+
+.markO {
+  color: #a7df76;
+  text-shadow: 0 0 28px rgba(167, 223, 118, 0.18);
+}
+
+.resultOverlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 1.1rem;
+  background: rgba(3, 33, 27, 0.88);
+  padding: 1.5rem;
+  text-align: center;
+  backdrop-filter: blur(10px);
+}
+
+.resultOverlay p {
+  margin: 0;
+  color: #fffaf4;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(1.55rem, 3vw, 2.5rem);
+  font-weight: 850;
+  letter-spacing: -0.04em;
+}
+
+.resultOverlay button {
+  display: inline-flex;
+  min-height: 2.8rem;
+  align-items: center;
+  gap: 0.55rem;
+  border: 0;
+  border-radius: 999px;
+  background: #a7df76;
+  color: #06382e;
+  padding: 0.7rem 1rem;
+  font-size: 0.72rem;
+  font-weight: 850;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+.resultOverlay button:hover,
+.resultOverlay button:focus-visible {
+  box-shadow: 0 10px 24px rgba(3, 33, 27, 0.24);
+}
+
+.resultOverlay button:focus-visible {
+  outline: 3px solid #fffaf4;
+  outline-offset: 4px;
+}
+
+.resultOverlay svg {
+  width: 0.95rem;
+  height: 0.95rem;
+}
+
+.status {
+  display: flex;
+  min-height: 2rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  margin-top: 1rem;
+  color: rgba(255, 250, 244, 0.68);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.thinkingDots {
+  display: inline-flex;
+  gap: 0.22rem;
+}
+
+.thinkingDots i {
+  width: 0.32rem;
+  height: 0.32rem;
+  border-radius: 50%;
+  background: #a7df76;
+  animation: thinkingDot 900ms ease-in-out infinite;
+}
+
+.thinkingDots i:nth-child(2) {
+  animation-delay: 120ms;
+}
+
+.thinkingDots i:nth-child(3) {
+  animation-delay: 240ms;
+}
+
+@keyframes thinkingDot {
+  50% {
+    opacity: 0.35;
+    transform: translateY(-3px);
+  }
+}
+
+@media (max-width: 699px) {
+  .gameHeader {
+    padding-inline: 0.4rem;
+  }
+
+  .scoreTag {
+    display: none;
+  }
+
+  .boardWrap {
+    border-radius: 18px;
+  }
+
+  .markX,
+  .markO {
+    font-size: clamp(2.3rem, 15vw, 3.6rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .square {
+    transition: none;
+  }
+
+  .thinkingDots i {
+    animation: none;
+  }
+}

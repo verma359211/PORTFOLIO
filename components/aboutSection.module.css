@@ -33,7 +33,7 @@
 }
 
 .inner {
-  width: min(100%, 1740px);
+  width: min(100%, var(--content-max));
   margin: 0 auto;
 }
 
@@ -1174,5 +1174,617 @@
   .mediaInteraction:hover .stackButton,
   .mediaInteraction:focus-within .stackButton {
     transform: none;
+  }
+}
+
+/* Refined product-editorial treatment: less scrapbook, more portfolio system. */
+.aboutSection {
+  --about-bg: #f4efe7;
+  --about-surface: rgba(255, 250, 244, 0.88);
+  --about-paper: #eee6da;
+  --about-ink: #0a3028;
+  --about-body: #36443f;
+  --about-muted: #6b756f;
+  --about-red: #0a5a43;
+  --about-green: #0a5a43;
+  --about-line: rgba(10, 48, 40, 0.16);
+  --about-soft-shadow: 0 18px 44px rgba(35, 29, 22, 0.08);
+  --about-photo-shadow: 0 18px 36px rgba(35, 29, 22, 0.12);
+  --about-radius: 24px;
+
+  padding-block: clamp(5rem, 7vw, 7.5rem);
+}
+
+.paperTexture {
+  mix-blend-mode: multiply;
+  opacity: 0.018;
+}
+
+.editorialHeader {
+  grid-template-columns: minmax(0, 1.25fr) minmax(18rem, 0.8fr) minmax(
+      15rem,
+      0.55fr
+    );
+  gap: clamp(2.5rem, 5vw, 6rem);
+  align-items: center;
+}
+
+.eyebrowRow {
+  width: min(100%, 28rem);
+  margin-bottom: 1.35rem;
+  color: var(--about-green);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(0.75rem, 0.78vw, 0.88rem);
+  font-style: normal;
+  font-weight: 850;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.eyebrowRow::before {
+  content: "";
+  width: 0.68rem;
+  height: 0.68rem;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: #b7dc83;
+  box-shadow: 0 0 0 5px rgba(183, 220, 131, 0.14);
+}
+
+.headingBlock h2 {
+  max-width: 46rem;
+  color: var(--about-ink);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(4.2rem, 6vw, 7rem);
+  font-weight: 900;
+  letter-spacing: -0.07em;
+  line-height: 0.88;
+}
+
+.introduction {
+  gap: 1.15rem;
+  padding-left: clamp(1.4rem, 2.1vw, 2.25rem);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.introduction p {
+  color: var(--about-body);
+  font-size: clamp(0.98rem, 1.05vw, 1.14rem);
+  line-height: 1.58;
+}
+
+.meaningfulWork {
+  padding: 0;
+  color: var(--about-green);
+  font-family: inherit;
+  font-style: normal;
+  font-weight: 750;
+  white-space: normal;
+}
+
+.meaningfulWork::after {
+  display: none;
+}
+
+.thankYou {
+  color: var(--about-green);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.72rem !important;
+  font-style: normal;
+  font-weight: 850;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transform: none;
+}
+
+.noteScene {
+  min-height: 0;
+}
+
+.pinnedNote {
+  position: relative;
+  inset: auto;
+  width: 100%;
+  min-height: 0;
+  gap: 0.2rem;
+  align-content: start;
+  border: 1px solid rgba(255, 250, 244, 0.18);
+  border-radius: 20px;
+  background: linear-gradient(145deg, #0a5a43, #003e32);
+  box-shadow: 0 18px 38px rgba(10, 48, 40, 0.14);
+  color: rgba(255, 250, 244, 0.78);
+  padding: 1.35rem;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(0.8rem, 0.82vw, 0.9rem);
+  font-style: normal;
+  line-height: 1.5;
+  transform: none;
+  clip-path: none;
+}
+
+.pinnedNote strong {
+  margin-bottom: 0.65rem;
+  color: #fffaf4;
+  font-size: 0.7rem;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.noteUnderline {
+  display: block;
+  width: 3.4rem;
+  height: 2px;
+  margin-top: 0.72rem;
+  border-radius: 999px;
+  background: #cf5a47;
+  transform: rotate(-3deg);
+}
+
+.chapterAccentNote {
+  display: none;
+}
+
+.timelineList {
+  gap: clamp(1.5rem, 2vw, 2.5rem);
+  margin-top: clamp(4.5rem, 6vw, 6rem);
+}
+
+.nodeHeader {
+  grid-template-columns: 2rem minmax(0, 1fr);
+  gap: 0.75rem;
+  min-height: 5rem;
+}
+
+.node {
+  width: 2rem;
+  height: 2rem;
+  border: 0;
+  background: var(--about-green);
+  box-shadow: 0 8px 18px rgba(10, 48, 40, 0.16);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.72rem;
+}
+
+.chapter:nth-child(even) .node {
+  background: #b7dc83;
+  box-shadow:
+    0 8px 18px rgba(10, 48, 40, 0.12),
+    0 0 0 5px rgba(183, 220, 131, 0.14);
+  color: var(--about-green);
+}
+
+.timelineArrow {
+  position: absolute;
+  z-index: 4;
+  top: 0.42rem;
+  right: clamp(-2.15rem, -1.55vw, -1.35rem);
+  display: grid;
+  width: 1.28rem;
+  height: 1.28rem;
+  place-items: center;
+  border-radius: 50%;
+  background: #f4efe7;
+  color: rgba(10, 48, 40, 0.68);
+}
+
+.timelineArrow svg {
+  width: 1.12rem;
+  height: 1.12rem;
+}
+
+.nodeHeader h3 {
+  color: var(--about-ink);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(1.05rem, 1.2vw, 1.28rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.nodeHeader p {
+  color: var(--about-muted);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.72rem;
+}
+
+.stackButton {
+  position: relative;
+  z-index: 1;
+  transition: transform 240ms ease;
+}
+
+.mediaInteraction::before {
+  display: none;
+}
+
+.mediaStage {
+  width: min(100%, 16.6rem);
+  aspect-ratio: 0.9;
+  transition:
+    transform 280ms ease,
+    filter 280ms ease;
+}
+
+.photoLayer {
+  inset: 5% 4.5% 9%;
+  overflow: hidden;
+  grid-template-rows: minmax(0, 1fr) auto;
+  border: 1px solid rgba(80, 65, 45, 0.13);
+  border-radius: 3px;
+  background: #fffdf7;
+  padding: 0.5rem 0.5rem 0.95rem;
+  box-shadow:
+    0 14px 24px rgba(45, 35, 23, 0.14),
+    0 3px 6px rgba(45, 35, 23, 0.08);
+}
+
+.topLayer {
+  box-shadow:
+    0 20px 34px rgba(45, 35, 23, 0.18),
+    0 4px 9px rgba(45, 35, 23, 0.1);
+}
+
+.photoLayer:not(.topLayer) .photoTape {
+  opacity: 0.42;
+}
+
+.layer0 {
+  transform: translate(0, 0.8rem) rotate(var(--photo-rotation));
+}
+
+.layer1 {
+  transform: translate(-5%, 0) rotate(calc(var(--photo-rotation) - 2deg));
+}
+
+.layer2 {
+  transform: translate(5%, 0.5%) rotate(calc(var(--photo-rotation) + 2deg));
+}
+
+.photoImage {
+  border-radius: 1px;
+}
+
+.photoTape {
+  display: block;
+  top: -0.4rem;
+  width: 3.35rem;
+  height: 1.05rem;
+  background: rgba(216, 191, 148, 0.62);
+  opacity: 0.82;
+  transform: translateX(-50%) rotate(-3deg);
+}
+
+.photoCaption {
+  min-height: 2.65rem;
+  color: var(--about-body);
+  padding: 0.58rem 0.2rem 0;
+  font-family: "Segoe Print", "Bradley Hand", cursive;
+  font-size: clamp(0.66rem, 0.7vw, 0.78rem);
+  font-style: italic;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.viewPrompt {
+  right: 0.5rem;
+  bottom: 0.15rem;
+  background: var(--about-green);
+  font-size: 0.58rem;
+}
+
+.mediaInteraction:hover .stackButton,
+.mediaInteraction:focus-within .stackButton {
+  transform: translateY(-10px) scale(1.035);
+}
+
+.mediaInteraction:hover .layer1,
+.mediaInteraction:focus-within .layer1 {
+  transform: translate(-8%, -2%) rotate(calc(var(--photo-rotation) - 6deg));
+}
+
+.mediaInteraction:hover .layer2,
+.mediaInteraction:focus-within .layer2 {
+  transform: translate(8%, -1%) rotate(calc(var(--photo-rotation) + 6deg));
+}
+
+.startupChapter .mediaStage,
+.startupChapter .mediaInteraction:hover .mediaStage,
+.startupChapter .mediaInteraction:focus-within .mediaStage {
+  transform: scale(1.025);
+}
+
+.chapterCopy {
+  padding: 1rem 0.2rem 0;
+}
+
+.chapterCopy h4 {
+  color: var(--about-ink);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(0.96rem, 1vw, 1.08rem);
+  font-weight: 800;
+}
+
+.chapterCopy > p {
+  color: var(--about-body);
+  font-size: clamp(0.76rem, 0.78vw, 0.84rem);
+  line-height: 1.58;
+}
+
+.detailPending {
+  border: 1px solid rgba(10, 90, 67, 0.18);
+  border-radius: 999px;
+  background: rgba(183, 220, 131, 0.16);
+  color: var(--about-green);
+  padding: 0.35rem 0.55rem;
+}
+
+.closing {
+  display: block;
+  max-width: 48rem;
+  margin-top: clamp(4rem, 6vw, 6rem);
+  border-top: 1px solid var(--about-line);
+  color: var(--about-ink);
+  padding-top: 1.5rem;
+}
+
+.closing p {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(0.92rem, 1vw, 1.05rem);
+  font-style: normal;
+  line-height: 1.55;
+  text-align: center;
+}
+
+.closing p::after {
+  display: none;
+}
+
+.placeholderNotice {
+  color: var(--about-muted);
+  font-size: 0.68rem;
+}
+
+.dialog {
+  border: 1px solid rgba(10, 48, 40, 0.14);
+  background: #fffaf4;
+}
+
+.dialogFeaturedImage {
+  overflow: hidden;
+  border: 0;
+  border-radius: 18px;
+  transform: none;
+}
+
+.dialogCopy > span {
+  color: var(--about-green);
+}
+
+.dialogCopy h3 {
+  color: var(--about-ink);
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 850;
+}
+
+.dialogCopy blockquote {
+  border-left-color: var(--about-green);
+  background: rgba(183, 220, 131, 0.13);
+  color: var(--about-green);
+  font-family: Arial, Helvetica, sans-serif;
+  font-style: normal;
+}
+
+@media (min-width: 1180px) {
+  .noteScene {
+    min-height: 10.5rem;
+    padding: 0.8rem 0.5rem;
+  }
+
+  .noteScene::before {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    top: 1.4rem;
+    right: -0.15rem;
+    width: calc(100% - 0.7rem);
+    height: calc(100% - 2.1rem);
+    background: #c74838;
+    box-shadow: 0 13px 28px rgba(66, 31, 23, 0.12);
+    transform: rotate(4deg);
+  }
+
+  .noteScene::after {
+    content: "";
+    position: absolute;
+    top: 0.1rem;
+    right: -2.1rem;
+    width: 4.6rem;
+    height: 4.6rem;
+    background-image: radial-gradient(
+      rgba(10, 48, 40, 0.32) 1px,
+      transparent 1px
+    );
+    background-size: 9px 9px;
+    opacity: 0.42;
+  }
+
+  .pinnedNote {
+    z-index: 1;
+    min-height: 8.6rem;
+    border-radius: 2px;
+    padding: 1.8rem 1.5rem 1.35rem;
+    box-shadow:
+      0 22px 38px rgba(10, 48, 40, 0.2),
+      0 5px 12px rgba(35, 28, 20, 0.12);
+    transform: rotate(-3.5deg);
+  }
+
+  .pinnedNote .pin {
+    top: 0.55rem;
+    left: 0.7rem;
+    width: 0.9rem;
+    height: 0.9rem;
+  }
+
+  .chapterAccentNote {
+    position: absolute;
+    z-index: 6;
+    top: clamp(20.5rem, 23vw, 22rem);
+    display: block;
+    width: clamp(5.2rem, 6.5vw, 6.4rem);
+    min-height: 5.2rem;
+    padding: 0.78rem 0.68rem 0.9rem;
+    box-shadow: 0 14px 24px rgba(35, 28, 20, 0.16);
+    color: #fffaf4;
+    font-family: "Segoe Print", "Bradley Hand", cursive;
+    font-size: clamp(0.54rem, 0.58vw, 0.66rem);
+    font-style: italic;
+    line-height: 1.42;
+    white-space: pre-line;
+  }
+
+  .chapterAccentNote::after {
+    content: "";
+    position: absolute;
+    bottom: 0.55rem;
+    left: 0.68rem;
+    width: 1.45rem;
+    height: 2px;
+    background: rgba(255, 250, 244, 0.58);
+    transform: rotate(-4deg);
+  }
+
+  .chapter:first-child .chapterAccentNote {
+    left: -0.4rem;
+    transform: rotate(2deg);
+  }
+
+  .startupChapter .chapterAccentNote {
+    right: -0.35rem;
+    transform: rotate(-4deg);
+  }
+
+  .chapter:last-child .chapterAccentNote {
+    right: -0.45rem;
+    transform: rotate(3deg);
+  }
+
+  .chapterAccentGreen {
+    background: linear-gradient(145deg, #0a5a43, #003e32);
+  }
+
+  .chapterAccentOrange {
+    background: linear-gradient(145deg, #ce5843, #ad392d);
+  }
+
+  .mediaInteraction {
+    padding-bottom: clamp(3.4rem, 4vw, 4rem);
+  }
+
+  .timelineList::before {
+    top: 1rem;
+    right: calc(50% - 50vw);
+    left: calc(50% - 50vw);
+    width: auto;
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      rgba(10, 48, 40, 0.08),
+      rgba(10, 48, 40, 0.26) 12% 88%,
+      rgba(10, 48, 40, 0.08)
+    );
+  }
+}
+
+@media (max-width: 1179px) {
+  .editorialHeader {
+    grid-template-columns: minmax(0, 1.1fr) minmax(18rem, 0.9fr);
+  }
+
+  .noteScene {
+    grid-column: 1 / -1;
+  }
+
+  .pinnedNote {
+    width: min(100%, 38rem);
+    margin-left: auto;
+  }
+
+  .timelineList::before {
+    top: 0;
+    right: auto;
+    bottom: 0;
+    left: 1.1rem;
+    width: 1px;
+    height: auto;
+    background: linear-gradient(
+      to bottom,
+      rgba(10, 48, 40, 0.08),
+      rgba(10, 48, 40, 0.24) 6% 94%,
+      rgba(10, 48, 40, 0.08)
+    );
+  }
+
+  .timelineArrow {
+    display: none;
+  }
+}
+
+@media (max-width: 899px) {
+  .editorialHeader {
+    grid-template-columns: 1fr;
+  }
+
+  .pinnedNote {
+    width: 100%;
+    margin: 0;
+  }
+}
+
+@media (max-width: 699px) {
+  .aboutSection {
+    padding: 5rem 20px 5.5rem;
+  }
+
+  .headingBlock h2 {
+    font-size: clamp(3.35rem, 15vw, 4.6rem);
+    line-height: 0.9;
+  }
+
+  .introduction {
+    padding: 0;
+  }
+
+  .thankYou {
+    font-size: 0.7rem !important;
+  }
+
+  .noteScene {
+    min-height: 0;
+  }
+
+  .timelineList {
+    margin-top: 4rem;
+  }
+
+  .timelineList::before {
+    left: 1.05rem;
+  }
+
+  .photoCaption {
+    font-size: 0.7rem;
+  }
+
+  .closing p {
+    text-align: left;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stackButton,
+  .mediaStage,
+  .photoLayer,
+  .mediaInteraction::before {
+    transition: none;
   }
 }
