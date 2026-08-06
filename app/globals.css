@@ -6,12 +6,24 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: clamp(76px, 8vw, 112px);
   overflow-x: hidden;
 }
 
 body {
   font-family: "Bebas Neue", sans-serif;
   overflow-x: hidden;
+}
+
+:root {
+  --smooth-hover-duration: 560ms;
+  --smooth-hover-ease: cubic-bezier(0.2, 0.75, 0.25, 1);
+}
+
+a,
+button,
+[role="button"] {
+  transition-timing-function: var(--smooth-hover-ease);
 }
 
 @layer utilities {
@@ -111,7 +123,78 @@ html.motion-ready [data-section-reveal][data-reveal-state="visible"] {
   transform: translateY(0);
 }
 
+html.motion-ready [data-section-reveal] [data-reveal-item] {
+  --reveal-x: 0px;
+  --reveal-y: 34px;
+  --reveal-rotate: 0deg;
+
+  animation: none !important;
+}
+
+html.motion-ready
+  [data-section-reveal]
+  [data-reveal-item]:not([data-reveal-complete="true"]) {
+  opacity: 0;
+  transform: translate3d(var(--reveal-x), var(--reveal-y), 0)
+    rotate(var(--reveal-rotate)) scale(0.975);
+  filter: blur(10px);
+  transition:
+    opacity 820ms var(--smooth-hover-ease),
+    transform 980ms var(--smooth-hover-ease),
+    filter 900ms var(--smooth-hover-ease);
+  transition-delay: calc(var(--reveal-index, 0) * 90ms + 80ms);
+  will-change: opacity, transform, filter;
+}
+
+html.motion-ready
+  [data-section-reveal]
+  [data-reveal-item][data-reveal-from="left"] {
+  --reveal-x: -54px;
+  --reveal-y: 12px;
+  --reveal-rotate: -1.2deg;
+}
+
+html.motion-ready
+  [data-section-reveal]
+  [data-reveal-item][data-reveal-from="right"] {
+  --reveal-x: 54px;
+  --reveal-y: 12px;
+  --reveal-rotate: 1.2deg;
+}
+
+html.motion-ready
+  [data-section-reveal]
+  [data-reveal-item][data-reveal-from="top"] {
+  --reveal-y: -42px;
+}
+
+html.motion-ready
+  [data-section-reveal]
+  [data-reveal-item][data-reveal-from="bottom"] {
+  --reveal-y: 54px;
+}
+
+html.motion-ready
+  [data-section-reveal][data-reveal-state="visible"]
+  [data-reveal-item]:not([data-reveal-complete="true"]) {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+  filter: blur(0);
+}
+
+html.motion-ready
+  [data-section-reveal]
+  [data-reveal-item][data-reveal-complete="true"] {
+  opacity: 1;
+  filter: none;
+  transition-delay: 0s;
+}
+
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
   html.motion-ready [data-section-reveal],
   html.motion-ready [data-section-reveal][data-reveal-state="visible"] {
     opacity: 1;

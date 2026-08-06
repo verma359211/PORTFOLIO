@@ -211,7 +211,7 @@
 }
 
 .linkArrow {
-  transition: transform 180ms ease;
+  transition: transform var(--smooth-hover-duration) var(--smooth-hover-ease);
 }
 
 .directLink:hover .linkArrow,
@@ -256,9 +256,9 @@
   background: rgba(255, 250, 244, 0.06);
   color: #fffaf4;
   transition:
-    background 180ms ease,
-    color 180ms ease,
-    transform 180ms ease;
+    background var(--smooth-hover-duration) var(--smooth-hover-ease),
+    color var(--smooth-hover-duration) var(--smooth-hover-ease),
+    transform var(--smooth-hover-duration) var(--smooth-hover-ease);
 }
 
 .socialLinks a:hover,
@@ -375,8 +375,8 @@
   line-height: 1.45;
   outline: none;
   transition:
-    border-color 180ms ease,
-    box-shadow 180ms ease;
+    border-color var(--smooth-hover-duration) var(--smooth-hover-ease),
+    box-shadow var(--smooth-hover-duration) var(--smooth-hover-ease);
 }
 
 .field textarea {
@@ -420,9 +420,9 @@
   font-weight: 850;
   text-transform: uppercase;
   transition:
-    background 180ms ease,
-    box-shadow 180ms ease,
-    transform 180ms ease;
+    background var(--smooth-hover-duration) var(--smooth-hover-ease),
+    box-shadow var(--smooth-hover-duration) var(--smooth-hover-ease),
+    transform var(--smooth-hover-duration) var(--smooth-hover-ease);
 }
 
 .submitRow button:hover:not(:disabled),
@@ -617,15 +617,6 @@
   .linkArrow,
   .socialLinks a,
   .submitRow button {
-    transition: none;
-  }
-
-  .directLink:hover .linkArrow,
-  .directLink:focus-visible .linkArrow,
-  .socialLinks a:hover,
-  .socialLinks a:focus-visible,
-  .submitRow button:hover:not(:disabled),
-  .submitRow button:focus-visible {
-    transform: none;
+    transition-duration: var(--smooth-hover-duration);
   }
 }

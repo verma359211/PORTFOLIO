@@ -70,8 +70,8 @@ const ProjectsShowcaseSection = () => {
         <ProjectsIntro />
 
         <div className={styles.cardsGrid}>
-          {portfolioProjects.map((project) => (
-            <ProjectCard key={project.id} project={project} />
+          {portfolioProjects.map((project, index) => (
+            <ProjectCard key={project.id} project={project} index={index} />
           ))}
 
           <ProjectsClosingCard />
@@ -82,7 +82,7 @@ const ProjectsShowcaseSection = () => {
 };
 
 const ProjectsIntro = () => (
-  <div className={styles.introGrid}>
+  <div className={styles.introGrid} data-reveal-item data-reveal-from="left">
     <div className={styles.introCopy}>
       <div className={styles.labelRow}>
         <p className={styles.sectionLabel}>PROJECTS</p>
@@ -115,10 +115,20 @@ const ProjectsIntro = () => (
   </div>
 );
 
-const ProjectCard = ({ project }: { project: PortfolioProject }) => (
+const PROJECT_REVEAL_FROM = ["left", "bottom", "right", "top", "bottom"];
+
+const ProjectCard = ({
+  project,
+  index,
+}: {
+  project: PortfolioProject;
+  index: number;
+}) => (
   <article
     className={styles.projectCard}
     aria-labelledby={`${project.id}-title`}
+    data-reveal-item
+    data-reveal-from={PROJECT_REVEAL_FROM[index % PROJECT_REVEAL_FROM.length]}
   >
     <ProjectPreview project={project} />
     <ProjectDetails project={project} />
@@ -234,6 +244,8 @@ const ProjectsClosingCard = () => (
   <aside
     className={styles.closingCard}
     aria-labelledby="projects-closing-title"
+    data-reveal-item
+    data-reveal-from="right"
   >
     <div>
       <p id="projects-closing-title" className={styles.closingTitle}>

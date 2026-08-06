@@ -121,7 +121,11 @@ const ContactSection = () => {
         <span className={styles.orbitTwo} aria-hidden="true" />
 
         <div className={styles.layout}>
-          <div className={styles.invitation}>
+          <div
+            className={styles.invitation}
+            data-reveal-item
+            data-reveal-from="left"
+          >
             <p className={styles.eyebrow}>
               <span aria-hidden="true" />
               CONTACT
@@ -185,7 +189,11 @@ const ContactSection = () => {
             </div>
           </div>
 
-          <div className={styles.formCard}>
+          <div
+            className={styles.formCard}
+            data-reveal-item
+            data-reveal-from="right"
+          >
             <div className={styles.formHeader}>
               <div>
                 <p>START A CONVERSATION</p>

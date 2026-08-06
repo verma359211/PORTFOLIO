@@ -311,7 +311,7 @@
   background: transparent;
   color: inherit;
   cursor: zoom-in;
-  transition: transform 260ms ease;
+  transition: transform var(--smooth-hover-duration) var(--smooth-hover-ease);
 }
 
 .stackButton:focus-visible {
@@ -327,8 +327,8 @@
   aspect-ratio: 0.91;
   margin: 0 auto;
   transition:
-    transform 300ms ease,
-    filter 300ms ease;
+    transform var(--smooth-hover-duration) var(--smooth-hover-ease),
+    filter var(--smooth-hover-duration) var(--smooth-hover-ease);
 }
 
 .photoLayer {
@@ -341,8 +341,8 @@
   box-shadow: var(--about-photo-shadow);
   transform-origin: center 70%;
   transition:
-    transform 340ms cubic-bezier(0.2, 0.75, 0.2, 1),
-    box-shadow 300ms ease;
+    transform var(--smooth-hover-duration) var(--smooth-hover-ease),
+    box-shadow var(--smooth-hover-duration) var(--smooth-hover-ease);
 }
 
 .layer0 {
@@ -417,8 +417,8 @@
   opacity: 0;
   transform: translateY(5px);
   transition:
-    opacity 180ms ease,
-    transform 180ms ease;
+    opacity var(--smooth-hover-duration) var(--smooth-hover-ease),
+    transform var(--smooth-hover-duration) var(--smooth-hover-ease);
 }
 
 .viewPrompt svg {
@@ -1168,12 +1168,6 @@
   .dialogBackdrop,
   .dialog {
     animation: none;
-    transition: none;
-  }
-
-  .mediaInteraction:hover .stackButton,
-  .mediaInteraction:focus-within .stackButton {
-    transform: none;
   }
 }
 
@@ -1390,7 +1384,7 @@
 .stackButton {
   position: relative;
   z-index: 1;
-  transition: transform 240ms ease;
+  transition: transform var(--smooth-hover-duration) var(--smooth-hover-ease);
 }
 
 .mediaInteraction::before {
@@ -1401,8 +1395,8 @@
   width: min(100%, 16.6rem);
   aspect-ratio: 0.9;
   transition:
-    transform 280ms ease,
-    filter 280ms ease;
+    transform var(--smooth-hover-duration) var(--smooth-hover-ease),
+    filter var(--smooth-hover-duration) var(--smooth-hover-ease);
 }
 
 .photoLayer {
@@ -1785,6 +1779,6 @@
   .mediaStage,
   .photoLayer,
   .mediaInteraction::before {
-    transition: none;
+    transition-duration: var(--smooth-hover-duration);
   }
 }

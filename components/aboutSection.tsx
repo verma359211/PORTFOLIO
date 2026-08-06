@@ -203,7 +203,11 @@ function AboutSection() {
 function AboutTimelineHeader() {
   return (
     <header className={styles.editorialHeader}>
-      <div className={styles.headingBlock}>
+      <div
+        className={styles.headingBlock}
+        data-reveal-item
+        data-reveal-from="left"
+      >
         <div className={styles.eyebrowRow}>
           <span>{aboutTimelineContent.eyebrow}</span>
           <span aria-hidden="true" />
@@ -211,7 +215,11 @@ function AboutTimelineHeader() {
         <h2 id="about-timeline-heading">{aboutTimelineContent.heading}</h2>
       </div>
 
-      <div className={styles.introduction}>
+      <div
+        className={styles.introduction}
+        data-reveal-item
+        data-reveal-from="bottom"
+      >
         <p>{aboutTimelineContent.introduction[0]}</p>
         <p>
           I learn by building, solve real problems, and ship{" "}
@@ -220,7 +228,12 @@ function AboutTimelineHeader() {
         <p className={styles.thankYou}>{aboutTimelineContent.thankYou}</p>
       </div>
 
-      <div className={styles.noteScene} aria-label="Personal note">
+      <div
+        className={styles.noteScene}
+        aria-label="Personal note"
+        data-reveal-item
+        data-reveal-from="right"
+      >
         <div className={styles.pinnedNote}>
           <span className={styles.pin} aria-hidden="true" />
           <strong>How I work</strong>
@@ -266,6 +279,16 @@ function TimelineChapter({
       className={`${styles.chapter} ${
         chapter.id === "startup" ? styles.startupChapter : ""
       }`}
+      data-reveal-item
+      data-reveal-from={
+        chapterIndex % 4 === 0
+          ? "left"
+          : chapterIndex % 4 === 1
+            ? "bottom"
+            : chapterIndex % 4 === 2
+              ? "right"
+              : "top"
+      }
     >
       <div className={styles.nodeHeader}>
         <span className={styles.node}>{chapter.number}</span>

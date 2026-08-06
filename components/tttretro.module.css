@@ -67,9 +67,9 @@
   color: #fffaf4;
   cursor: pointer;
   transition:
-    border-color 170ms ease,
-    background 170ms ease,
-    box-shadow 170ms ease;
+    border-color var(--smooth-hover-duration) var(--smooth-hover-ease),
+    background var(--smooth-hover-duration) var(--smooth-hover-ease),
+    box-shadow var(--smooth-hover-duration) var(--smooth-hover-ease);
 }
 
 .square:hover:not(:disabled),
@@ -148,8 +148,8 @@
   text-transform: uppercase;
   cursor: pointer;
   transition:
-    box-shadow 180ms ease,
-    transform 180ms ease;
+    box-shadow var(--smooth-hover-duration) var(--smooth-hover-ease),
+    transform var(--smooth-hover-duration) var(--smooth-hover-ease);
 }
 
 .resultOverlay button:hover,
@@ -229,7 +229,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .square {
-    transition: none;
+    transition-duration: var(--smooth-hover-duration);
   }
 
   .thinkingDots i {

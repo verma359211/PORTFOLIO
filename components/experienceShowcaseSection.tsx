@@ -98,7 +98,11 @@ const ExperienceNarrative = () => {
     startupExperienceContent;
 
   return (
-    <div className={styles.narrativeColumn}>
+    <div
+      className={styles.narrativeColumn}
+      data-reveal-item
+      data-reveal-from="left"
+    >
       <div className={styles.narrativeCopy}>
         <p className={styles.narrativeEyebrow}>
           <span aria-hidden="true" />
@@ -136,6 +140,8 @@ const CoreContributionCard = () => {
     <article
       className={`${styles.card} ${styles.coreCard}`}
       aria-labelledby="startup-core-title"
+      data-reveal-item
+      data-reveal-from="bottom"
     >
       <CardEyebrow
         id="startup-core-title"
@@ -180,6 +186,8 @@ const FeaturedGTProjectCard = () => {
       className={`${styles.card} ${styles.featuredCard}`}
       aria-label={featuredProject.linkLabel}
       aria-labelledby="startup-featured-title"
+      data-reveal-item
+      data-reveal-from="right"
     >
       <div className={styles.featuredContent}>
         <CardEyebrow
@@ -219,6 +227,8 @@ const FocusCard = () => {
     <article
       className={`${styles.focusCard} ${styles.card}`}
       aria-labelledby="startup-focus-title"
+      data-reveal-item
+      data-reveal-from="top"
     >
       <div className={styles.focusCopy}>
         <p id="startup-focus-title" className={styles.focusEyebrow}>
@@ -256,6 +266,8 @@ const ImpactCard = () => {
     <article
       className={`${styles.card} ${styles.impactCard}`}
       aria-labelledby="startup-impact-title"
+      data-reveal-item
+      data-reveal-from="bottom"
     >
       <CardEyebrow
         id="startup-impact-title"
@@ -288,7 +300,12 @@ const TechnologyStrip = () => {
   const { technologies } = startupExperienceContent;
 
   return (
-    <aside className={styles.techStrip} aria-label="GT Restro technology stack">
+    <aside
+      className={styles.techStrip}
+      aria-label="GT Restro technology stack"
+      data-reveal-item
+      data-reveal-from="left"
+    >
       <ul className={styles.techList}>
         {technologies.map((technology) => {
           const Icon = technologyIcons[technology];

@@ -126,7 +126,12 @@
 .navLink,
 .mobileWorkLink {
   position: relative;
+  padding: 0;
+  border: 0;
+  background: transparent;
   color: var(--hero-ink);
+  cursor: pointer;
+  font: inherit;
   font-size: clamp(0.92rem, 1.04vw, 1.1rem);
   font-weight: 500;
   letter-spacing: -0.04em;
@@ -144,7 +149,7 @@
   transform: scaleX(0);
   transform-origin: left;
   background: currentColor;
-  transition: transform 180ms ease;
+  transition: transform var(--smooth-hover-duration) var(--smooth-hover-ease);
 }
 
 .navLink:hover::after,
@@ -176,9 +181,9 @@
   box-shadow: 0 16px 30px rgba(0, 75, 63, 0.18);
   cursor: pointer;
   transition:
-    transform 180ms ease,
-    background 180ms ease,
-    box-shadow 180ms ease;
+    transform var(--smooth-hover-duration) var(--smooth-hover-ease),
+    background var(--smooth-hover-duration) var(--smooth-hover-ease),
+    box-shadow var(--smooth-hover-duration) var(--smooth-hover-ease);
 }
 
 .menuButton:hover {
@@ -217,16 +222,21 @@
 }
 
 .menuPanelLink {
+  border: 0;
   border-radius: 0.9rem;
   padding: 0.85rem 0.95rem;
+  background: transparent;
   color: var(--hero-ink);
+  cursor: pointer;
+  font: inherit;
   font-size: 0.96rem;
   font-weight: 650;
+  text-align: left;
   text-decoration: none;
   transition:
-    background 160ms ease,
-    color 160ms ease,
-    transform 160ms ease;
+    background var(--smooth-hover-duration) var(--smooth-hover-ease),
+    color var(--smooth-hover-duration) var(--smooth-hover-ease),
+    transform var(--smooth-hover-duration) var(--smooth-hover-ease);
 }
 
 .menuPanelLink:hover {
@@ -380,11 +390,14 @@
 
 .projectCard,
 .contactCard {
+  border: 0;
+  cursor: pointer;
+  font: inherit;
   text-decoration: none;
   transition:
-    transform 220ms ease,
-    box-shadow 220ms ease,
-    background 220ms ease;
+    transform var(--smooth-hover-duration) var(--smooth-hover-ease),
+    box-shadow var(--smooth-hover-duration) var(--smooth-hover-ease),
+    background var(--smooth-hover-duration) var(--smooth-hover-ease);
   opacity: 0;
   animation: heroRise 680ms ease forwards;
 }
@@ -440,7 +453,7 @@
 
 .projectImage {
   object-fit: cover;
-  transition: transform 420ms ease;
+  transition: transform var(--smooth-hover-duration) var(--smooth-hover-ease);
 }
 
 .projectCard:hover .projectImage {
@@ -482,7 +495,7 @@
 
 .projectArrow,
 .contactArrow {
-  transition: transform 200ms ease;
+  transition: transform var(--smooth-hover-duration) var(--smooth-hover-ease);
 }
 
 .projectCard:hover .projectArrow,
@@ -838,14 +851,7 @@
   .projectImage,
   .projectArrow,
   .contactArrow {
-    transition: none;
-  }
-
-  .menuButton:hover,
-  .menuPanelLink:hover,
-  .projectCard:hover,
-  .contactCard:hover {
-    transform: none;
+    transition-duration: var(--smooth-hover-duration);
   }
 }
 

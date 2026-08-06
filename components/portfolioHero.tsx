@@ -12,13 +12,13 @@ const HERO_ASSETS = {
 };
 
 const HERO_LINKS = {
-  work: "#projects",
-  about: "#about-section",
-  experience: "#experience",
-  contact: "#contact-section",
+  work: "projects",
+  about: "about-section",
+  experience: "experience",
+  contact: "contact-section",
 };
 
-const GT_RESTRO_CASE_STUDY_HREF = "#gtrestro-case-study";
+const GT_RESTRO_CASE_STUDY_TARGET = "gtrestro-case-study";
 
 const NAV_ITEMS = [
   { label: "Work", href: HERO_LINKS.work },
@@ -86,15 +86,24 @@ const PortfolioHeader = () => {
 
       <nav className={styles.nav} aria-label="Primary navigation">
         {NAV_ITEMS.map((item) => (
-          <Link key={item.href} href={item.href} className={styles.navLink}>
+          <button
+            key={item.href}
+            type="button"
+            className={styles.navLink}
+            data-scroll-target={item.href}
+          >
             {item.label}
-          </Link>
+          </button>
         ))}
       </nav>
 
-      <Link href={HERO_LINKS.work} className={styles.mobileWorkLink}>
+      <button
+        type="button"
+        className={styles.mobileWorkLink}
+        data-scroll-target={HERO_LINKS.work}
+      >
         Work
-      </Link>
+      </button>
 
       <div className={styles.menuWrap}>
         <button
@@ -121,14 +130,15 @@ const PortfolioHeader = () => {
             aria-label="Menu navigation"
           >
             {NAV_ITEMS.map((item) => (
-              <Link
+              <button
                 key={item.href}
-                href={item.href}
+                type="button"
                 className={styles.menuPanelLink}
+                data-scroll-target={item.href}
                 onClick={closeMenu}
               >
                 {item.label}
-              </Link>
+              </button>
             ))}
           </nav>
         )}
@@ -176,10 +186,11 @@ const HeroArtwork = () => (
 );
 
 const FeaturedProjectCard = () => (
-  <Link
-    href={GT_RESTRO_CASE_STUDY_HREF}
+  <button
+    type="button"
     className={styles.projectCard}
     aria-label="View GT Restro case study"
+    data-scroll-target={GT_RESTRO_CASE_STUDY_TARGET}
   >
     <div className={styles.projectCardHeader}>
       <span>GT Restro</span>
@@ -212,11 +223,15 @@ const FeaturedProjectCard = () => (
         strokeWidth={1.8}
       />
     </div>
-  </Link>
+  </button>
 );
 
 const ContactProjectCard = () => (
-  <Link href={HERO_LINKS.contact} className={styles.contactCard}>
+  <button
+    type="button"
+    className={styles.contactCard}
+    data-scroll-target={HERO_LINKS.contact}
+  >
     <span className={styles.spark} aria-hidden="true">
       ✶
     </span>
@@ -232,7 +247,7 @@ const ContactProjectCard = () => (
         strokeWidth={1.8}
       />
     </span>
-  </Link>
+  </button>
 );
 
 export default PortfolioHero;

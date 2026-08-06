@@ -53,7 +53,11 @@ function Tictactoe() {
         data-section-reveal
       >
         <div className={styles.inner}>
-          <div className={styles.intro}>
+          <div
+            className={styles.intro}
+            data-reveal-item
+            data-reveal-from="left"
+          >
             <p className={styles.eyebrow}>
               <Sparkles aria-hidden="true" />A SMALL INTERMISSION
             </p>
@@ -109,6 +113,8 @@ function Tictactoe() {
 
           <motion.div
             className={styles.gameFrame}
+            data-reveal-item
+            data-reveal-from="right"
             initial={reducedMotion ? false : { opacity: 0, y: 24, scale: 0.98 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true, amount: 0.28 }}
