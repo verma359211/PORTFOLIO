@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { type PointerEvent, useEffect, useState } from "react";
 
 import styles from "./pageMotion.module.css";
 import { useHydratedReducedMotion } from "./useHydratedReducedMotion";
@@ -10,6 +10,7 @@ const easeInOutSine = (progress: number) =>
   -(Math.cos(Math.PI * progress) - 1) / 2;
 
 const revealDirections = ["left", "bottom", "right", "top", "bottom", "left"];
+const loaderDuration = 1040;
 
 function PageMotion() {
   const [loading, setLoading] = useState(true);
@@ -28,23 +29,45 @@ function PageMotion() {
       window.history.replaceState(null, "", window.location.pathname);
     }
 
+    const pageMotionStart = performance.now();
+
+    const revealSection = (section: HTMLElement) => {
+      section.dataset.revealState = "visible";
+      const revealItems = Array.from(
+        section.querySelectorAll<HTMLElement>("[data-reveal-item]"),
+      );
+
+      revealItems.forEach((item, index) => {
+        const delay = Math.min(index, 10) * 90 + 1160;
+        const timer = window.setTimeout(() => {
+          item.dataset.revealComplete = "true";
+        }, delay);
+        revealTimers.push(timer);
+      });
+    };
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (!entry.isIntersecting) return;
           const section = entry.target as HTMLElement;
-          section.dataset.revealState = "visible";
-          const revealItems = Array.from(
-            section.querySelectorAll<HTMLElement>("[data-reveal-item]"),
-          );
+          const delayForLoader =
+            section.hasAttribute("data-hero-reveal") && !reducedMotion
+              ? Math.max(
+                  0,
+                  loaderDuration - (performance.now() - pageMotionStart),
+                )
+              : 0;
 
-          revealItems.forEach((item, index) => {
-            const delay = Math.min(index, 10) * 90 + 1160;
-            const timer = window.setTimeout(() => {
-              item.dataset.revealComplete = "true";
-            }, delay);
+          if (delayForLoader > 0) {
+            const timer = window.setTimeout(
+              () => revealSection(section),
+              delayForLoader,
+            );
             revealTimers.push(timer);
-          });
+          } else {
+            revealSection(section);
+          }
 
           observer.unobserve(entry.target);
         });
@@ -152,10 +175,7 @@ function PageMotion() {
 
     document.addEventListener("click", handleSectionNavClick, true);
 
-    const timer = window.setTimeout(
-      () => setLoading(false),
-      reducedMotion ? 0 : 720,
-    );
+    const timer = window.setTimeout(() => setLoading(false), loaderDuration);
 
     return () => {
       root.classList.remove("motion-ready");
@@ -169,6 +189,15 @@ function PageMotion() {
     };
   }, [reducedMotion]);
 
+  const handleLoaderPointerMove = (event: PointerEvent<HTMLDivElement>) => {
+    const bounds = event.currentTarget.getBoundingClientRect();
+    const x = ((event.clientX - bounds.left) / bounds.width) * 100;
+    const y = ((event.clientY - bounds.top) / bounds.height) * 100;
+
+    event.currentTarget.style.setProperty("--loader-x", `${x.toFixed(1)}%`);
+    event.currentTarget.style.setProperty("--loader-y", `${y.toFixed(1)}%`);
+  };
+
   return (
     <>
       <span
@@ -181,26 +210,50 @@ function PageMotion() {
         {loading && (
           <motion.div
             className={styles.loader}
+            onPointerMove={handleLoaderPointerMove}
             initial={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: reducedMotion ? 0 : 0.32 }}
+            transition={{ duration: reducedMotion ? 0.16 : 0.32 }}
             aria-hidden="true"
           >
-            <motion.div
-              className={styles.loaderMark}
-              initial={reducedMotion ? false : { opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-            >
-              CV
-            </motion.div>
-            <div className={styles.loaderTrack}>
-              <motion.span
-                initial={reducedMotion ? false : { scaleX: 0 }}
-                animate={{ scaleX: 1 }}
-                transition={{ duration: 0.58, ease: [0.2, 0.75, 0.25, 1] }}
-              />
+            <div className={styles.loaderPanel}>
+              <motion.div
+                className={styles.loaderGlyph}
+                initial={
+                  reducedMotion ? false : { opacity: 0, y: 14, scale: 0.96 }
+                }
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ duration: 0.54, ease: [0.2, 0.75, 0.25, 1] }}
+                aria-hidden="true"
+              >
+                <span
+                  className={`${styles.loaderTile} ${styles.loaderTileA}`}
+                />
+                <span
+                  className={`${styles.loaderTile} ${styles.loaderTileB}`}
+                />
+                <span
+                  className={`${styles.loaderTile} ${styles.loaderTileC}`}
+                />
+                <span
+                  className={`${styles.loaderTile} ${styles.loaderTileD}`}
+                />
+                <span className={styles.loaderSignal} />
+              </motion.div>
+              <div className={styles.loaderTrack}>
+                <motion.span
+                  initial={reducedMotion ? false : { scaleX: 0 }}
+                  animate={{ scaleX: 1 }}
+                  transition={{ duration: 0.82, ease: [0.2, 0.75, 0.25, 1] }}
+                />
+              </div>
+              <div className={styles.loaderHints}>
+                <span>Design</span>
+                <span>Build</span>
+                <span>Ship</span>
+              </div>
+              <p>ASSEMBLING THE EXPERIENCE</p>
             </div>
-            <p>BUILDING THE EXPERIENCE</p>
           </motion.div>
         )}
       </AnimatePresence>

@@ -32,6 +32,8 @@ const PortfolioHero = () => {
     <section
       className={styles.portfolioHero}
       aria-labelledby="portfolio-hero-title"
+      data-section-reveal
+      data-hero-reveal
     >
       <HeroGrid />
       <PortfolioHeader />
@@ -40,11 +42,25 @@ const PortfolioHero = () => {
         <div className={styles.createWord} aria-hidden="true">
           CREATE
         </div>
+        <div
+          className={styles.motionAccents}
+          aria-hidden="true"
+          data-reveal-item
+          data-reveal-from="top"
+        >
+          <span className={styles.motionAccentOne} />
+          <span className={styles.motionAccentTwo} />
+          <span className={styles.motionAccentThree} />
+        </div>
 
         <HeroIntroduction />
         <HeroArtwork />
 
-        <div className={styles.nameBlock}>
+        <div
+          className={styles.nameBlock}
+          data-reveal-item
+          data-reveal-from="bottom"
+        >
           <span className={styles.copyright}>©2026</span>
           <h1 id="portfolio-hero-title" className={styles.name}>
             <span>CHANDAN</span>
@@ -63,7 +79,12 @@ const PortfolioHero = () => {
 };
 
 const HeroGrid = () => (
-  <div className={styles.gridBackdrop} aria-hidden="true">
+  <div
+    className={styles.gridBackdrop}
+    aria-hidden="true"
+    data-reveal-item
+    data-reveal-from="top"
+  >
     <span className={`${styles.crosshair} ${styles.crosshairOne}`} />
     <span className={`${styles.crosshair} ${styles.crosshairTwo}`} />
     <span className={`${styles.crosshair} ${styles.crosshairThree}`} />
@@ -79,7 +100,7 @@ const PortfolioHeader = () => {
   const closeMenu = () => setIsMenuOpen(false);
 
   return (
-    <header className={styles.header}>
+    <header className={styles.header} data-reveal-item data-reveal-from="top">
       <Link href="/" className={styles.logo} aria-label="Chandan Verma home">
         CV
       </Link>
@@ -148,7 +169,7 @@ const PortfolioHeader = () => {
 };
 
 const HeroIntroduction = () => (
-  <div className={styles.intro}>
+  <div className={styles.intro} data-reveal-item data-reveal-from="left">
     <p className={styles.role}>
       <span className={styles.roleDot} aria-hidden="true" />
       <span>
@@ -172,16 +193,34 @@ const HeroIntroduction = () => (
 
 const HeroArtwork = () => (
   <div className={styles.artworkWrap}>
-    <div className={styles.artworkHalo} aria-hidden="true" />
-    <Image
-      src={HERO_ASSETS.artwork}
-      alt="Illustration of Chandan working at a multi-screen development desk"
-      width={2400}
-      height={2400}
-      priority
-      sizes="(min-width: 1280px) 48vw, (min-width: 768px) 62vw, calc(100vw - 40px)"
-      className={styles.artworkImage}
-    />
+    <div
+      className={styles.artworkReveal}
+      data-reveal-item
+      data-reveal-from="bottom"
+    >
+      <div className={styles.artworkHalo} aria-hidden="true" />
+      <span
+        className={`${styles.artworkSpark} ${styles.artworkSparkOne}`}
+        aria-hidden="true"
+      />
+      <span
+        className={`${styles.artworkSpark} ${styles.artworkSparkTwo}`}
+        aria-hidden="true"
+      />
+      <span
+        className={`${styles.artworkSpark} ${styles.artworkSparkThree}`}
+        aria-hidden="true"
+      />
+      <Image
+        src={HERO_ASSETS.artwork}
+        alt="Illustration of Chandan working at a multi-screen development desk"
+        width={2400}
+        height={2400}
+        priority
+        sizes="(min-width: 1280px) 48vw, (min-width: 768px) 62vw, calc(100vw - 40px)"
+        className={styles.artworkImage}
+      />
+    </div>
   </div>
 );
 
@@ -191,6 +230,8 @@ const FeaturedProjectCard = () => (
     className={styles.projectCard}
     aria-label="View GT Restro case study"
     data-scroll-target={GT_RESTRO_CASE_STUDY_TARGET}
+    data-reveal-item
+    data-reveal-from="right"
   >
     <div className={styles.projectCardHeader}>
       <span>GT Restro</span>
@@ -231,6 +272,8 @@ const ContactProjectCard = () => (
     type="button"
     className={styles.contactCard}
     data-scroll-target={HERO_LINKS.contact}
+    data-reveal-item
+    data-reveal-from="bottom"
   >
     <span className={styles.spark} aria-hidden="true">
       ✶
