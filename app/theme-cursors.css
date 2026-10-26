@@ -1,0 +1,37 @@
+/* Native SVG cursors: no pointer tracking, animation loops or touch overlays. */
+@media (hover: hover) and (pointer: fine) and (forced-colors: none) {
+  :root {
+    --portfolio-cursor: url("/cursors/light-pen.svg") 3 3, default;
+    --portfolio-link-cursor: url("/cursors/light-pen-link.svg") 3 3, pointer;
+  }
+
+  html[data-portfolio-theme="space"] {
+    --portfolio-cursor: url("/cursors/space-rocket.svg") 3 3, default;
+    --portfolio-link-cursor: url("/cursors/space-rocket-link.svg") 3 3, pointer;
+  }
+
+  html[data-portfolio-theme="blueprint"] {
+    --portfolio-cursor: url("/cursors/blueprint-pencil.svg") 3 3, default;
+    --portfolio-link-cursor: url("/cursors/blueprint-pencil-link.svg") 3 3, pointer;
+  }
+
+  body {
+    cursor: var(--portfolio-cursor);
+  }
+
+  /* Explicit interactive state also reaches icons inside buttons and links. */
+  :is(a[href], button:not(:disabled), summary, select, [role="button"], [role="tab"]),
+  :is(a[href], button:not(:disabled), summary, [role="button"], [role="tab"]) * {
+    cursor: var(--portfolio-link-cursor) !important;
+  }
+
+  /* Keep native editing and disabled affordances. */
+  :is(input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="submit"]):not([type="button"]), textarea, [contenteditable="true"]) {
+    cursor: text;
+  }
+
+  :is(button, input, select, textarea):disabled,
+  :is(button, input, select, textarea):disabled * {
+    cursor: not-allowed;
+  }
+}

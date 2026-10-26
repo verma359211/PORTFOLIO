@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { ArrowRight, ChevronLeft, ChevronRight, Images, X } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight, Images, Play, X } from "lucide-react";
 import React, {
   type CSSProperties,
   type KeyboardEvent,
@@ -149,7 +149,7 @@ function AboutSection() {
         >
           {aboutTimelineContent.chapters.map((chapter, chapterIndex) => (
             <TimelineChapter
-              key={chapter.id}
+              key={`${chapter.id}-${chapter.media.length}`}
               chapter={chapter}
               chapterIndex={chapterIndex}
               sectionVisible={sectionVisible}
@@ -330,11 +330,6 @@ function TimelineChapter({
       <div className={styles.chapterCopy}>
         <h4>{chapter.title}</h4>
         <p>{chapter.description}</p>
-        {chapter.incompletePersonalDetails && (
-          <span className={styles.detailPending}>
-            Personal details ready to be added
-          </span>
-        )}
       </div>
     </li>
   );
@@ -388,17 +383,14 @@ function TimelineMediaStack({
   useEffect(() => {
     if (paused) return;
 
-    let intervalId: ReturnType<typeof setInterval> | undefined;
-    const timeoutId = setTimeout(() => {
-      showNext();
-      intervalId = setInterval(showNext, chapter.cycleMs);
-    }, chapter.initialDelayMs);
-
-    return () => {
-      clearTimeout(timeoutId);
-      if (intervalId) clearInterval(intervalId);
-    };
-  }, [chapter.cycleMs, chapter.initialDelayMs, paused, showNext]);
+    // Let a video finish before moving the next photograph to the front.
+    const currentMedia = chapter.media[order[0]];
+    const delay = currentMedia.videoSrc
+      ? Math.max(chapter.cycleMs, (currentMedia.durationMs ?? 0) + 500)
+      : chapter.cycleMs;
+    const timeoutId = setTimeout(showNext, delay);
+    return () => clearTimeout(timeoutId);
+  }, [chapter.cycleMs, chapter.media, order, paused, showNext]);
 
   const handleManualCycle = (direction: "next" | "previous") => {
     setHasInteracted(true);
@@ -434,12 +426,14 @@ function TimelineMediaStack({
         <span className={styles.mediaStage} aria-hidden="true">
           {chapter.media.map((photo, imageIndex) => {
             const stackPosition = order.indexOf(imageIndex);
+            if (stackPosition < 0 || stackPosition > 2) return null;
             return (
               <LayeredPhoto
                 key={photo.src}
                 photo={photo}
                 stackPosition={stackPosition}
                 isTop={stackPosition === 0}
+                videoActive={stackPosition === 0 && pageVisible && sectionVisible && stackVisible && !isExpanded}
                 caption={chapter.caption}
               />
             );
@@ -478,11 +472,13 @@ function LayeredPhoto({
   photo,
   stackPosition,
   isTop,
+  videoActive,
   caption,
 }: {
   photo: AboutTimelineMedia;
   stackPosition: number;
   isTop: boolean;
+  videoActive: boolean;
   caption: string;
 }) {
   const layerStyle: LayerStyle = {
@@ -499,21 +495,66 @@ function LayeredPhoto({
     >
       <span className={styles.photoTape} />
       <span className={styles.photoImage}>
-        <Image
+        {photo.videoSrc && isTop ? (
+          <TimelineVideo media={photo} active={videoActive} />
+        ) : <Image
           src={photo.src}
           alt=""
           width={photo.width}
           height={photo.height}
           sizes="(max-width: 699px) 72vw, (max-width: 1179px) 36vw, 16vw"
           loading="lazy"
+          style={{ objectFit: photo.fit ?? "cover" }}
           onError={(event) => {
             event.currentTarget.src = photo.fallbackSrc;
           }}
-        />
+        />}
+        {photo.videoSrc && <span className={styles.videoIndicator}><Play size={12} aria-hidden="true" /> Video</span>}
       </span>
       {isTop && <span className={styles.photoCaption}>{caption}</span>}
     </span>
   );
+}
+
+function TimelineVideo({ media, active, controls = false }: {
+  media: AboutTimelineMedia;
+  active: boolean;
+  controls?: boolean;
+}) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [motionAllowed, setMotionAllowed] = useState(false);
+
+  useEffect(() => {
+    const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const update = () => setMotionAllowed(!preference.matches);
+    update();
+    preference.addEventListener("change", update);
+    return () => preference.removeEventListener("change", update);
+  }, []);
+
+  const autoplay = active && motionAllowed;
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    if (autoplay) void video.play().catch(() => { /* Poster and gallery controls remain available. */ });
+    else video.pause();
+    return () => video.pause();
+  }, [autoplay]);
+
+  return <video
+    ref={videoRef}
+    className={styles.chapterVideo}
+    src={media.videoSrc}
+    poster={media.src}
+    aria-label={controls ? media.alt : undefined}
+    controls={controls}
+    autoPlay={autoplay}
+    loop
+    muted
+    playsInline
+    preload={active ? "metadata" : "none"}
+    style={{ objectFit: media.fit ?? "cover" }}
+  />;
 }
 
 function ExpandedChapterDialog({
@@ -529,6 +570,7 @@ function ExpandedChapterDialog({
   const activeMedia = chapter.media[expanded.imageIndex];
   const dialogRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const pageVisible = usePageVisibility();
 
   const showPrevious = useCallback(() => {
     onChange((current) =>
@@ -572,12 +614,14 @@ function ExpandedChapterDialog({
     }
 
     if (event.key === "ArrowLeft") {
+      if ((event.target as HTMLElement).tagName === "VIDEO") return;
       event.preventDefault();
       showPrevious();
       return;
     }
 
     if (event.key === "ArrowRight") {
+      if ((event.target as HTMLElement).tagName === "VIDEO") return;
       event.preventDefault();
       showNext();
       return;
@@ -587,7 +631,7 @@ function ExpandedChapterDialog({
 
     const focusable = Array.from(
       dialogRef.current.querySelectorAll<HTMLElement>(
-        'button:not([disabled]), [href], [tabindex]:not([tabindex="-1"])',
+        'button:not([disabled]), [href], video[controls], [tabindex]:not([tabindex="-1"])',
       ),
     );
     if (focusable.length === 0) return;
@@ -632,23 +676,29 @@ function ExpandedChapterDialog({
 
         <div className={styles.dialogMedia}>
           <div className={styles.dialogFeaturedImage}>
-            <Image
+            {activeMedia.videoSrc ? <TimelineVideo
+              key={activeMedia.videoSrc}
+              media={activeMedia}
+              active={pageVisible}
+              controls
+            /> : <Image
               src={activeMedia.src}
               alt={activeMedia.alt}
               width={activeMedia.width}
               height={activeMedia.height}
               sizes="(max-width: 699px) 90vw, 48vw"
+              style={{ objectFit: activeMedia.fit ?? "cover" }}
               onError={(event) => {
                 event.currentTarget.src = activeMedia.fallbackSrc;
               }}
-            />
+            />}
           </div>
 
           <div className={styles.dialogImageControls}>
             <button
               type="button"
               onClick={showPrevious}
-              aria-label="Show previous chapter image"
+              aria-label="Show previous chapter item"
             >
               <ChevronLeft aria-hidden="true" />
             </button>
@@ -658,13 +708,13 @@ function ExpandedChapterDialog({
             <button
               type="button"
               onClick={showNext}
-              aria-label="Show next chapter image"
+              aria-label="Show next chapter item"
             >
               <ChevronRight aria-hidden="true" />
             </button>
           </div>
 
-          <div className={styles.dialogThumbnails}>
+          <div className={styles.dialogThumbnails} data-many={chapter.media.length > 3}>
             {chapter.media.map((photo, imageIndex) => (
               <button
                 key={photo.src}
@@ -679,7 +729,7 @@ function ExpandedChapterDialog({
                     current ? { ...current, imageIndex } : current,
                   )
                 }
-                aria-label={`Show chapter image ${imageIndex + 1}`}
+                aria-label={`Show chapter ${photo.videoSrc ? "video" : "image"} ${imageIndex + 1}`}
                 aria-current={
                   imageIndex === expanded.imageIndex ? "true" : undefined
                 }
@@ -691,6 +741,7 @@ function ExpandedChapterDialog({
                   height={photo.height}
                   sizes="84px"
                 />
+                {photo.videoSrc && <span className={styles.videoThumbnailBadge}><Play size={12} aria-hidden="true" /></span>}
               </button>
             ))}
           </div>
@@ -702,7 +753,7 @@ function ExpandedChapterDialog({
           <p id="expanded-chapter-description">{chapter.description}</p>
           <blockquote>{chapter.caption}</blockquote>
           <p className={styles.dialogPlaceholderNotice}>
-            {aboutTimelineContent.placeholderNotice}
+            {chapter.photoNotice ?? aboutTimelineContent.placeholderNotice}
           </p>
         </div>
       </div>

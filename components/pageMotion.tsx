@@ -130,8 +130,8 @@ function PageMotion() {
 
       if (smoothScrollFrame) window.cancelAnimationFrame(smoothScrollFrame);
 
-      if (Math.abs(distance) < 2) {
-        window.scrollTo(0, targetTop);
+      if (reducedMotion || Math.abs(distance) < 2) {
+        window.scrollTo({ top: targetTop, behavior: "instant" });
       } else {
         const duration = Math.min(
           2600,

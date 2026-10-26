@@ -11,19 +11,24 @@ import ExperienceShowcaseSection from "../components/experienceShowcaseSection";
 import ProjectsShowcaseSection from "../components/projectsShowcaseSection";
 import PageMotion from "../components/pageMotion";
 import styles from "./page.module.css";
+import ThemePreview from "../components/themePreview";
+import EngineeringShowcase from "../components/engineeringShowcase";
 
 const SHOW_IMAGE_SLIDESHOW = false;
 
 export default function Home() {
   return (
     <React.StrictMode>
-      <main className={styles.pageSurface}>
+      <ThemePreview className={styles.pageSurface}>
         <PageMotion />
         <div className={styles.heroExperienceFlow}>
           <PortfolioHero />
           <ExperienceShowcaseSection />
         </div>
-        <ProjectsShowcaseSection />
+        <section id="projects" aria-label="Personal projects">
+          <EngineeringShowcase />
+          <ProjectsShowcaseSection />
+        </section>
         <section
           className={styles.logoBand}
           aria-label="Technology stack"
@@ -45,7 +50,7 @@ export default function Home() {
         )}
         {/* <MasonryGallery /> */}
         <ContactSection />
-      </main>
+      </ThemePreview>
     </React.StrictMode>
   );
 }

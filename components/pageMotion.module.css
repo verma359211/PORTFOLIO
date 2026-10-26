@@ -10,6 +10,14 @@
   will-change: transform;
 }
 
+:global(html[data-portfolio-theme]) .scrollProgress {
+  background: linear-gradient(
+    90deg,
+    var(--preview-secondary),
+    var(--preview-accent)
+  );
+}
+
 .loader {
   --loader-x: 50%;
   --loader-y: 50%;

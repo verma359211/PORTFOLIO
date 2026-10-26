@@ -3,14 +3,88 @@
   overflow: hidden;
   padding: clamp(4.5rem, 6vw, 6rem) clamp(12px, 1.25vw, 20px) 1.25rem;
   color: #fffaf4;
-  font-family:
-    Inter,
+  font-family: var(--theme-font-body, Inter,
     ui-sans-serif,
     system-ui,
     -apple-system,
     BlinkMacSystemFont,
     "Segoe UI",
-    sans-serif;
+    sans-serif);
+}
+
+:global(html[data-portfolio-theme]) .shell {
+  background: var(--preview-feature);
+  border-color: var(--preview-border);
+  border-radius: var(--preview-radius);
+  box-shadow: var(--hero-shadow);
+}
+:global(html[data-portfolio-theme]) .formCard {
+  background: var(--preview-surface);
+  border-color: var(--preview-border);
+  border-radius: var(--preview-radius);
+  color: var(--hero-ink);
+  box-shadow: var(--hero-shadow);
+}
+:global(html[data-portfolio-theme]) .formHeader h3,
+:global(html[data-portfolio-theme]) .field input,
+:global(html[data-portfolio-theme]) .field textarea {
+  color: var(--hero-ink);
+}
+:global(html[data-portfolio-theme]) .formHeader p,
+:global(html[data-portfolio-theme]) .submitRow > p a {
+  color: var(--preview-accent);
+}
+:global(html[data-portfolio-theme]) .field > span,
+:global(html[data-portfolio-theme]) .formIndex,
+:global(html[data-portfolio-theme]) .submitRow > p {
+  color: var(--preview-muted);
+}
+:global(html[data-portfolio-theme]) .formHeader,
+:global(html[data-portfolio-theme]) .formIndex,
+:global(html[data-portfolio-theme]) .field input,
+:global(html[data-portfolio-theme]) .field textarea {
+  border-color: var(--preview-border);
+}
+:global(html[data-portfolio-theme]) .field input::placeholder,
+:global(html[data-portfolio-theme]) .field textarea::placeholder {
+  color: var(--preview-muted);
+  opacity: 0.8;
+}
+:global(html[data-portfolio-theme]) .field input:focus,
+:global(html[data-portfolio-theme]) .field textarea:focus {
+  border-color: var(--preview-accent);
+  box-shadow: 0 1px var(--preview-accent);
+}
+:global(html[data-portfolio-theme]) .submitRow button,
+:global(html[data-portfolio-theme]) .socialLinks a:hover {
+  background: var(--preview-accent);
+  color: var(--preview-on-accent);
+}
+:global(html[data-portfolio-theme]) .submitRow button:hover:not(:disabled) {
+  background: var(--preview-secondary);
+}
+:global(html[data-portfolio-theme]) .sendIcon {
+  background: var(--preview-on-accent);
+  color: var(--preview-accent);
+}
+:global(html[data-portfolio-theme]) .accentWord,
+:global(html[data-portfolio-theme]) .directLink small {
+  color: var(--preview-secondary);
+}
+:global(html[data-portfolio-theme]) .eyebrow span {
+  background: var(--preview-secondary);
+}
+:global(html[data-portfolio-theme]) .success {
+  background: var(--preview-soft);
+  color: var(--preview-secondary);
+}
+:global(html[data-portfolio-theme]) .error {
+  color: var(--preview-danger);
+}
+:global(html[data-portfolio-theme="blueprint"]) .eyebrow,
+:global(html[data-portfolio-theme="blueprint"]) .formHeader p,
+:global(html[data-portfolio-theme="blueprint"]) .formIndex {
+  font-family: var(--theme-font-label, "Courier New", monospace);
 }
 
 .shell {
@@ -39,7 +113,7 @@
   bottom: -0.16em;
   left: -0.02em;
   color: transparent;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--theme-font-body, Arial, Helvetica, sans-serif);
   font-size: clamp(11rem, 27vw, 31rem);
   font-weight: 900;
   letter-spacing: -0.09em;
@@ -119,7 +193,7 @@
   display: grid;
   margin: 0;
   color: #fffaf4;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--theme-font-body, Arial, Helvetica, sans-serif);
   font-size: clamp(3.7rem, 5.7vw, 6.8rem);
   font-weight: 900;
   letter-spacing: -0.075em;
@@ -149,7 +223,7 @@
   max-width: 32rem;
   margin: clamp(1.35rem, 2vw, 2rem) 0 0;
   color: rgba(255, 250, 244, 0.72);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--theme-font-body, Arial, Helvetica, sans-serif);
   font-size: clamp(0.94rem, 0.98vw, 1.06rem);
   line-height: 1.62;
 }
@@ -204,7 +278,7 @@
 
 .directLink strong {
   overflow: hidden;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--theme-font-body, Arial, Helvetica, sans-serif);
   font-size: clamp(0.82rem, 0.84vw, 0.94rem);
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -320,7 +394,7 @@
   max-width: 31rem;
   margin: 0;
   color: #0a3028;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--theme-font-body, Arial, Helvetica, sans-serif);
   font-size: clamp(1.85rem, 2.2vw, 2.65rem);
   font-weight: 900;
   letter-spacing: -0.055em;
@@ -620,3 +694,24 @@
     transition-duration: var(--smooth-hover-duration);
   }
 }
+
+
+:global(html[data-portfolio-theme="blueprint"]) .shell { border-radius: 4px; border: 1px solid #d6edff80; background: linear-gradient(#d6edff08 1px, transparent 1px), linear-gradient(90deg, #d6edff08 1px, transparent 1px), #0a2948d9; background-size: 32px 32px; box-shadow: 6px 6px 0 #061e3d55; }
+:global(html[data-portfolio-theme="blueprint"]) .formCard { border-radius: 3px; border: 1px solid #e8f6ffbb; background: #ffffffb8; --hero-ink: #18334b; --preview-muted: #354f64; --preview-accent: #1d5279; --preview-on-accent: #fff; --preview-secondary: #255e6d; --preview-border: #244e6850; --preview-soft: #ffffff40; --preview-danger: #9e2929; box-shadow: 4px 5px 0 #061e3d44; }
+:global(html[data-portfolio-theme="blueprint"]) .field > span,
+:global(html[data-portfolio-theme="blueprint"]) .directLink small { font-family: var(--theme-font-label); }
+:global(html[data-portfolio-theme="blueprint"]) .field input,
+:global(html[data-portfolio-theme="blueprint"]) .field textarea { background: #ffffff30; border: 1px solid #244e6840; border-radius: 2px; padding: 12px; }
+:global(html[data-portfolio-theme="blueprint"]) .submitRow button,
+:global(html[data-portfolio-theme="blueprint"]) .formIndex,
+:global(html[data-portfolio-theme="blueprint"]) .socialLinks a,
+:global(html[data-portfolio-theme="blueprint"]) .actionIcon { border-radius: 3px; }
+:global(html[data-portfolio-theme="blueprint"]) .orbitOne,
+:global(html[data-portfolio-theme="blueprint"]) .orbitTwo { border-style: dashed; border-color: #d6edff40; }
+:global(html[data-portfolio-theme="blueprint"]) .accentWord::after { height: 1px; border-top: 1px dashed #d6edff; background: none; border-radius: 0; transform: none; }
+:global(html[data-portfolio-theme="space"]) .shell { border-radius: 36px; border: 1px solid #c6b4ff66; background: radial-gradient(ellipse at 5% 5%, #66429955, transparent 65%), #19182d; }
+:global(html[data-portfolio-theme="space"]) .formCard { border-radius: 26px; border: 1px solid #c6b4ff50; background: #252139; box-shadow: 0 8px 0 #08091666; }
+:global(html[data-portfolio-theme="space"]) .field input,
+:global(html[data-portfolio-theme="space"]) .field textarea { background: #13152666; border: 1px solid #c6b4ff40; border-radius: 12px; padding: 12px; }
+:global(html[data-portfolio-theme="space"]) .submitRow button { box-shadow: 0 4px 0 #08091680; }
+:global(html[data-portfolio-theme="space"]) .accentWord::after { background: #c6b4ff55; }

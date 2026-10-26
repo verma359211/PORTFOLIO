@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { ShootingStars } from "@/../components/ui/shooting-stars";
-import { StarsBackground } from "@/../components/ui/stars-background";
+import SiteBackground from "../components/siteBackground";
 
 import "./globals.css";
+import "./theme-preview.css";
+import "./theme-cursors.css";
 // import { Bebas_Neue } from "@next/font/google";
 
 // export const bebasNeue = Bebas_Neue({
@@ -32,8 +33,7 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" />
       </head>
       <body suppressHydrationWarning>
-        <ShootingStars className="fixed inset-0 -z-10 bg-cover bg-center" />
-        <StarsBackground className="fixed inset-0 -z-10 bg-cover bg-center" />
+        <SiteBackground />
         {children}
       </body>
     </html>

@@ -8,7 +8,7 @@ import styles from "./portfolioHero.module.css";
 
 const HERO_ASSETS = {
   artwork: "/assets/hero/chandan-developer-fisheye.webp",
-  projectCover: "/assets/hero/gtrestro-project-cover.webp",
+  projectCover: "/gtrestro/pos-overview.webp",
 };
 
 const HERO_LINKS = {
@@ -228,7 +228,7 @@ const FeaturedProjectCard = () => (
   <button
     type="button"
     className={styles.projectCard}
-    aria-label="View GT Restro case study"
+    aria-label="Explore my first startup experience at GT Restro"
     data-scroll-target={GT_RESTRO_CASE_STUDY_TARGET}
     data-reveal-item
     data-reveal-from="right"
@@ -245,7 +245,7 @@ const FeaturedProjectCard = () => (
     <div className={styles.projectImageWrap}>
       <Image
         src={HERO_ASSETS.projectCover}
-        alt="GT Restro restaurant SaaS and POS platform interface preview"
+        alt="GT Restro’s real point-of-sale screen with the restaurant menu, live orders and billing"
         fill
         sizes="(min-width: 1180px) 22vw, (min-width: 768px) 45vw, calc(100vw - 72px)"
         className={styles.projectImage}
@@ -255,8 +255,8 @@ const FeaturedProjectCard = () => (
     <div className={styles.projectFooter}>
       <span className={styles.projectDot} aria-hidden="true" />
       <div>
-        <p className={styles.projectTitle}>GT Restro</p>
-        <p className={styles.projectCategory}>Restaurant SaaS / POS Platform</p>
+        <p className={styles.projectTitle}>My first startup.</p>
+        <p className={styles.projectCategory}>Founding Engineer · Beta → production</p>
       </div>
       <ArrowUpRight
         className={styles.projectArrow}
@@ -283,7 +283,7 @@ const ContactProjectCard = () => (
     </p>
     <span className={styles.contactDivider} aria-hidden="true" />
     <span className={styles.contactAction}>
-      START A PROJECT
+      LET&apos;S CONNECT
       <ArrowUpRight
         className={styles.contactArrow}
         size={30}

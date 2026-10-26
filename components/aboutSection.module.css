@@ -20,6 +20,80 @@
   color: var(--about-body);
 }
 
+:global(html[data-portfolio-theme]) .aboutSection,
+:global(html[data-portfolio-theme]) .dialogBackdrop {
+  --about-bg: var(--hero-bg);
+  --about-surface: var(--preview-surface);
+  --about-paper: var(--preview-surface-alt);
+  --about-ink: var(--hero-ink);
+  --about-body: var(--preview-muted);
+  --about-muted: var(--preview-muted);
+  --about-red: var(--preview-secondary);
+  --about-green: var(--preview-accent);
+  --about-line: var(--preview-border);
+  --about-soft-shadow: var(--hero-shadow);
+  --about-photo-shadow: var(--hero-shadow);
+  --about-radius: var(--preview-radius);
+}
+:global(html[data-portfolio-theme]) .paperTexture {
+  display: none;
+}
+:global(html[data-portfolio-theme]) .pinnedNote,
+:global(html[data-portfolio-theme]) .chapterAccentNote {
+  background: var(--preview-feature);
+  border: 1px solid var(--preview-border);
+  color: var(--hero-ink);
+}
+:global(html[data-portfolio-theme]) .photoLayer {
+  background: var(--preview-surface-alt);
+  border-color: var(--preview-border);
+}
+:global(html[data-portfolio-theme]) .photoCaption {
+  color: var(--hero-ink);
+}
+:global(html[data-portfolio-theme]) .photoTape {
+  background: var(--preview-border);
+}
+:global(html[data-portfolio-theme]) .node,
+:global(html[data-portfolio-theme]) .viewPrompt,
+:global(html[data-portfolio-theme]) .dialogClose {
+  background: var(--preview-accent);
+  color: var(--preview-on-accent);
+}
+:global(html[data-portfolio-theme]) .chapter:nth-child(even) .node {
+  background: var(--preview-secondary);
+  color: var(--preview-on-accent);
+}
+:global(html[data-portfolio-theme]) .timelineArrow {
+  background: var(--hero-bg);
+  color: var(--preview-accent);
+}
+:global(html[data-portfolio-theme]) .timelineList::before {
+  background: var(--preview-border);
+}
+:global(html[data-portfolio-theme]) .detailPending {
+  background: var(--preview-soft);
+  border-color: var(--preview-border);
+}
+:global(html[data-portfolio-theme]) .dialog {
+  background: var(--preview-surface);
+  border-color: var(--preview-border);
+}
+:global(html[data-portfolio-theme]) .dialogCopy blockquote {
+  background: var(--preview-soft);
+}
+:global(html[data-portfolio-theme]) .noteScene::before {
+  background: var(--preview-secondary);
+  opacity: 0.7;
+}
+:global(html[data-portfolio-theme]) .noteScene::after {
+  background-image: radial-gradient(var(--preview-accent) 1px, transparent 1px);
+}
+:global(html[data-portfolio-theme="blueprint"]) .eyebrowRow,
+:global(html[data-portfolio-theme="blueprint"]) .nodeHeader p {
+  font-family: var(--theme-font-label, "Courier New", monospace);
+}
+
 .paperTexture {
   pointer-events: none;
   position: absolute;
@@ -58,7 +132,7 @@
   width: min(100%, 31rem);
   margin-bottom: clamp(1rem, 1.7vw, 1.6rem);
   color: var(--about-ink);
-  font-family: "Segoe Print", "Bradley Hand", cursive;
+  font-family: var(--theme-font-body, "Segoe Print", "Bradley Hand", cursive);
   font-size: clamp(1rem, 1.2vw, 1.25rem);
   font-style: italic;
   line-height: 1;
@@ -74,7 +148,7 @@
   max-width: 42rem;
   margin: 0;
   color: var(--about-ink);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--theme-font-body, Georgia, "Times New Roman", serif);
   font-size: clamp(4.5rem, 6.25vw, 7rem);
   font-weight: 500;
   letter-spacing: -0.055em;
@@ -105,7 +179,7 @@
   gap: clamp(1rem, 1.35vw, 1.35rem);
   padding-left: clamp(1.6rem, 2.4vw, 2.5rem);
   border-left: 1px solid var(--about-line);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--theme-font-body, Georgia, "Times New Roman", serif);
 }
 
 .introduction p {
@@ -118,7 +192,7 @@
   position: relative;
   display: inline-block;
   padding-inline: 0.32em;
-  font-family: "Segoe Print", "Bradley Hand", cursive;
+  font-family: var(--theme-font-body, "Segoe Print", "Bradley Hand", cursive);
   font-style: italic;
   white-space: nowrap;
 }
@@ -138,7 +212,7 @@
   align-items: center;
   gap: 0.7rem;
   color: var(--about-red);
-  font-family: "Segoe Print", "Bradley Hand", cursive;
+  font-family: var(--theme-font-body, "Segoe Print", "Bradley Hand", cursive);
   font-size: clamp(1.12rem, 1.4vw, 1.48rem) !important;
   font-style: italic;
   transform: rotate(-1deg);
@@ -167,7 +241,7 @@
   background: #f3e6cf;
   box-shadow: var(--about-soft-shadow);
   color: var(--about-body);
-  font-family: "Segoe Print", "Bradley Hand", cursive;
+  font-family: var(--theme-font-body, "Segoe Print", "Bradley Hand", cursive);
   font-size: clamp(0.92rem, 1.05vw, 1.08rem);
   font-style: italic;
   line-height: 1.5;
@@ -276,7 +350,7 @@
     0 5px 12px rgba(24, 61, 50, 0.2),
     0 0 0 1px rgba(24, 61, 50, 0.16);
   color: #fffaf2;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--theme-font-body, Georgia, "Times New Roman", serif);
   font-size: 0.92rem;
   font-weight: 700;
 }
@@ -284,7 +358,7 @@
 .nodeHeader h3 {
   margin: 0.05rem 0 0.25rem;
   color: var(--about-ink);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--theme-font-body, Georgia, "Times New Roman", serif);
   font-size: clamp(1.15rem, 1.5vw, 1.55rem);
   font-weight: 600;
   letter-spacing: -0.035em;
@@ -294,7 +368,7 @@
 .nodeHeader p {
   margin: 0;
   color: var(--about-muted);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--theme-font-body, Georgia, "Times New Roman", serif);
   font-size: clamp(0.78rem, 0.85vw, 0.9rem);
   line-height: 1.25;
 }
@@ -361,7 +435,7 @@
   display: block;
   min-height: 0;
   overflow: hidden;
-  background: #e7ddcd;
+  background: #071b29;
 }
 
 .photoImage img {
@@ -390,7 +464,7 @@
   justify-content: center;
   padding-top: 0.45rem;
   color: var(--about-body);
-  font-family: "Segoe Print", "Bradley Hand", cursive;
+  font-family: var(--theme-font-body, "Segoe Print", "Bradley Hand", cursive);
   font-size: clamp(0.65rem, 0.78vw, 0.82rem);
   font-style: italic;
   line-height: 1.25;
@@ -410,7 +484,7 @@
   background: var(--about-green);
   box-shadow: 0 6px 15px rgba(24, 61, 50, 0.2);
   color: #fffaf2;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--theme-font-body, Arial, Helvetica, sans-serif);
   font-size: 0.62rem;
   font-weight: 800;
   letter-spacing: 0.03em;
@@ -468,7 +542,7 @@
 .chapterCopy h4 {
   margin: 0 0 0.58rem;
   color: var(--about-ink);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--theme-font-body, Georgia, "Times New Roman", serif);
   font-size: clamp(1rem, 1.12vw, 1.18rem);
   font-weight: 700;
   line-height: 1.15;
@@ -477,7 +551,7 @@
 .chapterCopy > p {
   margin: 0;
   color: var(--about-body);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--theme-font-body, Arial, Helvetica, sans-serif);
   font-size: clamp(0.78rem, 0.82vw, 0.88rem);
   line-height: 1.52;
 }
@@ -488,7 +562,7 @@
   padding: 0.3rem 0.5rem;
   border: 1px dashed rgba(181, 74, 59, 0.42);
   color: var(--about-red);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--theme-font-body, Arial, Helvetica, sans-serif);
   font-size: 0.65rem;
   font-weight: 700;
 }
@@ -521,7 +595,7 @@
 .closing p {
   position: relative;
   margin: 0;
-  font-family: "Segoe Print", "Bradley Hand", cursive;
+  font-family: var(--theme-font-body, "Segoe Print", "Bradley Hand", cursive);
   font-size: clamp(1rem, 1.35vw, 1.35rem);
   font-style: italic;
   line-height: 1.45;
@@ -543,7 +617,7 @@
   max-width: 44rem;
   margin: 2.25rem auto 0;
   color: var(--about-muted);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--theme-font-body, Arial, Helvetica, sans-serif);
   font-size: 0.72rem;
   line-height: 1.45;
   text-align: center;
@@ -567,7 +641,7 @@
 
 .staticFallback figcaption {
   margin-top: 0.5rem;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--theme-font-body, Georgia, "Times New Roman", serif);
 }
 
 .dialogBackdrop {
@@ -661,7 +735,7 @@
   justify-content: center;
   overflow: hidden;
   border: 0.65rem solid #fffaf2;
-  background: #e9dfcf;
+  background: #071b29;
   box-shadow: var(--about-photo-shadow);
   transform: rotate(-1deg);
 }
@@ -678,7 +752,7 @@
   justify-content: center;
   gap: 1rem;
   color: var(--about-ink);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--theme-font-body, Arial, Helvetica, sans-serif);
   font-size: 0.78rem;
   font-weight: 800;
 }
@@ -711,12 +785,30 @@
 }
 
 .dialogThumbnails button {
+  position: relative;
   overflow: hidden;
   aspect-ratio: 1;
   padding: 0;
   border: 2px solid transparent;
   background: #e4dacb;
   cursor: pointer;
+}
+
+.chapterVideo { display: block; width: 100%; height: 100%; object-fit: contain; background: #071b29; }
+.photoImage { position: relative; }
+.videoIndicator { position: absolute; bottom: 8px; left: 8px; display: flex; align-items: center; gap: 5px; padding: 5px 8px; border-radius: 4px; background: #102a3be6; color: #fff; font: 10px Arial, sans-serif; }
+.videoThumbnailBadge { position: absolute; right: 4px; bottom: 4px; display: grid; place-items: center; width: 21px; height: 21px; border-radius: 50%; background: #102a3be6; color: #fff; pointer-events: none; }
+
+.dialogThumbnails[data-many="true"] {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  width: min(100%, 19rem);
+  margin-inline: auto;
+}
+
+@media (min-width: 700px) {
+  .dialogMedia:has(.dialogThumbnails[data-many="true"]) .dialogFeaturedImage {
+    height: min(45vh, 24rem);
+  }
 }
 
 .dialogThumbnails button.activeThumbnail {
@@ -739,7 +831,7 @@
 
 .dialogCopy > span {
   color: var(--about-red);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--theme-font-body, Arial, Helvetica, sans-serif);
   font-size: 0.72rem;
   font-weight: 850;
   letter-spacing: 0.1em;
@@ -749,7 +841,7 @@
 .dialogCopy h3 {
   margin: 0.65rem 0 1.25rem;
   color: var(--about-ink);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--theme-font-body, Georgia, "Times New Roman", serif);
   font-size: clamp(2.5rem, 4vw, 4.6rem);
   font-weight: 500;
   letter-spacing: -0.055em;
@@ -758,7 +850,7 @@
 
 .dialogCopy > p {
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--theme-font-body, Arial, Helvetica, sans-serif);
   font-size: clamp(0.98rem, 1.15vw, 1.12rem);
   line-height: 1.65;
 }
@@ -769,7 +861,7 @@
   border-left: 3px solid var(--about-red);
   background: rgba(243, 230, 207, 0.58);
   color: var(--about-red);
-  font-family: "Segoe Print", "Bradley Hand", cursive;
+  font-family: var(--theme-font-body, "Segoe Print", "Bradley Hand", cursive);
   font-size: 1rem;
   font-style: italic;
 }
@@ -1055,7 +1147,7 @@
     gap: 0.9rem;
     margin-top: 0.35rem;
     color: var(--about-muted);
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: var(--theme-font-body, Arial, Helvetica, sans-serif);
     font-size: 0.72rem;
     font-weight: 800;
   }
@@ -1207,7 +1299,7 @@
   width: min(100%, 28rem);
   margin-bottom: 1.35rem;
   color: var(--about-green);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--theme-font-body, Arial, Helvetica, sans-serif);
   font-size: clamp(0.75rem, 0.78vw, 0.88rem);
   font-style: normal;
   font-weight: 850;
@@ -1228,7 +1320,7 @@
 .headingBlock h2 {
   max-width: 46rem;
   color: var(--about-ink);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--theme-font-body, Arial, Helvetica, sans-serif);
   font-size: clamp(4.2rem, 6vw, 7rem);
   font-weight: 900;
   letter-spacing: -0.07em;
@@ -1238,7 +1330,7 @@
 .introduction {
   gap: 1.15rem;
   padding-left: clamp(1.4rem, 2.1vw, 2.25rem);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--theme-font-body, Arial, Helvetica, sans-serif);
 }
 
 .introduction p {
@@ -1250,7 +1342,7 @@
 .meaningfulWork {
   padding: 0;
   color: var(--about-green);
-  font-family: inherit;
+  font-family: var(--theme-font-body, inherit);
   font-style: normal;
   font-weight: 750;
   white-space: normal;
@@ -1262,7 +1354,7 @@
 
 .thankYou {
   color: var(--about-green);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--theme-font-body, Arial, Helvetica, sans-serif);
   font-size: 0.72rem !important;
   font-style: normal;
   font-weight: 850;
@@ -1288,7 +1380,7 @@
   box-shadow: 0 18px 38px rgba(10, 48, 40, 0.14);
   color: rgba(255, 250, 244, 0.78);
   padding: 1.35rem;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--theme-font-body, Arial, Helvetica, sans-serif);
   font-size: clamp(0.8rem, 0.82vw, 0.9rem);
   font-style: normal;
   line-height: 1.5;
@@ -1335,7 +1427,7 @@
   border: 0;
   background: var(--about-green);
   box-shadow: 0 8px 18px rgba(10, 48, 40, 0.16);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--theme-font-body, Arial, Helvetica, sans-serif);
   font-size: 0.72rem;
 }
 
@@ -1368,7 +1460,7 @@
 
 .nodeHeader h3 {
   color: var(--about-ink);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--theme-font-body, Arial, Helvetica, sans-serif);
   font-size: clamp(1.05rem, 1.2vw, 1.28rem);
   font-weight: 800;
   letter-spacing: -0.03em;
@@ -1377,7 +1469,7 @@
 
 .nodeHeader p {
   color: var(--about-muted);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--theme-font-body, Arial, Helvetica, sans-serif);
   font-size: 0.72rem;
 }
 
@@ -1438,6 +1530,10 @@
   border-radius: 1px;
 }
 
+.layer3 {
+  transform: translate(-3%, 2%) rotate(calc(var(--photo-rotation) - 1deg));
+}
+
 .photoTape {
   display: block;
   top: -0.4rem;
@@ -1452,7 +1548,7 @@
   min-height: 2.65rem;
   color: var(--about-body);
   padding: 0.58rem 0.2rem 0;
-  font-family: "Segoe Print", "Bradley Hand", cursive;
+  font-family: var(--theme-font-body, "Segoe Print", "Bradley Hand", cursive);
   font-size: clamp(0.66rem, 0.7vw, 0.78rem);
   font-style: italic;
   font-weight: 600;
@@ -1493,7 +1589,7 @@
 
 .chapterCopy h4 {
   color: var(--about-ink);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--theme-font-body, Arial, Helvetica, sans-serif);
   font-size: clamp(0.96rem, 1vw, 1.08rem);
   font-weight: 800;
 }
@@ -1522,7 +1618,7 @@
 }
 
 .closing p {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--theme-font-body, Arial, Helvetica, sans-serif);
   font-size: clamp(0.92rem, 1vw, 1.05rem);
   font-style: normal;
   line-height: 1.55;
@@ -1556,7 +1652,7 @@
 
 .dialogCopy h3 {
   color: var(--about-ink);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--theme-font-body, Arial, Helvetica, sans-serif);
   font-weight: 850;
 }
 
@@ -1564,7 +1660,7 @@
   border-left-color: var(--about-green);
   background: rgba(183, 220, 131, 0.13);
   color: var(--about-green);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--theme-font-body, Arial, Helvetica, sans-serif);
   font-style: normal;
 }
 
@@ -1630,7 +1726,7 @@
     padding: 0.78rem 0.68rem 0.9rem;
     box-shadow: 0 14px 24px rgba(35, 28, 20, 0.16);
     color: #fffaf4;
-    font-family: "Segoe Print", "Bradley Hand", cursive;
+    font-family: var(--theme-font-body, "Segoe Print", "Bradley Hand", cursive);
     font-size: clamp(0.54rem, 0.58vw, 0.66rem);
     font-style: italic;
     line-height: 1.42;
@@ -1782,3 +1878,37 @@
     transition-duration: var(--smooth-hover-duration);
   }
 }
+
+
+/* The journey uses the same materials and type system as the project sections. */
+:global(html[data-portfolio-theme]) .aboutSection { font-family: var(--theme-font-body); }
+:global(html[data-portfolio-theme]) .pinnedNote strong { color: var(--hero-ink); }
+:global(html[data-portfolio-theme]) .eyebrowRow::before { background: var(--preview-secondary); box-shadow: 0 0 0 5px var(--preview-soft); }
+:global(html[data-portfolio-theme]) .noteUnderline { background: var(--preview-secondary); }
+:global(html[data-portfolio-theme]) .photoCaption { font-family: var(--theme-font-label); font-style: normal; }
+:global(html[data-portfolio-theme]) .dialogCopy h3 { font-family: var(--theme-font-heading); }
+:global(html[data-portfolio-theme="blueprint"]) .chapter {
+  padding: 16px 12px;
+  border: 1px solid #d6edff55;
+  border-radius: 3px;
+  background: linear-gradient(135deg, #ffffff0d, transparent), #09243d66;
+  box-shadow: 4px 5px 0 #071e3a26;
+}
+:global(html[data-portfolio-theme="blueprint"]) .pinnedNote { border-radius: 3px; background: #ffffffb0; color: #18334b; border-color: #ffffffcc; box-shadow: 4px 5px 0 #071e3a40; }
+:global(html[data-portfolio-theme="blueprint"]) .pinnedNote strong { color: #18334b; }
+:global(html[data-portfolio-theme="blueprint"]) .node { border-radius: 3px; background: transparent; color: #e8f6ff; border: 1px solid #e8f6ff; font-family: var(--theme-font-label); box-shadow: 3px 3px 0 #ffffff20; }
+:global(html[data-portfolio-theme="blueprint"]) .chapter:nth-child(even) .node { background: #ffffff18; color: #ffd28b; box-shadow: 3px 3px 0 #ffffff20; }
+:global(html[data-portfolio-theme="blueprint"]) .nodeHeader p { font-family: var(--theme-font-label); }
+:global(html[data-portfolio-theme="blueprint"]) .photoLayer { background: #ffffffb8; border: 1px solid #fff; }
+:global(html[data-portfolio-theme="blueprint"]) .photoCaption { color: #18334b; }
+:global(html[data-portfolio-theme="blueprint"]) .photoTape { background: #e9f4f77a; }
+:global(html[data-portfolio-theme="blueprint"]) .viewPrompt { border-radius: 2px; font-family: var(--theme-font-label); }
+:global(html[data-portfolio-theme="blueprint"]) .dialog { border-radius: 4px; background: #0f2f4b; outline: 1px dashed #d6edff66; outline-offset: -8px; }
+:global(html[data-portfolio-theme="blueprint"]) .dialogFeaturedImage { border-radius: 2px; }
+:global(html[data-portfolio-theme="space"]) .chapter { padding: 16px 12px; border: 1px solid #c6b4ff40; border-radius: 24px; background: linear-gradient(155deg, #302548bb, #15192de6); box-shadow: 0 6px 0 #08091655; }
+:global(html[data-portfolio-theme="space"]) .pinnedNote { border-radius: 24px 24px 24px 6px; background: linear-gradient(135deg, #3a2b64, #23233e); }
+:global(html[data-portfolio-theme="space"]) .photoLayer { border-radius: 14px; background: #292541; border-color: #c6b4ff66; }
+:global(html[data-portfolio-theme="space"]) .photoImage { border-radius: 9px; }
+:global(html[data-portfolio-theme="space"]) .photoTape { display: none; }
+:global(html[data-portfolio-theme="space"]) .dialog { background: #1d1c33; border: 1px solid #c6b4ff70; border-radius: 26px; }
+:global(html[data-portfolio-theme="space"]) .dialogFeaturedImage { border-radius: 16px; }

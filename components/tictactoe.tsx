@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import {
-  Download,
+  FileText,
   Github,
   Linkedin,
   Mail,
@@ -17,9 +17,8 @@ import { useEffect, useRef, useState } from "react";
 import RetroTicTacToe from "./tttretro";
 import styles from "./tictactoe.module.css";
 import { useHydratedReducedMotion } from "./useHydratedReducedMotion";
+import { RESUME_URL } from "../lib/portfolioLinks";
 
-const RESUME_PATH = "/ChandanVerma-Resume.pdf";
-const RESUME_FILENAME = "Chandan-Verma-Resume.pdf";
 
 function Tictactoe() {
   const [showReward, setShowReward] = useState(false);
@@ -78,12 +77,13 @@ function Tictactoe() {
 
             <div className={styles.actions}>
               <a
-                href={RESUME_PATH}
-                download={RESUME_FILENAME}
+                href={RESUME_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className={styles.downloadButton}
               >
-                <Download aria-hidden="true" />
-                Download résumé
+                <FileText aria-hidden="true" />
+                View résumé
               </a>
 
               <div className={styles.socialLinks} aria-label="Social links">
@@ -168,15 +168,16 @@ function Tictactoe() {
               <p className={styles.rewardEyebrow}>YOU BEAT THE BOT</p>
               <h2 id="resume-reward-title">Résumé unlocked.</h2>
               <p>
-                Nicely played. Your reward is ready—download it directly below.
+                Nicely played. Your résumé reward is ready to view below.
               </p>
               <a
-                href={RESUME_PATH}
-                download={RESUME_FILENAME}
+                href={RESUME_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className={styles.rewardDownload}
               >
-                <Download aria-hidden="true" />
-                Download Chandan&apos;s résumé
+                <FileText aria-hidden="true" />
+                View Chandan&apos;s résumé
               </a>
             </motion.div>
           </motion.div>

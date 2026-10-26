@@ -5,6 +5,9 @@ export type AboutTimelineMedia = {
   width: number;
   height: number;
   rotation: number;
+  fit?: "cover" | "contain";
+  videoSrc?: string;
+  durationMs?: number;
 };
 
 export type AboutTimelineChapter = {
@@ -15,7 +18,7 @@ export type AboutTimelineChapter = {
   shortTitle: string;
   description: string;
   caption: string;
-  incompletePersonalDetails?: boolean;
+  photoNotice?: string;
   cycleMs: number;
   initialDelayMs: number;
   collageFallback: AboutTimelineMedia;
@@ -23,22 +26,6 @@ export type AboutTimelineChapter = {
 };
 
 const ASSET_BASE = "/assets/about-timeline";
-const CHAPTER_ASSET_BASE = `${ASSET_BASE}/chapters`;
-
-const media = (
-  filename: string,
-  alt: string,
-  width: number,
-  height: number,
-  rotation: number,
-): AboutTimelineMedia => ({
-  src: `${CHAPTER_ASSET_BASE}/${filename}.webp`,
-  fallbackSrc: `${CHAPTER_ASSET_BASE}/${filename}.png`,
-  alt,
-  width,
-  height,
-  rotation,
-});
 
 export const ABOUT_TIMELINE_ASSETS = {
   texture: `${ASSET_BASE}/textures/warm-paper-texture.webp`,
@@ -59,6 +46,52 @@ export const ABOUT_TIMELINE_UNRESOLVED_FIELDS = [
   "College name, degree, and college dates",
 ] as const;
 
+const schoolPhotos: AboutTimelineMedia[] = [
+  { src: `${ASSET_BASE}/school/school-celebration.jpg`, fallbackSrc: `${ASSET_BASE}/school/school-celebration.jpg`, alt: "School friends gathered for a celebration in a decorated room", width: 1280, height: 960, rotation: -3, fit: "contain" },
+  { src: `${ASSET_BASE}/school/classroom-study.jpg`, fallbackSrc: `${ASSET_BASE}/school/classroom-study.jpg`, alt: "A student writing at a desk in a school classroom", width: 1280, height: 960, rotation: 4, fit: "contain" },
+  { src: `${ASSET_BASE}/school/school-friends.jpg`, fallbackSrc: `${ASSET_BASE}/school/school-friends.jpg`, alt: "School friends posing together in green shirts and sashes", width: 4608, height: 3456, rotation: 2, fit: "contain" },
+  { src: `${ASSET_BASE}/school/classroom-friends.jpg`, fallbackSrc: `${ASSET_BASE}/school/classroom-friends.jpg`, alt: "School friends studying together around a classroom table", width: 1280, height: 960, rotation: -2, fit: "contain" },
+  { src: `${ASSET_BASE}/school/school-formal-group.jpg`, fallbackSrc: `${ASSET_BASE}/school/school-formal-group.jpg`, alt: "A group of school friends in formal clothes posing outdoors", width: 6016, height: 4000, rotation: 3, fit: "contain" },
+  { src: `${ASSET_BASE}/school/school-library-group.jpg`, fallbackSrc: `${ASSET_BASE}/school/school-library-group.jpg`, alt: "School friends gathered for a group photograph in the library", width: 4000, height: 3000, rotation: -3, fit: "contain" },
+  { src: `${ASSET_BASE}/school/friends-at-cafe.jpg`, fallbackSrc: `${ASSET_BASE}/school/friends-at-cafe.jpg`, alt: "Friends laughing together around a café table with a camera", width: 1101, height: 826, rotation: 2, fit: "contain" },
+  { src: `${ASSET_BASE}/school/school-class-group.jpg`, fallbackSrc: `${ASSET_BASE}/school/school-class-group.jpg`, alt: "A school class group in uniforms posing together indoors", width: 1280, height: 960, rotation: -1, fit: "contain" },
+];
+
+const collegeMedia: AboutTimelineMedia[] = [
+  { src: `${ASSET_BASE}/college/college-graduation.jpeg`, fallbackSrc: `${ASSET_BASE}/college/college-graduation.jpeg`, alt: "College friends celebrating graduation together in gowns and caps", width: 960, height: 1280, rotation: -1, fit: "contain" },
+  { src: `${ASSET_BASE}/college/college-friends.jpeg`, fallbackSrc: `${ASSET_BASE}/college/college-friends.jpeg`, alt: "College friends posing together outside a campus building", width: 576, height: 1024, rotation: 3, fit: "contain" },
+  { src: `${ASSET_BASE}/college/college-certificates.jpeg`, fallbackSrc: `${ASSET_BASE}/college/college-certificates.jpeg`, alt: "A college group standing on stage with certificates", width: 1280, height: 720, rotation: -2, fit: "contain" },
+  { src: `${ASSET_BASE}/college/college-event-group.jpeg`, fallbackSrc: `${ASSET_BASE}/college/college-event-group.jpeg`, alt: "Students and faculty gathered for a college event group photograph", width: 1280, height: 720, rotation: 2, fit: "contain" },
+  { src: `${ASSET_BASE}/college/college-campus-friends.jpeg`, fallbackSrc: `${ASSET_BASE}/college/college-campus-friends.jpeg`, alt: "Friends posing together beside a campus café", width: 720, height: 1280, rotation: -3, fit: "contain" },
+  { src: `${ASSET_BASE}/college/college-room-memories.jpeg`, fallbackSrc: `${ASSET_BASE}/college/college-room-memories.jpeg`, alt: "College friends spending time together in a room", width: 720, height: 1280, rotation: 3, fit: "contain" },
+  { src: `${ASSET_BASE}/college/college-road-trip.jpeg`, fallbackSrc: `${ASSET_BASE}/college/college-road-trip.jpeg`, alt: "Friends resting together during a road trip", width: 720, height: 1280, rotation: -2, fit: "contain" },
+  { src: `${ASSET_BASE}/college/college-video-poster.jpg`, fallbackSrc: `${ASSET_BASE}/college/college-video-poster.jpg`, alt: "Friends standing on a beach at sunset", width: 360, height: 640, rotation: 2, fit: "contain", videoSrc: `${ASSET_BASE}/college/college-memories.mp4` },
+  { src: `${ASSET_BASE}/college/college-video-poster-02.jpg`, fallbackSrc: `${ASSET_BASE}/college/college-video-poster-02.jpg`, alt: "College friends posing and dancing outdoors beside a motorcycle", width: 1280, height: 720, rotation: -2, fit: "contain", videoSrc: `${ASSET_BASE}/college/college-memories-02.mp4` },
+  { src: `${ASSET_BASE}/college/college-exam-eve.jpeg`, fallbackSrc: `${ASSET_BASE}/college/college-exam-eve.jpeg`, alt: "A candid college room moment before an exam", width: 719, height: 1280, rotation: 3, fit: "contain" },
+  { src: `${ASSET_BASE}/college/college-celebration.jpeg`, fallbackSrc: `${ASSET_BASE}/college/college-celebration.jpeg`, alt: "College friends celebrating together at an indoor event", width: 1280, height: 853, rotation: -2, fit: "contain" },
+  { src: `${ASSET_BASE}/college/college-friends-evening.jpeg`, fallbackSrc: `${ASSET_BASE}/college/college-friends-evening.jpeg`, alt: "A group of college friends spending an evening together indoors", width: 1280, height: 960, rotation: 2, fit: "contain" },
+];
+
+const internshipPhotos: AboutTimelineMedia[] = [
+  { src: `${ASSET_BASE}/internship/team-photo.jpeg`, fallbackSrc: `${ASSET_BASE}/internship/team-photo.jpeg`, alt: "Internship colleagues posing for a group photo in the office", width: 1280, height: 960, rotation: -2, fit: "contain" },
+  { src: `${ASSET_BASE}/internship/office-moments.jpeg`, fallbackSrc: `${ASSET_BASE}/internship/office-moments.jpeg`, alt: "A candid group moment among colleagues at office workstations", width: 720, height: 1280, rotation: 5, fit: "contain" },
+  { src: `${ASSET_BASE}/internship/colleagues.jpeg`, fallbackSrc: `${ASSET_BASE}/internship/colleagues.jpeg`, alt: "Two colleagues standing together beside an office whiteboard", width: 960, height: 1280, rotation: 1, fit: "contain" },
+  { src: `${ASSET_BASE}/internship/workspace.jpeg`, fallbackSrc: `${ASSET_BASE}/internship/workspace.jpeg`, alt: "Office workspace with computer desks and colorful cubicle partitions", width: 720, height: 1280, rotation: -4, fit: "contain" },
+];
+
+const startupMedia: AboutTimelineMedia[] = [
+  { src: `${ASSET_BASE}/startup/product-builder-poster.jpg`, fallbackSrc: `${ASSET_BASE}/startup/product-builder-poster.jpg`, alt: "A video of a product development desk and workstation", width: 576, height: 1024, rotation: -2, fit: "contain", videoSrc: `${ASSET_BASE}/startup/product-builder.mp4`, durationMs: 9300 },
+  { src: `${ASSET_BASE}/startup/development-workspace.jpeg`, fallbackSrc: `${ASSET_BASE}/startup/development-workspace.jpeg`, alt: "Code open on a monitor beside a mechanical keyboard at a development workspace", width: 900, height: 1600, rotation: 4, fit: "contain" },
+  { src: `${ASSET_BASE}/startup/office-buildings.jpeg`, fallbackSrc: `${ASSET_BASE}/startup/office-buildings.jpeg`, alt: "Office towers overlooking an outdoor fountain and landscaped courtyard", width: 720, height: 1280, rotation: 2, fit: "contain" },
+];
+
+const nowNextPhotos: AboutTimelineMedia[] = [
+  { src: `${ASSET_BASE}/now-next/bench-with-dog.jpeg`, fallbackSrc: `${ASSET_BASE}/now-next/bench-with-dog.jpeg`, alt: "A quiet outdoor moment sitting on a mint-green bench with a dog", width: 960, height: 1280, rotation: -2, fit: "contain" },
+  { src: `${ASSET_BASE}/now-next/focused-workspace.jpeg`, fallbackSrc: `${ASSET_BASE}/now-next/focused-workspace.jpeg`, alt: "An evening workspace with a laptop, keyboard and focus timer", width: 720, height: 1280, rotation: 3, fit: "contain" },
+  { src: `${ASSET_BASE}/now-next/mountain-portrait.jpeg`, fallbackSrc: `${ASSET_BASE}/now-next/mountain-portrait.jpeg`, alt: "An outdoor portrait with snow-covered mountains in the distance", width: 960, height: 1280, rotation: -3, fit: "contain" },
+  { src: `${ASSET_BASE}/now-next/mountain-outlook.jpeg`, fallbackSrc: `${ASSET_BASE}/now-next/mountain-outlook.jpeg`, alt: "A portrait wearing a red scarf at a mountain viewpoint", width: 956, height: 956, rotation: 2, fit: "contain" },
+];
+
 export const aboutTimelineContent = {
   sectionId: "about-section",
   eyebrow: "about me",
@@ -72,7 +105,7 @@ export const aboutTimelineContent = {
   closingLine:
     "Different moments. Same mindset — solve meaningful problems and ship products I’m proud to stand behind.",
   placeholderNotice:
-    "The chapter photographs are concept placeholders and do not depict Chandan.",
+    "Personal photographs and videos from my journey.",
   chapters: [
     {
       id: "school",
@@ -83,39 +116,11 @@ export const aboutTimelineContent = {
       description:
         "My hometown, school years, and earliest interests will be added here. This chapter represents the curiosity that eventually pulled me towards technology.",
       caption: "Always questioning. Always exploring.",
-      incompletePersonalDetails: true,
+      photoNotice: "Photographs from my school years.",
       cycleMs: 5100,
       initialDelayMs: 650,
-      collageFallback: media(
-        "01-school-roots-collage",
-        "Concept collage representing childhood curiosity",
-        1500,
-        1635,
-        0,
-      ),
-      media: [
-        media(
-          "01-school-main",
-          "Concept photograph representing childhood curiosity",
-          1200,
-          1354,
-          -3,
-        ),
-        media(
-          "01-school-support-kite",
-          "Concept image representing early exploration",
-          1200,
-          1236,
-          4,
-        ),
-        media(
-          "01-school-support-notes",
-          "Concept notes representing curiosity",
-          1200,
-          1981,
-          2,
-        ),
-      ],
+      collageFallback: schoolPhotos[0],
+      media: schoolPhotos,
     },
     {
       id: "college",
@@ -126,39 +131,11 @@ export const aboutTimelineContent = {
       description:
         "College introduced me to programming, while projects taught me how to use it. I learned by building, debugging, breaking things, and trying again.",
       caption: "Notes. Late nights. Small wins.",
-      incompletePersonalDetails: true,
+      photoNotice: "Photographs and videos from my college years.",
       cycleMs: 5600,
       initialDelayMs: 1250,
-      collageFallback: media(
-        "02-college-learning-collage",
-        "Concept collage representing college learning",
-        1500,
-        1640,
-        0,
-      ),
-      media: [
-        media(
-          "02-college-main",
-          "Concept photograph representing college learning",
-          1200,
-          1214,
-          -1,
-        ),
-        media(
-          "02-college-support-notebook",
-          "Concept notebook representing college projects",
-          1200,
-          1504,
-          3,
-        ),
-        media(
-          "02-college-support-paper",
-          "Concept layered study notes",
-          1200,
-          2009,
-          -4,
-        ),
-      ],
+      collageFallback: collegeMedia[0],
+      media: collegeMedia,
     },
     {
       id: "internship",
@@ -169,38 +146,11 @@ export const aboutTimelineContent = {
       description:
         "At ARC Document Solutions, I worked with Java automation, Jenkins CI/CD, Agile delivery, and production support — learning how professional engineering teams build and maintain software.",
       caption: "From learning code to working with real systems.",
+      photoNotice: "Photographs from my internship.",
       cycleMs: 6100,
       initialDelayMs: 1850,
-      collageFallback: media(
-        "03-internship-building-collage",
-        "Concept collage representing professional software development",
-        1500,
-        1572,
-        0,
-      ),
-      media: [
-        media(
-          "03-internship-main",
-          "Concept image representing software development work",
-          1200,
-          1000,
-          -2,
-        ),
-        media(
-          "03-internship-support-code",
-          "Concept code fragment representing professional development",
-          1200,
-          1085,
-          5,
-        ),
-        media(
-          "03-internship-support-architecture",
-          "Concept architecture notes representing systems learning",
-          1200,
-          830,
-          1,
-        ),
-      ],
+      collageFallback: internshipPhotos[0],
+      media: internshipPhotos,
     },
     {
       id: "startup",
@@ -211,38 +161,11 @@ export const aboutTimelineContent = {
       description:
         "At Gorain Technology, I moved beyond isolated tasks and helped build GT Restro across cloud, Electron, mobile, shared backend services, real-time workflows, payments, printing, and restaurant operations.",
       caption: "Real users. Real feedback. Real lessons.",
+      photoNotice: "Photographs and video from my product-building journey.",
       cycleMs: 4700,
       initialDelayMs: 2450,
-      collageFallback: media(
-        "04-startup-experience-collage",
-        "Concept collage representing startup product building",
-        1500,
-        1581,
-        0,
-      ),
-      media: [
-        media(
-          "04-startup-main",
-          "Concept image representing a startup product team",
-          1200,
-          1008,
-          -2,
-        ),
-        media(
-          "04-startup-support-code",
-          "Concept code image representing startup product development",
-          1200,
-          784,
-          4,
-        ),
-        media(
-          "04-startup-support-team-note",
-          "Concept note representing lessons learned from real users",
-          1200,
-          1158,
-          3,
-        ),
-      ],
+      collageFallback: startupMedia[0],
+      media: startupMedia,
     },
     {
       id: "now-next",
@@ -253,38 +176,11 @@ export const aboutTimelineContent = {
       description:
         "I’m continuing to build stronger products and deepen my understanding of scalable systems, backend architecture, real-time applications, infrastructure, and AI workflows.",
       caption: "Grateful for the journey. Excited for what’s next.",
+      photoNotice: "Personal moments, focused work and new perspectives.",
       cycleMs: 6400,
       initialDelayMs: 3050,
-      collageFallback: media(
-        "05-now-next-collage",
-        "Concept collage representing the journey ahead",
-        1500,
-        1313,
-        0,
-      ),
-      media: [
-        media(
-          "05-now-main",
-          "Concept landscape representing the journey ahead",
-          1200,
-          927,
-          -2,
-        ),
-        media(
-          "05-now-support-product-ui",
-          "Concept product interface representing current work",
-          1200,
-          614,
-          3,
-        ),
-        media(
-          "05-now-support-dark-ui",
-          "Concept application interface representing future projects",
-          1200,
-          1166,
-          5,
-        ),
-      ],
+      collageFallback: nowNextPhotos[0],
+      media: nowNextPhotos,
     },
   ] satisfies AboutTimelineChapter[],
 } as const;

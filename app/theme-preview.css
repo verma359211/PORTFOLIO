@@ -1,0 +1,318 @@
+/* Opt-in previews: no attribute means the original Light design. */
+html[data-portfolio-theme="space"] {
+  --theme-font-body: "Trebuchet MS", "Segoe UI", sans-serif;
+  --theme-font-heading: "Trebuchet MS", "Segoe UI", sans-serif;
+  --theme-font-label: "Trebuchet MS", "Segoe UI", sans-serif;
+  color-scheme: dark;
+  --hero-bg: #101020;
+  --hero-ink: #f6f0ff;
+  --hero-emerald: #c6b4ff;
+  --hero-emerald-dark: #e1d5ff;
+  --hero-muted: #b9b5ce;
+  --hero-grid: #c6b4ff12;
+  --hero-card: #1d1c33ed;
+  --hero-border: #c6b4ff35;
+  --hero-shadow: 0 20px 55px #05051055;
+  --preview-panel: #1b1b30f5;
+  --preview-soft: #c6b4ff12;
+  --preview-border: #b9a6f53d;
+  --preview-accent: #c6b4ff;
+  --preview-on-accent: #211938;
+  --preview-secondary: #96dfcc;
+  --preview-muted: #b9b5ce;
+  --preview-surface: #1d1c33;
+  --preview-surface-alt: #24213c;
+  --preview-feature: linear-gradient(135deg, #3a2b64, #241e40);
+  --preview-section: linear-gradient(135deg, #30234255, #152b352e);
+  --preview-glow: #8d6cdb25;
+  --preview-radius: 24px;
+  --preview-danger: #ffb3b3;
+}
+html[data-portfolio-theme="blueprint"] {
+  --theme-font-body: "Segoe UI", Arial, sans-serif;
+  --theme-font-heading: Bahnschrift, "Arial Narrow", "Segoe UI", sans-serif;
+  --theme-font-label: Consolas, "Courier New", monospace;
+  color-scheme: dark;
+  --hero-bg: #123d74;
+  --hero-ink: #f2f8ff;
+  --hero-emerald: #e3f4ff;
+  --hero-emerald-dark: #ffffff;
+  --hero-muted: #b7d2ed;
+  --hero-grid: #b6dfff16;
+  --hero-card: #202626f5;
+  --hero-border: #b8e2ff60;
+  --hero-shadow: 5px 5px 0 #061e3d40;
+  --preview-panel: #0e3260f5;
+  --preview-soft: #e9eadc0d;
+  --preview-border: #b8e2ff60;
+  --preview-accent: #e9edbb;
+  --preview-on-accent: #202722;
+  --preview-secondary: #a9e4c2;
+  --preview-muted: #b7d2ed;
+  --preview-surface: #252c2b;
+  --preview-surface-alt: #35453e;
+  --preview-feature: linear-gradient(135deg, #34463c, #202b26);
+  --preview-section: #082c5026;
+  --preview-glow: #b8e2ff10;
+  --preview-radius: 6px;
+  --preview-danger: #ffc6b3;
+}
+html[data-portfolio-theme] body {
+  background: var(--hero-bg);
+}
+
+/* Typography follows the selected design system throughout the page. */
+html[data-portfolio-theme] body [data-portfolio-page] :is(h1, h2, h3, h4) {
+  font-family: var(--theme-font-heading);
+  letter-spacing: -.035em;
+  line-height: 1.08;
+}
+html[data-portfolio-theme] body [data-portfolio-page] :is(h2, h3, h4) em {
+  font-family: inherit;
+  font-style: normal;
+}
+html[data-portfolio-theme="blueprint"] body [data-portfolio-page] h2 {
+  font-weight: 500;
+  letter-spacing: -.025em;
+}
+html[data-portfolio-theme="space"] body [data-portfolio-page] h2 {
+  font-weight: 800;
+}
+
+/* Temporary Blueprint material studies. Solid colors remain available for comparison. */
+html[data-portfolio-theme="blueprint"][data-blueprint-finish]:not([data-blueprint-finish="color"]) {
+  --preview-accent: #ffd28b;
+  --preview-on-accent: #142737;
+  --preview-secondary: #9fe8ef;
+  --hero-card: #102637e6;
+  --preview-surface: #142b3ae0;
+  --preview-surface-alt: #213d4be0;
+  --preview-feature: linear-gradient(135deg, #24404ce6, #112737ed);
+}
+html[data-portfolio-theme="blueprint"][data-blueprint-finish]:not([data-blueprint-finish="color"]) [data-blueprint-card] {
+  --card-accent: var(--light-card-accent, #ffd28b);
+  --lab-ink: #f1f7fa;
+  --lab-muted: #c1d3df;
+  --lab-accent: var(--card-accent);
+  --lab-line: #d4ecff38;
+  --lab-icon-bg: #d4ecff0d;
+  --lab-button-ink: #142737;
+  --lab-hover: #e5f5ff;
+  --hero-ink: #f1f7fa;
+  --startup-ink: #f1f7fa;
+  --startup-ink-dark: #f1f7fa;
+  --startup-muted: #c1d3df;
+  --startup-lime: var(--card-accent);
+  --startup-border: #d4ecff30;
+  --startup-green-soft: #e3f3ff10;
+  --preview-accent: var(--card-accent);
+  --preview-on-accent: #152e40;
+  --preview-secondary: #a5e8ef;
+  --preview-muted: #c1d3df;
+  --preview-border: #d4ecff40;
+  --preview-surface: transparent;
+  --preview-soft: #e1f3ff0a;
+  --preview-panel: #132b3bf2;
+  --projects-black: #f1f7fa;
+  --projects-green: var(--card-accent);
+  --projects-purple: var(--card-accent);
+  --projects-muted: #c1d3df;
+  --projects-card: transparent;
+  position: relative;
+  color: #f1f7fa;
+  background: linear-gradient(120deg, #c9e9ff08, transparent 48%), #22282ed9;
+  border: 1px solid #d4ecff73;
+  border-radius: 5px 8px 4px 6px;
+  box-shadow: 5px 7px 0 #061d3430, inset 0 1px #ffffff14;
+}
+html[data-portfolio-theme="blueprint"][data-blueprint-finish]:not([data-blueprint-finish="color"]) [data-blueprint-card]:nth-child(even) {
+  --card-accent: var(--light-card-accent-alt, #a5e8ef);
+}
+html[data-portfolio-theme="blueprint"][data-blueprint-finish]:not([data-blueprint-finish="color"]) [data-blueprint-card]::after {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  z-index: 2;
+  pointer-events: none;
+  width: auto;
+  height: auto;
+  border: 0;
+  opacity: .6;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 600' preserveAspectRatio='none'%3E%3Cpath d='M4 12L3 3 112 5 274 2 396 4 394 198 398 403 396 596 211 598 4 595 2 390 5 190 4 12' fill='none' stroke='white' stroke-width='.8' vector-effect='non-scaling-stroke'/%3E%3Cpath d='M7 17L7 8 116 9M384 590L390 591 391 531' fill='none' stroke='white' stroke-width='.6' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+}
+html[data-portfolio-theme="blueprint"][data-blueprint-finish]:not([data-blueprint-finish="color"]) [data-blueprint-artwork] {
+  background: #dceef414;
+  border-color: #d4ecff38;
+}
+html[data-portfolio-theme="blueprint"][data-blueprint-finish]:not([data-blueprint-finish="color"]) [data-blueprint-preview] {
+  --lab-accent: var(--card-preview-accent, var(--card-accent));
+  background: #0e1c24e8;
+}
+html[data-portfolio-theme="blueprint"][data-blueprint-finish="frost"]:not([data-blueprint-finish="color"]) [data-blueprint-card] {
+  background: linear-gradient(135deg, #ffffff1f, #d5eeff09), #12334dba;
+  border-color: #e7f6ff8c;
+  backdrop-filter: blur(10px);
+  box-shadow: inset 0 1px 0 #ffffff30, 0 12px 24px #061b3326;
+}
+html[data-portfolio-theme="blueprint"][data-blueprint-finish="frost"]:not([data-blueprint-finish="color"]) [data-blueprint-card]::after {
+  inset: 6px;
+  opacity: .4;
+  border: 1px solid #eff9ff80;
+  border-radius: 3px 6px 4px 7px;
+}
+html[data-portfolio-theme="blueprint"][data-blueprint-finish="marker"]:not([data-blueprint-finish="color"]) [data-blueprint-card] {
+  background: repeating-linear-gradient(168deg, #ffffff03 0 1px, transparent 1px 7px), #182329ed;
+  border: 2px solid #f4f8fca6;
+  border-radius: 6px 3px 8px 4px;
+  box-shadow: 6px 7px 0 #071d3440;
+}
+html[data-portfolio-theme="blueprint"][data-blueprint-finish="marker"]:not([data-blueprint-finish="color"]) [data-blueprint-card]::after {
+  opacity: .85;
+  inset: 2px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 600' preserveAspectRatio='none'%3E%3Cg fill='none' stroke='white' stroke-linecap='round' vector-effect='non-scaling-stroke'%3E%3Cpath d='M2 51L5 4 92 3M308 4L395 6 397 93M397 507L395 594 313 597M92 597L4 594 3 541' stroke-width='2.2' vector-effect='non-scaling-stroke'/%3E%3Cpath d='M12 17L42 11M11 23L67 11M338 588L382 579M354 589L386 584' stroke-width='1' opacity='.45' vector-effect='non-scaling-stroke'/%3E%3C/g%3E%3C/svg%3E");
+}
+@media (max-width: 760px) {
+  html[data-portfolio-theme="blueprint"][data-blueprint-finish="frost"]:not([data-blueprint-finish="color"]) [data-blueprint-card] {
+    backdrop-filter: none;
+    background-color: #15374ee6;
+  }
+}
+/* Light material options retain dark ink while the page remains Blueprint. */
+html[data-portfolio-theme="blueprint"][data-blueprint-finish^="light-"] {
+  --light-card-accent: #8b4b20;
+  --light-card-accent-alt: #225b78;
+  --card-preview-accent: #bde5ee;
+}
+html[data-portfolio-theme="blueprint"][data-blueprint-finish^="light-"]:not([data-blueprint-finish="color"]) [data-blueprint-card] {
+  --lab-ink: #20394a;
+  --lab-muted: #4b6171;
+  --lab-line: #244e6829;
+  --lab-icon-bg: #ffffff60;
+  --lab-button-ink: #ffffff;
+  --lab-hover: #20394a;
+  --hero-ink: #20394a;
+  --startup-ink: #20394a;
+  --startup-ink-dark: #20394a;
+  --startup-muted: #4b6171;
+  --startup-border: #244e6829;
+  --startup-green-soft: #ffffff60;
+  --preview-muted: #4b6171;
+  --preview-border: #244e6838;
+  --preview-panel: #f6f3eafa;
+  --preview-on-accent: #ffffff;
+  --preview-soft: #ffffff60;
+  --projects-black: #20394a;
+  --projects-muted: #4b6171;
+  color: #20394a;
+  background: linear-gradient(135deg, #ffffff38, transparent 70%), #eee9dbf2;
+  border: 1px solid #ffffffe6;
+  box-shadow: 5px 7px 0 #071e3a26, inset 0 1px #ffffffa0;
+}
+html[data-portfolio-theme="blueprint"][data-blueprint-finish^="light-"]:not([data-blueprint-finish="color"]) [data-blueprint-card]::after {
+  opacity: .95;
+}
+html[data-portfolio-theme="blueprint"][data-blueprint-finish^="light-"]:not([data-blueprint-finish="color"]) [data-blueprint-artwork] {
+  background: #d1e0e366;
+}
+html[data-portfolio-theme="blueprint"][data-blueprint-finish="light-ice"] {
+  --light-card-accent: #176276;
+  --light-card-accent-alt: #325b87;
+}
+html[data-portfolio-theme="blueprint"][data-blueprint-finish="light-ice"]:not([data-blueprint-finish="color"]) [data-blueprint-card] {
+  background: linear-gradient(140deg, #ffffff70, #ffffff14), #d9edf6e8;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 12px 28px #061e3a26, inset 0 1px #ffffffc0;
+}
+html[data-portfolio-theme="blueprint"][data-blueprint-finish="light-ivory"] {
+  --light-card-accent: #34537b;
+  --light-card-accent-alt: #70512b;
+}
+html[data-portfolio-theme="blueprint"][data-blueprint-finish="light-ivory"]:not([data-blueprint-finish="color"]) [data-blueprint-card] {
+  background: repeating-linear-gradient(168deg, #ffffff26 0 1px, transparent 1px 7px), #f3e6cdf5;
+  border: 2px solid white;
+  border-radius: 6px 3px 8px 4px;
+}
+html[data-portfolio-theme="blueprint"][data-blueprint-finish="light-ivory"]:not([data-blueprint-finish="color"]) [data-blueprint-card]::after {
+  border: 2px solid #ffffffbf;
+  border-radius: 3px 7px 4px 6px;
+  inset: 5px;
+}
+@media (max-width: 760px) {
+  html[data-portfolio-theme="blueprint"][data-blueprint-finish="light-ice"]:not([data-blueprint-finish="color"]) [data-blueprint-card] {
+    backdrop-filter: none;
+    background-color: #e2f0f8f5;
+  }
+}
+/* Neutral white films: their tint comes from the blueprint showing beneath. */
+html[data-portfolio-theme="blueprint"][data-blueprint-finish^="light-white-"] {
+  --light-card-accent: #1d5279;
+  --light-card-accent-alt: #255e6d;
+  --card-preview-accent: #c7ecf3;
+}
+html[data-portfolio-theme="blueprint"][data-blueprint-finish^="light-white-"]:not([data-blueprint-finish="color"]) [data-blueprint-card] {
+  --lab-ink: #18334b;
+  --lab-muted: #354f64;
+  --hero-ink: #18334b;
+  --startup-ink: #18334b;
+  --startup-ink-dark: #18334b;
+  --startup-muted: #354f64;
+  --preview-muted: #354f64;
+  --preview-panel: #fffffff0;
+  --preview-secondary: #235d7d;
+  --projects-black: #18334b;
+  --projects-muted: #354f64;
+  color: #18334b;
+  background: #ffffffb8;
+  border-color: #fffffff2;
+  box-shadow: inset 0 1px 0 #fff, 0 12px 30px #06244426;
+}
+html[data-portfolio-theme="blueprint"][data-blueprint-finish="light-white-clear"]:not([data-blueprint-finish="color"]) [data-blueprint-card] {
+  --lab-muted: #263d50;
+  --preview-muted: #263d50;
+  --startup-muted: #263d50;
+  --projects-muted: #263d50;
+  background: linear-gradient(130deg, #ffffff20, #ffffff05), #ffffff8a;
+  backdrop-filter: none;
+}
+html[data-portfolio-theme="blueprint"][data-blueprint-finish="light-white-milk"]:not([data-blueprint-finish="color"]) [data-blueprint-card] {
+  background: linear-gradient(135deg, #ffffff26, #ffffff08), #ffffffc2;
+  backdrop-filter: blur(8px);
+}
+html[data-portfolio-theme="blueprint"][data-blueprint-finish="light-white-vellum"]:not([data-blueprint-finish="color"]) [data-blueprint-card] {
+  background: repeating-linear-gradient(168deg, #ffffff40 0 1px, transparent 1px 8px), #ffffffe0;
+  border-radius: 4px 7px 5px 3px;
+}
+html[data-portfolio-theme="blueprint"][data-blueprint-finish="light-white-vellum"]:not([data-blueprint-finish="color"]) [data-blueprint-card]::after {
+  border: 1px solid #ffffffd9;
+  inset: 6px;
+}
+@media (max-width: 760px) {
+  html[data-portfolio-theme="blueprint"][data-blueprint-finish="light-white-milk"]:not([data-blueprint-finish="color"]) [data-blueprint-card] {
+    backdrop-filter: none;
+  }
+}
+html[data-portfolio-theme] ::selection {
+  background: var(--preview-accent);
+  color: var(--preview-on-accent);
+}
+html[data-portfolio-theme] :focus-visible {
+  outline-color: var(--preview-secondary);
+}
+
+/* Stop CSS motion before client hydration as well as afterwards. */
+@media (prefers-reduced-motion: reduce) {
+  [data-portfolio-page] *,
+  [data-portfolio-page] *::before,
+  [data-portfolio-page] *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html.motion-ready
+    [data-section-reveal]
+    [data-reveal-item]:not([data-reveal-complete="true"]) {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}

@@ -1,7 +1,7 @@
 "use client";
 
 import {
-  ArrowDownToLine,
+  FileText,
   ArrowUpRight,
   Github,
   Instagram,
@@ -13,9 +13,9 @@ import {
 import { useState } from "react";
 
 import styles from "./contact.module.css";
+import { RESUME_URL } from "../lib/portfolioLinks";
 
 const CONTACT_EMAIL = "vermachandan2912003@gmail.com";
-const RESUME_PATH = "/ChandanVerma-Resume.pdf";
 
 const SOCIAL_LINKS = [
   {
@@ -155,16 +155,17 @@ const ContactSection = () => {
               </a>
 
               <a
-                href={RESUME_PATH}
-                download="Chandan-Verma-Resume.pdf"
+                href={RESUME_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className={styles.directLink}
               >
                 <span className={styles.actionIcon}>
-                  <ArrowDownToLine aria-hidden="true" />
+                  <FileText aria-hidden="true" />
                 </span>
                 <span>
                   <small>THE FORMAL VERSION</small>
-                  <strong>Download my résumé</strong>
+                  <strong>View my résumé</strong>
                 </span>
                 <ArrowUpRight className={styles.linkArrow} aria-hidden="true" />
               </a>

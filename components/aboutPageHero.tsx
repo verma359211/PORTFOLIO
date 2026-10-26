@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { RESUME_URL } from "../lib/portfolioLinks";
 
 const AboutPageHero = () => {
 	return (
@@ -23,12 +24,12 @@ const AboutPageHero = () => {
 					</p>
 					<button className="bg-[#D3E97A] text-black px-6 py-3 rounded-full flex items-center space-x-2 hover:bg-[#bde676] transition-colors">
 						<a
-							href="/ChandanVerma-Resume-2024.pdf"
+							href={RESUME_URL}
 							target="_blank"
 							className="flex items-center space-x-2"
-							download
+							rel="noopener noreferrer"
 						>
-							<span>DOWNLOAD RESUME</span>
+							<span>VIEW RESUME</span>
 							<span>•</span>
 						</a>
 					</button>

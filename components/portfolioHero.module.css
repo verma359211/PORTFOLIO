@@ -5,14 +5,76 @@
   overflow: hidden;
   background: transparent;
   color: var(--hero-ink);
-  font-family:
-    Inter,
+  font-family: var(--theme-font-body, Inter,
     ui-sans-serif,
     system-ui,
     -apple-system,
     BlinkMacSystemFont,
     "Segoe UI",
-    sans-serif;
+    sans-serif);
+}
+
+/* Preview overrides leave the original theme rules intact. */
+:global(html[data-portfolio-theme]) .createWord {
+  color: var(--hero-ink);
+}
+:global(html[data-portfolio-theme]) .introCopy,
+:global(html[data-portfolio-theme]) .projectCategory {
+  color: var(--preview-muted);
+}
+:global(html[data-portfolio-theme]) .name {
+  color: var(--hero-ink);
+  text-shadow: none;
+}
+:global(html[data-portfolio-theme]) .menuButton {
+  background: var(--preview-accent);
+  color: var(--preview-on-accent);
+}
+:global(html[data-portfolio-theme]) .menuPanel {
+  background: var(--preview-surface);
+}
+:global(html[data-portfolio-theme]) .menuPanelLink:hover {
+  background: var(--preview-soft);
+}
+:global(html[data-portfolio-theme]) .contactCard {
+  background: var(--preview-feature);
+  border: 1px solid var(--preview-border);
+  color: var(--hero-ink);
+  box-shadow: var(--hero-shadow);
+}
+:global(html[data-portfolio-theme]) .contactCard:hover {
+  background: var(--preview-surface-alt);
+  box-shadow: var(--hero-shadow);
+}
+:global(html[data-portfolio-theme]) .motionAccents {
+  display: none;
+}
+:global(html[data-portfolio-theme]) .artworkHalo {
+  background: radial-gradient(circle, var(--preview-glow), transparent 66%);
+}
+:global(html[data-portfolio-theme]) .crosshair::before,
+:global(html[data-portfolio-theme]) .crosshair::after {
+  background: var(--preview-accent);
+}
+:global(html[data-portfolio-theme]) .artworkSpark {
+  background: var(--preview-secondary);
+  box-shadow: 0 0 20px var(--preview-glow);
+}
+:global(html[data-portfolio-theme="blueprint"]) .projectCard,
+:global(html[data-portfolio-theme="blueprint"]) .contactCard {
+  border-radius: 6px;
+}
+:global(html[data-portfolio-theme="blueprint"]) .createWord {
+  color: transparent;
+  -webkit-text-stroke: 1px #d6edff;
+}
+:global(html[data-portfolio-theme="blueprint"]) .artworkImage {
+  filter: grayscale(1) contrast(1.08);
+}
+:global(html[data-portfolio-theme="blueprint"]) .role,
+:global(html[data-portfolio-theme="blueprint"]) .copyright {
+  font-family: var(--theme-font-label, "Courier New", monospace);
+  letter-spacing: 0;
 }
 
 .gridBackdrop {
@@ -566,13 +628,13 @@
 .projectImageWrap {
   position: relative;
   overflow: hidden;
-  aspect-ratio: 1600 / 1291;
+  aspect-ratio: 16 / 10;
   border-radius: 0.82rem;
   background: var(--hero-emerald-dark);
 }
 
 .projectImage {
-  object-fit: cover;
+  object-fit: contain;
   transition: transform var(--smooth-hover-duration) var(--smooth-hover-ease);
 }
 
@@ -586,6 +648,7 @@
   gap: 0.7rem;
   align-items: center;
   padding-top: clamp(0.85rem, 1.2vw, 1.12rem);
+  text-align: left;
 }
 
 .projectDot {
@@ -1271,3 +1334,49 @@
     transform: translateY(0) scale(1);
   }
 }
+
+/* Component treatments, rather than background-only theme changes. */
+:global(html[data-portfolio-theme="blueprint"]) .projectCard {
+  background: linear-gradient(135deg, #ffffff22, #ffffff08), #ffffff8a;
+  border: 1px solid #eaf6ff;
+  box-shadow: 5px 5px 0 #061e3d40;
+  --hero-ink: #18334b;
+  --hero-emerald: #1d5279;
+  --preview-muted: #263d50;
+}
+:global(html[data-portfolio-theme="blueprint"]) .contactCard {
+  background: #0c2a49cc;
+  border: 1px solid #d6edff99;
+  outline: 1px dashed #d6edff44;
+  outline-offset: -7px;
+}
+:global(html[data-portfolio-theme="blueprint"]) .header { border-bottom: 1px dashed #d6edff66; }
+:global(html[data-portfolio-theme="blueprint"]) .navLink,
+:global(html[data-portfolio-theme="blueprint"]) .contactAction,
+:global(html[data-portfolio-theme="blueprint"]) .projectCardHeader {
+  font-family: var(--theme-font-label);
+  letter-spacing: .06em;
+}
+:global(html[data-portfolio-theme="blueprint"]) .menuButton,
+:global(html[data-portfolio-theme="blueprint"]) .menuPanel { border-radius: 4px; border: 1px solid #d6edff80; }
+:global(html[data-portfolio-theme="blueprint"]) .artworkReveal {
+  border: 1px dashed #d6edff66;
+  background: linear-gradient(#d6edff0b 1px, transparent 1px), linear-gradient(90deg, #d6edff0b 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+:global(html[data-portfolio-theme="space"]) .projectCard {
+  background: linear-gradient(135deg, #302548, #191c35);
+  border: 1px solid #c6b4ff70;
+  border-radius: 24px;
+  box-shadow: 0 8px 0 #08091680, inset 0 1px #ffffff24;
+}
+:global(html[data-portfolio-theme="space"]) .contactCard {
+  border-radius: 32px 32px 32px 10px;
+  background: radial-gradient(circle at 100% 0, #eea8d52b, transparent 70%), #32234e;
+  border: 1px solid #c6b4ff80;
+}
+:global(html[data-portfolio-theme="space"]) .createWord { font-family: var(--theme-font-heading); letter-spacing: -.08em; }
+:global(html[data-portfolio-theme="space"]) .artworkImage { filter: drop-shadow(0 0 28px #c6b4ff38); }
+:global(html[data-portfolio-theme="space"]) .projectImageWrap { border-radius: 14px; }
+:global(html[data-portfolio-theme="space"]) .menuPanel { border-radius: 22px; border: 1px solid #c6b4ff60; }
+

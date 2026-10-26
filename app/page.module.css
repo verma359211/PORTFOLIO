@@ -94,6 +94,30 @@
   position: relative;
 }
 
+.pageSurface > [data-theme-backdrop] {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+:global(html[data-portfolio-theme]) .pageSurface {
+  background: radial-gradient(
+      ellipse at 50% 0,
+      var(--preview-glow),
+      transparent 1100px
+    ),
+    var(--hero-bg);
+}
+
+.pageSurface {
+  padding-bottom: 85px;
+}
+
+:global(html[data-portfolio-theme]) .pageSurface::before,
+:global(html[data-portfolio-theme]) .pageSurface::after {
+  display: none;
+}
+
 .logoBand {
   overflow: hidden;
   padding: clamp(2.5rem, 4vw, 4rem) var(--page-gutter);
@@ -147,3 +171,10 @@
     height: 58vh;
   }
 }
+
+
+:global(html[data-portfolio-theme]) .logoBand { font-family: var(--theme-font-label); }
+:global(html[data-portfolio-theme="blueprint"]) .logoBand { border-block: 1px dashed #d6edff55; background: #0a294844; }
+:global(html[data-portfolio-theme="blueprint"]) .logoBand svg { padding: 4px; width: 38px; height: 38px; border: 1px solid #d6edff66; margin-bottom: 8px; }
+:global(html[data-portfolio-theme="space"]) .logoBand { background: linear-gradient(90deg, transparent, #c6b4ff0d, transparent); border-block: 1px solid #c6b4ff26; }
+:global(html[data-portfolio-theme="space"]) .logoBand svg { color: #96dfcc; filter: drop-shadow(0 0 8px #96dfcc22); margin-bottom: 8px; }

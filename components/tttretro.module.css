@@ -2,7 +2,31 @@
   width: min(100%, 27rem);
   margin: 0 auto;
   color: #fffaf4;
-  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--theme-font-body, Inter, ui-sans-serif, system-ui, sans-serif);
+}
+
+:global(html[data-portfolio-theme]) .gameHeader p,
+:global(html[data-portfolio-theme]) .markO {
+  color: var(--preview-secondary);
+}
+:global(html[data-portfolio-theme]) .square:hover:not(:disabled),
+:global(html[data-portfolio-theme]) .square:focus-visible {
+  background: var(--preview-soft);
+  border-color: var(--preview-secondary);
+}
+:global(html[data-portfolio-theme]) .resultOverlay {
+  background: var(--preview-panel);
+}
+:global(html[data-portfolio-theme]) .resultOverlay button {
+  background: var(--preview-accent);
+  color: var(--preview-on-accent);
+}
+:global(html[data-portfolio-theme]) .thinkingDots i {
+  background: var(--preview-secondary);
+}
+:global(html[data-portfolio-theme="blueprint"]) .square,
+:global(html[data-portfolio-theme="blueprint"]) .boardWrap {
+  border-radius: 4px;
 }
 
 .gameHeader {
@@ -25,7 +49,7 @@
 .gameHeader h3 {
   margin: 0;
   color: #fffaf4;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--theme-font-body, Arial, Helvetica, sans-serif);
   font-size: clamp(1.5rem, 2.6vw, 2.35rem);
   font-weight: 850;
   letter-spacing: -0.045em;
@@ -94,7 +118,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--theme-font-body, Arial, Helvetica, sans-serif);
   font-size: clamp(2.5rem, 5.5vw, 4.6rem);
   font-weight: 900;
   line-height: 1;
@@ -127,7 +151,7 @@
 .resultOverlay p {
   margin: 0;
   color: #fffaf4;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--theme-font-body, Arial, Helvetica, sans-serif);
   font-size: clamp(1.55rem, 3vw, 2.5rem);
   font-weight: 850;
   letter-spacing: -0.04em;
@@ -236,3 +260,18 @@
     animation: none;
   }
 }
+
+
+:global(html[data-portfolio-theme="blueprint"]) .gameHeader h3 { font-family: var(--theme-font-heading); font-weight: 500; }
+:global(html[data-portfolio-theme="blueprint"]) .gameHeader p,
+:global(html[data-portfolio-theme="blueprint"]) .scoreTag { font-family: var(--theme-font-label); }
+:global(html[data-portfolio-theme="blueprint"]) .boardWrap { border-style: dashed; border-color: #d6edff80; background: transparent; }
+:global(html[data-portfolio-theme="blueprint"]) .square { border: 1px solid #d6edff70; background: #e7f5ff0d; }
+:global(html[data-portfolio-theme="blueprint"]) .markX,
+:global(html[data-portfolio-theme="blueprint"]) .markO { font-family: var(--theme-font-label); font-weight: 400; text-shadow: none; }
+:global(html[data-portfolio-theme="blueprint"]) .scoreTag,
+:global(html[data-portfolio-theme="blueprint"]) .resultOverlay button { border-radius: 2px; }
+:global(html[data-portfolio-theme="space"]) .gameHeader h3 { font-family: var(--theme-font-heading); }
+:global(html[data-portfolio-theme="space"]) .square { border-radius: 22%; border-color: #c6b4ff40; background: linear-gradient(145deg, #c6b4ff18, #c6b4ff08); box-shadow: inset 0 1px #ffffff15, 0 3px 0 #08091655; }
+:global(html[data-portfolio-theme="space"]) .markX { color: #ffc4aa; text-shadow: 0 0 18px #ffad8840; }
+:global(html[data-portfolio-theme="space"]) .markO { color: #96dfcc; text-shadow: 0 0 18px #96dfcc40; }
