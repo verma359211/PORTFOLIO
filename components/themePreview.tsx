@@ -3,6 +3,7 @@
 import { useEffect, useState, type ReactNode } from "react";
 import { Grid2X2, Pause, Play, Rocket, Sun } from "lucide-react";
 import styles from "./themePreview.module.css";
+import { PortfolioThemeContext } from "./portfolioThemeContext";
 
 type PreviewTheme = "light" | "space" | "blueprint";
 const themes = [
@@ -35,7 +36,7 @@ export default function ThemePreview({
   }, [theme]);
 
   return (
-    <>
+    <PortfolioThemeContext.Provider value={theme}>
       <aside className={styles.switcher} aria-label="Theme preview controls">
         <span className={styles.label}>THEME PREVIEW</span>
         <div
@@ -84,7 +85,7 @@ export default function ThemePreview({
         {theme !== "light" && <ThemeScenery theme={theme} paused={paused} />}
         {children}
       </main>
-    </>
+    </PortfolioThemeContext.Provider>
   );
 }
 

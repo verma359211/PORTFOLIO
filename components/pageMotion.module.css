@@ -264,3 +264,132 @@
     transform: translate(-50%, -50%) scale(1.18);
   }
 }
+
+.blueprintGlyph,
+.spaceGlyph {
+  display: none;
+  width: 100%;
+  height: 100%;
+}
+
+.loader[data-loader-theme="blueprint"] {
+  color: #eaf7ff;
+  background: radial-gradient(circle at var(--loader-x) var(--loader-y), #285887 0%, transparent 65%), #153d67;
+  font-family: Consolas, "Courier New", monospace;
+}
+
+.loader[data-loader-theme="blueprint"]::before {
+  opacity: .65;
+  background-image: linear-gradient(#dceeff18 1px, transparent 1px), linear-gradient(90deg, #dceeff18 1px, transparent 1px);
+  background-size: 24px 24px;
+  mask-image: none;
+}
+
+.loader[data-loader-theme="blueprint"]::after {
+  inset: 22px;
+  border: 1px solid #eaf7ff45;
+  background: none;
+}
+
+.loader[data-loader-theme="blueprint"] .loaderPanel {
+  border: 1px solid #eaf7ff80;
+  border-radius: 3px;
+  outline: 1px dashed #eaf7ff38;
+  outline-offset: 9px;
+  background: #092a48a8;
+  box-shadow: 9px 9px 0 #071c3240;
+  backdrop-filter: none;
+}
+
+.loader[data-loader-theme="blueprint"] .loaderGlyph,
+.loader[data-loader-theme="space"] .loaderGlyph {
+  display: block;
+  width: clamp(10rem, 30vw, 13rem);
+  aspect-ratio: 1.25;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+}
+
+.loader[data-loader-theme="blueprint"] .loaderGlyph::before,
+.loader[data-loader-theme="blueprint"] .loaderGlyph::after,
+.loader[data-loader-theme="space"] .loaderGlyph::before,
+.loader[data-loader-theme="space"] .loaderGlyph::after,
+.loader[data-loader-theme="blueprint"] .loaderTile,
+.loader[data-loader-theme="blueprint"] .loaderSignal,
+.loader[data-loader-theme="space"] .loaderTile,
+.loader[data-loader-theme="space"] .loaderSignal {
+  display: none;
+}
+
+.loader[data-loader-theme="blueprint"] .blueprintGlyph,
+.loader[data-loader-theme="space"] .spaceGlyph { display: block; }
+
+.draftLines {
+  stroke-dasharray: 700;
+  animation: draftIn 900ms ease-out both;
+}
+
+.draftPoint { animation: draftPulse 900ms ease-in-out infinite alternate; }
+
+.loader[data-loader-theme="blueprint"] .loaderTrack { background: #eaf7ff26; }
+.loader[data-loader-theme="blueprint"] .loaderTrack span { background: #ffd386; }
+.loader[data-loader-theme="blueprint"] .loaderHints span {
+  border: 1px solid #eaf7ff45;
+  border-radius: 2px;
+  color: #eaf7ff;
+  background: #eaf7ff08;
+  font-family: inherit;
+}
+.loader[data-loader-theme="blueprint"] p { font-family: inherit; color: #ffd386; }
+
+.loader[data-loader-theme="space"] {
+  color: #f7f0ff;
+  background: radial-gradient(ellipse at var(--loader-x) var(--loader-y), #352c5b 0%, #151329 70%);
+}
+.loader[data-loader-theme="space"]::before {
+  opacity: .7;
+  background-image: radial-gradient(circle, #f5e6ff 1px, transparent 1.6px), radial-gradient(circle, #b6dcd9 1px, transparent 1.5px);
+  background-size: 83px 79px, 137px 113px;
+  background-position: 0 0, 37px 41px;
+  mask-image: none;
+}
+.loader[data-loader-theme="space"]::after { background: none; }
+.loader[data-loader-theme="space"] .loaderPanel {
+  border: 1px solid #d1b9ff45;
+  border-radius: 32px;
+  background: #26213ed9;
+  box-shadow: 0 10px 0 #0c0b1b80, 0 0 90px #ad8cef18;
+  backdrop-filter: none;
+}
+.loaderRocket { transform-origin: center; animation: rocketHover 1200ms ease-in-out infinite; }
+.rocketFlame { transform-origin: 100px 110px; animation: flameFlicker 300ms ease-in-out infinite alternate; }
+.loaderPlanet { transform-origin: 160px 109px; animation: planetBob 1800ms ease-in-out infinite; }
+.loader[data-loader-theme="space"] .loaderTrack { height: 4px; border-radius: 10px; background: #f1dfff1a; }
+.loader[data-loader-theme="space"] .loaderTrack span { border-radius: inherit; background: linear-gradient(90deg, #b9a0ef, #91deda); }
+.loader[data-loader-theme="space"] .loaderHints span {
+  border-color: #d1b9ff35;
+  background: #b9a0ef15;
+  color: #ded0f7;
+  font-family: "Trebuchet MS", sans-serif;
+}
+.loader[data-loader-theme="space"] p { color: #91deda; font-family: "Trebuchet MS", sans-serif; }
+
+@keyframes draftIn { from { stroke-dashoffset: 700; } to { stroke-dashoffset: 0; } }
+@keyframes draftPulse { from { opacity: .45; } to { opacity: 1; } }
+@keyframes rocketHover { 0%, 100% { transform: translateY(3px) rotate(-5deg); } 50% { transform: translateY(-5px) rotate(3deg); } }
+@keyframes flameFlicker { from { transform: scaleY(.7); } to { transform: scaleY(1); } }
+@keyframes planetBob { 0%, 100% { transform: translateY(2px); } 50% { transform: translateY(-3px); } }
+
+@media (max-width: 420px) {
+  .loaderPanel { max-width: calc(100vw - 48px); padding: 1.8rem 1.35rem; }
+  .loaderHints { gap: .3rem; }
+  .loaderHints span { padding: .35rem .45rem; }
+  .loader p { font-size: .58rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .draftLines, .draftPoint, .loaderRocket, .rocketFlame, .loaderPlanet { animation: none; }
+}

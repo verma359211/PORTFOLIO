@@ -5,6 +5,7 @@ import { type PointerEvent, useEffect, useState } from "react";
 
 import styles from "./pageMotion.module.css";
 import { useHydratedReducedMotion } from "./useHydratedReducedMotion";
+import { usePortfolioTheme } from "./portfolioThemeContext";
 
 const easeInOutSine = (progress: number) =>
   -(Math.cos(Math.PI * progress) - 1) / 2;
@@ -16,6 +17,13 @@ function PageMotion() {
   const [loading, setLoading] = useState(true);
   const [scrollProgress, setScrollProgress] = useState(0);
   const reducedMotion = useHydratedReducedMotion();
+  const theme = usePortfolioTheme();
+
+  useEffect(() => {
+    setLoading(true);
+    const timer = window.setTimeout(() => setLoading(false), reducedMotion ? 240 : loaderDuration);
+    return () => window.clearTimeout(timer);
+  }, [theme, reducedMotion]);
 
   useEffect(() => {
     const root = document.documentElement;
@@ -175,14 +183,11 @@ function PageMotion() {
 
     document.addEventListener("click", handleSectionNavClick, true);
 
-    const timer = window.setTimeout(() => setLoading(false), loaderDuration);
-
     return () => {
       root.classList.remove("motion-ready");
       observer.disconnect();
       window.removeEventListener("scroll", handleScroll);
       document.removeEventListener("click", handleSectionNavClick, true);
-      window.clearTimeout(timer);
       revealTimers.forEach((revealTimer) => window.clearTimeout(revealTimer));
       if (smoothScrollFrame) window.cancelAnimationFrame(smoothScrollFrame);
       if (frame) window.cancelAnimationFrame(frame);
@@ -209,7 +214,9 @@ function PageMotion() {
       <AnimatePresence>
         {loading && (
           <motion.div
+            key={theme}
             className={styles.loader}
+            data-loader-theme={theme}
             onPointerMove={handleLoaderPointerMove}
             initial={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -239,6 +246,17 @@ function PageMotion() {
                   className={`${styles.loaderTile} ${styles.loaderTileD}`}
                 />
                 <span className={styles.loaderSignal} />
+                <svg className={styles.blueprintGlyph} viewBox="0 0 200 160" fill="none" aria-hidden="true">
+                  <g stroke="currentColor" strokeWidth="1" opacity=".4"><path d="M10 20H190M10 140H190M30 5V155M170 5V155" strokeDasharray="3 4"/><path d="M36 12H164M36 8V16M164 8V16M182 30V130M178 30H186M178 130H186"/></g>
+                  <g className={styles.draftLines} stroke="currentColor" strokeWidth="2" strokeLinejoin="round"><path d="M100 28 156 60 100 92 44 60Z"/><path d="M44 60V116L100 148 156 116V60M100 92V148"/><path d="M72 44 128 76M72 132V76L128 44" strokeDasharray="4 4" opacity=".55"/></g>
+                  <circle className={styles.draftPoint} cx="100" cy="92" r="4" fill="#ffd386"/>
+                  <text x="100" y="9" textAnchor="middle" fill="currentColor" stroke="none" fontSize="7" fontFamily="monospace">FIG. 01 / IDEAS → SYSTEMS</text>
+                </svg>
+                <svg className={styles.spaceGlyph} viewBox="0 0 200 160" fill="none" aria-hidden="true">
+                  <g fill="#f9e8b8"><path d="m28 32 2 5 5 2-5 2-2 5-2-5-5-2 5-2Z"/><circle cx="163" cy="33" r="2"/><circle cx="35" cy="118" r="2"/></g>
+                  <g className={styles.loaderPlanet}><circle cx="160" cy="109" r="19" fill="#9c8bdb"/><ellipse cx="160" cy="109" rx="31" ry="8" stroke="#d5c4ff" strokeWidth="4" transform="rotate(-25 160 109)"/></g>
+                  <g className={styles.loaderRocket} stroke="#24203c" strokeWidth="3" strokeLinejoin="round"><path className={styles.rocketFlame} d="M83 110 100 146 116 110" fill="#ffd386"/><path d="M81 77 65 109 84 106M119 77 135 109 116 106" fill="#b9a0ef"/><path d="M100 20C77 42 77 73 83 111H117C123 73 123 42 100 20Z" fill="#fff4dd"/><path d="M100 20C91 29 86 39 83 50H117C114 39 109 29 100 20Z" fill="#ed9b9b"/><circle cx="100" cy="69" r="12" fill="#91deda"/><path d="M100 95V118" stroke="#b9a0ef" strokeWidth="6"/></g>
+                </svg>
               </motion.div>
               <div className={styles.loaderTrack}>
                 <motion.span
@@ -248,11 +266,9 @@ function PageMotion() {
                 />
               </div>
               <div className={styles.loaderHints}>
-                <span>Design</span>
-                <span>Build</span>
-                <span>Ship</span>
+                {(theme === "space" ? ["Imagine", "Build", "Launch"] : theme === "blueprint" ? ["01 / Sketch", "02 / Engineer", "03 / Build"] : ["Design", "Build", "Ship"]).map(hint => <span key={hint}>{hint}</span>)}
               </div>
-              <p>ASSEMBLING THE EXPERIENCE</p>
+              <p>{theme === "space" ? "GETTING READY FOR LIFTOFF" : theme === "blueprint" ? "DRAFTING THE EXPERIENCE" : "ASSEMBLING THE EXPERIENCE"}</p>
             </div>
           </motion.div>
         )}
