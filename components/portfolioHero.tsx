@@ -101,8 +101,8 @@ const PortfolioHeader = () => {
 
   return (
     <header className={styles.header} data-reveal-item data-reveal-from="top">
-      <Link href="/" className={styles.logo} aria-label="Chandan Verma home">
-        CV
+      <Link href="/" className={styles.logo} aria-label="an ongoing experiment — home">
+        <span className={styles.logoMark} aria-hidden="true" />
       </Link>
 
       <nav className={styles.nav} aria-label="Primary navigation">

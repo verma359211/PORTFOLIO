@@ -1,0 +1,13 @@
+{
+  "name": "an ongoing experiment",
+  "short_name": "ongoing experiment",
+  "description": "Chandan Verma's experiments in software, systems, and building real products.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#0b2238",
+  "theme_color": "#0b2238",
+  "icons": [
+    { "src": "/android-chrome-192x192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/android-chrome-512x512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ]
+}

@@ -167,8 +167,11 @@
 }
 
 .logo {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   width: max-content;
+  min-height: 44px;
   color: var(--hero-emerald);
   font-size: clamp(2rem, 2.8vw, 2.95rem);
   font-weight: 950;
@@ -179,6 +182,15 @@
   transition:
     color var(--smooth-hover-duration) var(--smooth-hover-ease),
     transform var(--smooth-hover-duration) var(--smooth-hover-ease);
+}
+
+.logoMark {
+  display: block;
+  width: clamp(4.5rem, 6vw, 5.5rem);
+  aspect-ratio: 112 / 72;
+  background: currentColor;
+  -webkit-mask: url("/brand/open-loop.svg") center / contain no-repeat;
+  mask: url("/brand/open-loop.svg") center / contain no-repeat;
 }
 
 .logo:hover {
