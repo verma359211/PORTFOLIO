@@ -11,7 +11,7 @@ const themes = [
   { value: "blueprint", label: "Blueprint", Icon: Grid2X2 },
 ] as const;
 
-/** Preview-only: a fresh visit always opens in the original Light design. */
+/** Fresh visits open in Blueprint; the other designs remain available to preview. */
 export default function ThemePreview({
   children,
   className,
@@ -19,7 +19,7 @@ export default function ThemePreview({
   children: ReactNode;
   className: string;
 }) {
-  const [theme, setTheme] = useState<PreviewTheme>("light");
+  const [theme, setTheme] = useState<PreviewTheme>("blueprint");
   const [paused, setPaused] = useState(false);
 
   useEffect(() => {

@@ -25,7 +25,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="text-white">
+    <html
+      lang="en"
+      className="text-white"
+      data-portfolio-theme="blueprint"
+      data-blueprint-finish="light-white-clear"
+      suppressHydrationWarning
+    >
       <head>
         <meta name="description" content="Portfolio of Chandan Verma" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
