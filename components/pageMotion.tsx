@@ -7,8 +7,7 @@ import styles from "./pageMotion.module.css";
 import { useHydratedReducedMotion } from "./useHydratedReducedMotion";
 import { usePortfolioTheme } from "./portfolioThemeContext";
 
-const easeInOutSine = (progress: number) =>
-  -(Math.cos(Math.PI * progress) - 1) / 2;
+const easeOutCubic = (progress: number) => 1 - (1 - progress) ** 3;
 
 const revealDirections = ["left", "bottom", "right", "top", "bottom", "left"];
 const loaderDuration = 1040;
@@ -131,8 +130,10 @@ function PageMotion() {
       const style = window.getComputedStyle(root);
       const scrollPaddingTop =
         Number.parseFloat(style.scrollPaddingTop || "0") || 0;
-      const targetTop =
-        target.getBoundingClientRect().top + window.scrollY - scrollPaddingTop;
+      const targetTop = Math.max(0, Math.min(
+        target.getBoundingClientRect().top + window.scrollY - scrollPaddingTop,
+        root.scrollHeight - window.innerHeight,
+      ));
       const startTop = window.scrollY;
       const distance = targetTop - startTop;
 
@@ -141,18 +142,17 @@ function PageMotion() {
       if (reducedMotion || Math.abs(distance) < 2) {
         window.scrollTo({ top: targetTop, behavior: "instant" });
       } else {
-        const duration = Math.min(
-          2600,
-          Math.max(1250, Math.abs(distance) * 0.68),
-        );
+        const duration = Math.min(600, Math.max(280, Math.sqrt(Math.abs(distance)) * 6));
         const startTime = performance.now();
 
         const animateScroll = (currentTime: number) => {
           const elapsed = currentTime - startTime;
           const progress = Math.min(elapsed / duration, 1);
-          const easedProgress = easeInOutSine(progress);
+          const easedProgress = easeOutCubic(progress);
 
-          window.scrollTo(0, startTop + distance * easedProgress);
+          // Each frame already supplies the easing. CSS smooth scrolling would
+          // restart a second animation every frame, creating a delayed glide.
+          window.scrollTo({ top: startTop + distance * easedProgress, behavior: "instant" });
 
           if (progress < 1) {
             smoothScrollFrame = window.requestAnimationFrame(animateScroll);
@@ -167,6 +167,7 @@ function PageMotion() {
     };
 
     const handleSectionNavClick = (event: MouseEvent) => {
+      if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
       const target = event.target as HTMLElement | null;
       const trigger = target?.closest<HTMLElement>(
         "[data-scroll-target], a[href^='#']",
@@ -183,11 +184,20 @@ function PageMotion() {
 
     document.addEventListener("click", handleSectionNavClick, true);
 
+    const cancelSmoothScroll = () => {
+      if (smoothScrollFrame) window.cancelAnimationFrame(smoothScrollFrame);
+      smoothScrollFrame = 0;
+    };
+    window.addEventListener("wheel", cancelSmoothScroll, { passive: true });
+    window.addEventListener("touchstart", cancelSmoothScroll, { passive: true });
+
     return () => {
       root.classList.remove("motion-ready");
       observer.disconnect();
       window.removeEventListener("scroll", handleScroll);
       document.removeEventListener("click", handleSectionNavClick, true);
+      window.removeEventListener("wheel", cancelSmoothScroll);
+      window.removeEventListener("touchstart", cancelSmoothScroll);
       revealTimers.forEach((revealTimer) => window.clearTimeout(revealTimer));
       if (smoothScrollFrame) window.cancelAnimationFrame(smoothScrollFrame);
       if (frame) window.cancelAnimationFrame(frame);
