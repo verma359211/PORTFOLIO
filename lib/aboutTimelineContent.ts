@@ -86,10 +86,8 @@ const startupMedia: AboutTimelineMedia[] = [
 ];
 
 const nowNextPhotos: AboutTimelineMedia[] = [
-  { src: `${ASSET_BASE}/now-next/bench-with-dog.jpeg`, fallbackSrc: `${ASSET_BASE}/now-next/bench-with-dog.jpeg`, alt: "A quiet outdoor moment sitting on a mint-green bench with a dog", width: 960, height: 1280, rotation: -2, fit: "contain" },
   { src: `${ASSET_BASE}/now-next/focused-workspace.jpeg`, fallbackSrc: `${ASSET_BASE}/now-next/focused-workspace.jpeg`, alt: "An evening workspace with a laptop, keyboard and focus timer", width: 720, height: 1280, rotation: 3, fit: "contain" },
-  { src: `${ASSET_BASE}/now-next/mountain-portrait.jpeg`, fallbackSrc: `${ASSET_BASE}/now-next/mountain-portrait.jpeg`, alt: "An outdoor portrait with snow-covered mountains in the distance", width: 960, height: 1280, rotation: -3, fit: "contain" },
-  { src: `${ASSET_BASE}/now-next/mountain-outlook.jpeg`, fallbackSrc: `${ASSET_BASE}/now-next/mountain-outlook.jpeg`, alt: "A portrait wearing a red scarf at a mountain viewpoint", width: 956, height: 956, rotation: 2, fit: "contain" },
+  { src: `${ASSET_BASE}/now-next/grateful-to-be-me.jpg`, fallbackSrc: `${ASSET_BASE}/now-next/grateful-to-be-me.jpg`, alt: "A child wearing sunglasses and headphones beneath the words I’m grateful to be me", width: 736, height: 923, rotation: -2, fit: "contain" },
 ];
 
 export const aboutTimelineContent = {
@@ -176,7 +174,7 @@ export const aboutTimelineContent = {
       description:
         "I’m continuing to build stronger products and deepen my understanding of scalable systems, backend architecture, real-time applications, infrastructure, and AI workflows.",
       caption: "Grateful for the journey. Excited for what’s next.",
-      photoNotice: "Personal moments, focused work and new perspectives.",
+      photoNotice: "Focused work and a little gratitude.",
       cycleMs: 6400,
       initialDelayMs: 3050,
       collageFallback: nowNextPhotos[0],
