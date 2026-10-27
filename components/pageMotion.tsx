@@ -142,7 +142,7 @@ function PageMotion() {
       if (reducedMotion || Math.abs(distance) < 2) {
         window.scrollTo({ top: targetTop, behavior: "instant" });
       } else {
-        const duration = Math.min(600, Math.max(280, Math.sqrt(Math.abs(distance)) * 6));
+        const duration = Math.min(1600, Math.max(1000, Math.sqrt(Math.abs(distance)) * 18));
         const startTime = performance.now();
 
         const animateScroll = (currentTime: number) => {
