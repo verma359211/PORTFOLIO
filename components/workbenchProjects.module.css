@@ -72,3 +72,36 @@
 @media (max-width: 760px) { .section { padding-top: 30px; padding-bottom: 45px; } .continuation { align-items: flex-start; flex-direction: column; gap: 15px; } .continuation > p { font-size: 12px; } .grid { grid-template-columns: minmax(0, 1fr); gap: 20px; } .cardHeader { font-size: 8px; padding: 18px 20px 13px; } .sketch { margin-inline: 14px; padding: 13px; height: 150px; } .ragFlow { gap: 12px; } .documents { width: 43px; height: 57px; } .retrievalNode { width: 58px; height: 58px; } .answer { width: 67px; padding: 8px; } .answer > span { font-size: 5px; } .copy { padding: 20px; } .copy h3 { font-size: 25px; } .description { font-size: 13px; } .highlight { font-size: 11px; } .typingScene > div:first-child { font-size: 18px; } .actions { flex-direction: row; align-items: center; gap: 8px; } .closing > span { max-width: 160px; font-size: 7px; line-height: 1.7; } .videoPlayer { min-width: 80px; } .quiz { min-width: 80px; } .quiz > span { font-size: 5px; } }
 @media (max-width: 360px) { .section { padding-inline: 20px; } .ragFlow { gap: 6px; } .documents { width: 36px; height: 50px; } .retrievalNode { width: 48px; height: 48px; } .answer { width: 55px; padding: 6px; } .answer > span { font-size: 4px; } .typingScene > div:first-child { font-size: 16px; } .actions a { font-size: 10px; } .actions a + a { font-size: 8px; } }
 @media (prefers-reduced-motion: reduce) { .card { transition: none; } .card:hover { transform: none; } }
+
+@media (max-width: 760px) {
+  .section { padding: 24px 20px 32px; }
+  .continuation { gap: 10px; padding-top: 20px; margin-bottom: 18px; }
+  .continuation > p br { display: none; }
+  .grid { gap: 14px; }
+  .card { display: grid; grid-template-columns: 1fr; }
+  .cardHeader { padding: 14px 16px 8px; }
+  .sketch { height: 100px; margin-inline: 16px; padding: 8px 12px; }
+  .ragFlow, .videoFlow { height: 64px; gap: clamp(4px, 2vw, 12px); }
+  .documents { width: 32px; height: 44px; }
+  .retrievalNode { width: 46px; height: 46px; }
+  .answer { width: 56px; padding: 5px; }
+  .videoPlayer { min-width: 65px; height: 60px; gap: 5px; padding: 6px; }
+  .quiz { min-width: 75px; }
+  .quiz > span { margin-bottom: 3px; }
+  .quiz > div { padding: 3px 5px; margin-top: 2px; }
+  .typingScene { padding-top: 12px; }
+  .typingScene > div:first-child { font-size: 17px; }
+  .typingTools { margin-top: 12px; }
+  .copy { padding: 14px 16px; }
+  .copy h3 { margin-bottom: 8px; font-size: 24px; }
+  .description { min-height: 0; font-size: 14px; line-height: 1.5; }
+  .highlight { margin-block: 10px; font-size: 12px; }
+  .technologies { padding-block: 4px 12px; }
+  .actions { padding-top: 6px; }
+  .actions a { min-height: 44px; }
+}
+
+@media (max-width: 760px) {
+  .typingScene { height: 64px; padding: 0; }
+  .typingTools { margin-top: 0; padding-top: 4px; }
+}

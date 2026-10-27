@@ -109,10 +109,20 @@ function AboutSection() {
     threshold: 0.08,
   });
   const [expanded, setExpanded] = useState<ExpandedChapter | null>(null);
+  const [activeChapter, setActiveChapter] = useState(0);
+  const journeyRef = useRef<HTMLOListElement>(null);
   const lastTriggerRef = useRef<HTMLButtonElement | null>(null);
   const pageVisible = usePageVisibility();
   const reducedMotion = useMediaQuery("(prefers-reduced-motion: reduce)");
   const isMobile = useMediaQuery("(max-width: 699px)");
+
+  const moveChapter = (direction: number) => {
+    const list = journeyRef.current;
+    const next = Math.max(0, Math.min(aboutTimelineContent.chapters.length - 1, activeChapter + direction));
+    const item = list?.children[next];
+    if (!list || !item) return;
+    list.scrollTo({ left: list.scrollLeft + item.getBoundingClientRect().left - list.getBoundingClientRect().left - 6, behavior: reducedMotion ? "instant" : "smooth" });
+  };
 
   const openChapter = useCallback(
     (
@@ -143,9 +153,29 @@ function AboutSection() {
       <div className={styles.inner}>
         <AboutTimelineHeader />
 
+        <div className={styles.browseHint}>
+          <span>Swipe the story.<br />Tap a photo to explore.</span>
+          <nav className={styles.journeyControls} aria-label="Browse journey chapters">
+            <button type="button" aria-label="Previous journey chapter" disabled={activeChapter === 0} onClick={() => moveChapter(-1)}><ChevronLeft size={17} aria-hidden="true" /></button>
+            <span aria-live="polite">{activeChapter + 1} / {aboutTimelineContent.chapters.length}</span>
+            <button type="button" aria-label="Next journey chapter" disabled={activeChapter === aboutTimelineContent.chapters.length - 1} onClick={() => moveChapter(1)}><ChevronRight size={17} aria-hidden="true" /></button>
+          </nav>
+        </div>
         <ol
+          ref={journeyRef}
           className={styles.timelineList}
           aria-label="My story in five chapters"
+          onScroll={event => {
+            const list = event.currentTarget;
+            const left = list.getBoundingClientRect().left + 6;
+            let closest = 0;
+            let distance = Infinity;
+            Array.from(list.children).forEach((item, index) => {
+              const delta = Math.abs(item.getBoundingClientRect().left - left);
+              if (delta < distance) { distance = delta; closest = index; }
+            });
+            setActiveChapter(closest);
+          }}
         >
           {aboutTimelineContent.chapters.map((chapter, chapterIndex) => (
             <TimelineChapter

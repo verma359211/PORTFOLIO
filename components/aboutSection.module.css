@@ -1912,3 +1912,51 @@
 :global(html[data-portfolio-theme="space"]) .photoTape { display: none; }
 :global(html[data-portfolio-theme="space"]) .dialog { background: #1d1c33; border: 1px solid #c6b4ff70; border-radius: 26px; }
 :global(html[data-portfolio-theme="space"]) .dialogFeaturedImage { border-radius: 16px; }
+
+.browseHint { display: none; }
+
+@media (max-width: 699px) {
+  .aboutSection { padding: 36px 20px; }
+  .editorialHeader { gap: 20px; }
+  .headingBlock h2 { max-width: 320px; font-size: clamp(34px, 9.5vw, 46px); }
+  .eyebrowRow { margin-bottom: 14px; }
+  .introduction { gap: 10px; }
+  .introduction p { font-size: 14px; line-height: 1.5; }
+  .noteScene { padding: 0; min-height: 0; }
+  .pinnedNote { display: flex; flex-wrap: wrap; column-gap: 7px; min-height: 0; padding: 16px 20px; transform: rotate(-1deg); }
+  .pinnedNote strong { flex-basis: 100%; }
+  .pinnedNote .pin { top: 15px; left: 8px; width: 9px; height: 9px; }
+  .pinnedNote .noteUnderline { flex-basis: 40px; }
+  .pinnedNote strong { margin-bottom: 6px; }
+  .pinnedNote p { font-size: 13px; line-height: 1.45; }
+  .browseHint { display: block; margin: 26px 0 12px; font-size: 12px; line-height: 1.5; color: var(--about-muted); }
+  .timelineList { display: flex; align-items: stretch; gap: 16px; margin: 0 -6px; padding: 12px 6px 20px; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scroll-padding-inline: 6px; scrollbar-width: thin; scrollbar-color: var(--about-muted) transparent; }
+  .timelineList::before { display: none; }
+  .chapter, .chapter:last-child,
+  :global(html[data-portfolio-theme]) .chapter { flex: 0 0 min(82vw, 300px); width: min(82vw, 300px); min-width: 0; padding: 16px; margin: 0; scroll-snap-align: start; }
+  .chapter + .chapter { margin-top: 0; }
+  .nodeHeader { min-height: 48px; gap: 10px; padding-left: 0; margin-bottom: 18px; }
+  .node { position: static; flex-shrink: 0; width: 32px; height: 32px; }
+  .nodeHeader h3 { font-size: 20px; }
+  .nodeHeader p { font-size: 11px; }
+  .timelineArrow { display: none; }
+  .mediaInteraction { padding-bottom: 0; }
+  .mediaStage { width: 100%; max-width: 235px; aspect-ratio: 1.12; }
+  .chapterCopy { padding-top: 14px; }
+  .chapterCopy h4 { font-size: 16px; line-height: 1.3; }
+  .chapterCopy > p { font-size: 13px; line-height: 1.5; }
+  .closing { margin-top: 20px; }
+  .closing p { font-size: 14px; line-height: 1.5; }
+  .placeholderNotice { font-size: 11px; }
+}
+
+@media (max-width: 699px) {
+  .browseHint { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+  .journeyControls { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+  .journeyControls button { display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid var(--about-line); border-radius: 50%; color: var(--about-ink); background: var(--preview-soft, #0a302808); }
+  .journeyControls button:disabled { opacity: .3; }
+  .journeyControls button:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+  .journeyControls > span { min-width: 27px; text-align: center; font: 11px var(--theme-font-label, monospace); }
+  :global(html[data-portfolio-theme="blueprint"]) .journeyControls button { border-radius: 3px; }
+  .timelineList { padding-right: max(6px, calc(100% - min(82vw, 300px) - 6px)); }
+}

@@ -1,172 +1,82 @@
-"use client"
+"use client";
+
 import Slider from "react-infinite-logo-slider";
+import { Bot, Cpu, Database, Workflow } from "lucide-react";
 import {
-	SiNextdotjs,
-	SiReact,
-	SiNodedotjs,
-	SiExpress,
-	SiMongodb,
-	SiPrisma,
-	SiTailwindcss,
-	SiShadcnui,
-	SiRazorpay,
-	SiDocker,
-	SiPostman,
-	SiGit,
-	SiGithub,
-	SiHostinger,
-	SiHtml5,
-	SiCss3,
-	SiJavascript,
-	SiTypescript,
-    SiAmazon,
+  SiNextdotjs, SiReact, SiNodedotjs, SiExpress, SiMongodb, SiPrisma,
+  SiTailwindcss, SiShadcnui, SiRazorpay, SiDocker, SiPostman, SiGit,
+  SiGithub, SiHostinger, SiHtml5, SiCss3, SiJavascript, SiTypescript,
+  SiAmazonwebservices, SiPython, SiFastapi, SiLangchain, SiKubernetes,
+  SiNginx, SiRedis, SiPostgresql, SiMysql, SiSqlite, SiElectron,
+  SiRabbitmq, SiPrometheus, SiGrafana, SiK6, SiGithubactions, SiVite,
+  SiRailway, SiJenkins, SiOpenjdk, SiJest, SiPydantic, SiZod, SiCivo,
+  SiOpenai, SiSocketdotio, SiJsonwebtokens,
 } from "react-icons/si";
 
+// Technologies used across GT Restro, the engineering lab and earlier projects.
+const technologies = [
+  { name: "Next.js", Icon: SiNextdotjs },
+  { name: "React", Icon: SiReact },
+  { name: "TypeScript", Icon: SiTypescript },
+  { name: "JavaScript", Icon: SiJavascript },
+  { name: "HTML5", Icon: SiHtml5 },
+  { name: "CSS3", Icon: SiCss3 },
+  { name: "Tailwind CSS", Icon: SiTailwindcss },
+  { name: "ShadCN UI", Icon: SiShadcnui },
+  { name: "Vite", Icon: SiVite },
+  { name: "Node.js", Icon: SiNodedotjs },
+  { name: "Express.js", Icon: SiExpress },
+  { name: "Socket.IO", Icon: SiSocketdotio },
+  { name: "JWT", Icon: SiJsonwebtokens },
+  { name: "Python", Icon: SiPython },
+  { name: "FastAPI", Icon: SiFastapi },
+  { name: "Java", Icon: SiOpenjdk },
+  { name: "LangGraph", Icon: Workflow },
+  { name: "LangChain", Icon: SiLangchain },
+  { name: "Groq", Icon: Cpu },
+  { name: "Ollama", Icon: Bot },
+  { name: "Whisper", Icon: SiOpenai },
+  { name: "PostgreSQL", Icon: SiPostgresql },
+  { name: "pgvector", Icon: Database },
+  { name: "MySQL", Icon: SiMysql },
+  { name: "Redis", Icon: SiRedis },
+  { name: "MongoDB", Icon: SiMongodb },
+  { name: "SQLite", Icon: SiSqlite },
+  { name: "Prisma", Icon: SiPrisma },
+  { name: "Electron", Icon: SiElectron },
+  { name: "RabbitMQ", Icon: SiRabbitmq },
+  { name: "Razorpay", Icon: SiRazorpay },
+  { name: "Docker", Icon: SiDocker },
+  { name: "Kubernetes", Icon: SiKubernetes },
+  { name: "NGINX", Icon: SiNginx },
+  { name: "Prometheus", Icon: SiPrometheus },
+  { name: "Grafana", Icon: SiGrafana },
+  { name: "k6", Icon: SiK6 },
+  { name: "GitHub Actions", Icon: SiGithubactions },
+  { name: "Jenkins", Icon: SiJenkins },
+  { name: "Jest", Icon: SiJest },
+  { name: "Pydantic", Icon: SiPydantic },
+  { name: "Zod", Icon: SiZod },
+  { name: "AWS", Icon: SiAmazonwebservices },
+  { name: "Civo", Icon: SiCivo },
+  { name: "Railway", Icon: SiRailway },
+  { name: "Hostinger", Icon: SiHostinger },
+  { name: "Postman", Icon: SiPostman },
+  { name: "Git", Icon: SiGit },
+  { name: "GitHub", Icon: SiGithub },
+];
 
-
-const Component = () => {
-	return (
-		<Slider
-			width="200px"
-			duration={60}
-			pauseOnHover={true}
-			blurBorders={false}
-			blurBorderColor={"#fff"}
-		>
-			<Slider.Slide>
-				<div className="flex flex-col items-center">
-					<SiNextdotjs size={30} />
-					<div>Next.js</div>
-				</div>
-			</Slider.Slide>
-
-			<Slider.Slide>
-				<div className="flex flex-col items-center">
-					<SiReact size={30} />
-					<div>React</div>
-				</div>
-			</Slider.Slide>
-
-			<Slider.Slide>
-				<div className="flex flex-col items-center">
-					<SiNodedotjs size={30} />
-					<div>Node.js</div>
-				</div>
-			</Slider.Slide>
-
-			<Slider.Slide>
-				<div className="flex flex-col items-center">
-					<SiExpress size={30} />
-					<div>Express.js</div>
-				</div>
-			</Slider.Slide>
-
-			<Slider.Slide>
-				<div className="flex flex-col items-center">
-					<SiMongodb size={30} />
-					<div>MongoDB</div>
-				</div>
-			</Slider.Slide>
-
-			<Slider.Slide>
-				<div className="flex flex-col items-center">
-					<SiPrisma size={30} />
-					<div>Prisma</div>
-				</div>
-			</Slider.Slide>
-
-			<Slider.Slide>
-				<div className="flex flex-col items-center">
-					<SiTailwindcss size={30} />
-					<div>Tailwind CSS</div>
-				</div>
-			</Slider.Slide>
-
-			<Slider.Slide>
-				<div className="flex flex-col items-center">
-					<SiShadcnui size={30} />
-					<div>ShadCN UI</div>
-				</div>
-			</Slider.Slide>
-
-			<Slider.Slide>
-				<div className="flex flex-col items-center">
-					<SiRazorpay size={30} />
-					<div>Razorpay</div>
-				</div>
-			</Slider.Slide>
-
-			<Slider.Slide>
-				<div className="flex flex-col items-center">
-					<SiAmazon size={30} />
-					<div>AWS</div>
-				</div>
-			</Slider.Slide>
-
-			<Slider.Slide>
-				<div className="flex flex-col items-center">
-					<SiDocker size={30} />
-					<div>Docker</div>
-				</div>
-			</Slider.Slide>
-
-			<Slider.Slide>
-				<div className="flex flex-col items-center">
-					<SiPostman size={30} />
-					<div>Postman</div>
-				</div>
-			</Slider.Slide>
-
-			<Slider.Slide>
-				<div className="flex flex-col items-center">
-					<SiGit size={30} />
-					<div>Git</div>
-				</div>
-			</Slider.Slide>
-
-			<Slider.Slide>
-				<div className="flex flex-col items-center">
-					<SiGithub size={30} />
-					<div>GitHub</div>
-				</div>
-			</Slider.Slide>
-
-			<Slider.Slide>
-				<div className="flex flex-col items-center">
-					<SiHostinger size={30} />
-					<div>Hostinger</div>
-				</div>
-			</Slider.Slide>
-
-			<Slider.Slide>
-				<div className="flex flex-col items-center">
-					<SiHtml5 size={30} />
-					<div>HTML5</div>
-				</div>
-			</Slider.Slide>
-
-			<Slider.Slide>
-				<div className="flex flex-col items-center">
-					<SiCss3 size={30} />
-					<div>CSS3</div>
-				</div>
-			</Slider.Slide>
-
-			<Slider.Slide>
-				<div className="flex flex-col items-center">
-					<SiJavascript size={30} />
-					<div>JavaScript</div>
-				</div>
-			</Slider.Slide>
-
-			<Slider.Slide>
-				<div className="flex flex-col items-center">
-					<SiTypescript size={30} />
-					<div>TypeScript</div>
-				</div>
-			</Slider.Slide>
-		</Slider>
-	);
-};
-
-export default Component;
+export default function TechnologySlider() {
+  return (
+    <Slider width="150px" duration={140} pauseOnHover blurBorders={false}>
+      {technologies.map(({ name, Icon }) => (
+        <Slider.Slide key={name}>
+          <div className="flex flex-col items-center gap-2 text-sm">
+            <Icon size={30} aria-hidden="true" />
+            <span>{name}</span>
+          </div>
+        </Slider.Slide>
+      ))}
+    </Slider>
+  );
+}

@@ -504,3 +504,19 @@
 :global(html[data-portfolio-theme="space"]) .instructions span { border-radius: 12px; }
 :global(html[data-portfolio-theme="space"]) .downloadButton { box-shadow: 0 5px 0 #08091680; }
 :global(html[data-portfolio-theme="space"]) .rewardDialog { border-radius: 28px; border: 1px solid #c6b4ff80; }
+
+@media (max-width: 699px) {
+  .gameSection { padding: 32px 20px; }
+  .inner { gap: 24px; }
+  .intro h2 { font-size: clamp(32px, 9vw, 42px); }
+  .eyebrow { margin-bottom: 14px; font-size: 11px; }
+  .description { font-size: 14px; line-height: 1.5; margin-top: 14px; }
+  .instructions { gap: 6px; margin-block: 14px; }
+  .instructions span { font-size: 10px; padding: 7px; }
+  .actions { gap: 14px; align-items: center; }
+  .downloadButton { width: auto; min-height: 44px; padding: 10px 14px; }
+  .socialLinks { width: auto; gap: 6px; }
+  .socialLink { width: 38px; height: 38px; }
+  .gameFrame { width: min(100%, 300px); margin-inline: auto; padding: 18px 12px; }
+  .liveBadge { font-size: 9px; }
+}

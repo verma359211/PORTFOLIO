@@ -67,10 +67,11 @@ export default function GTRestroStory() {
   const [chapter, setChapter] = useState(0);
   const [inView, setInView] = useState(false);
   const [paused, setPaused] = useState(false);
-  const [hovered, setHovered] = useState(false);
+  const [interacting, setInteracting] = useState(false);
+  const [cycle, setCycle] = useState(0);
   const [reducedMotion, setReducedMotion] = useState(true);
   const [pageVisible, setPageVisible] = useState(true);
-  const showcase = useRef<HTMLDivElement>(null);
+  const section = useRef<HTMLElement>(null);
   const tabs = useRef<Array<HTMLButtonElement | null>>([]);
   const current = chapters[chapter];
 
@@ -78,8 +79,8 @@ export default function GTRestroStory() {
     const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
     const updateMotion = () => setReducedMotion(motion.matches);
     const updateVisibility = () => setPageVisible(!document.hidden);
-    const observer = new IntersectionObserver(([entry]) => setInView(entry.isIntersecting && entry.intersectionRatio >= .35), { threshold: [0, .35] });
-    if (showcase.current) observer.observe(showcase.current);
+    const observer = new IntersectionObserver(([entry]) => setInView(entry.isIntersecting && entry.intersectionRatio >= .08), { threshold: [0, .08], rootMargin: "0px 0px -10% 0px" });
+    if (section.current) observer.observe(section.current);
     updateMotion();
     updateVisibility();
     motion.addEventListener("change", updateMotion);
@@ -92,14 +93,14 @@ export default function GTRestroStory() {
   }, []);
 
   useEffect(() => {
-    if (!inView || paused || hovered || reducedMotion || !pageVisible) return;
-    const timer = window.setTimeout(() => setChapter(value => (value + 1) % chapters.length), 7000);
+    if (!inView || paused || interacting || reducedMotion || !pageVisible) return;
+    const timer = window.setTimeout(() => setChapter(value => (value + 1) % chapters.length), 4000);
     return () => window.clearTimeout(timer);
-  }, [chapter, inView, paused, hovered, reducedMotion, pageVisible]);
+  }, [chapter, cycle, inView, paused, interacting, reducedMotion, pageVisible]);
 
   function selectChapter(index: number) {
-    setPaused(true);
     setChapter(index);
+    setCycle(value => value + 1);
   }
 
   function moveTab(event: KeyboardEvent<HTMLButtonElement>, index: number) {
@@ -110,26 +111,29 @@ export default function GTRestroStory() {
     else if (event.key === "End") next = chapters.length - 1;
     else return;
     event.preventDefault();
+    setPaused(true);
     selectChapter(next);
     tabs.current[next]?.focus();
   }
 
-  return <section id="experience" className={styles.section} aria-labelledby="startup-experience-heading">
+  const autoPlaying = inView && !paused && !interacting && !reducedMotion && pageVisible;
+
+  return <section ref={section} id="experience" className={styles.section} aria-labelledby="startup-experience-heading">
     <div id="gtrestro-case-study" className={styles.inner}>
       <div className={styles.chapterHeader}><span><i aria-hidden="true" /> CHAPTER 01 / MY FIRST STARTUP</span><span>GORAIN TECHNOLOGY · GT RESTRO</span></div>
-      <div className={styles.storyGrid} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
+      <div className={styles.storyGrid}>
         <div className={styles.narrative}>
           <div className={styles.roleBadge}><Code2 size={14} aria-hidden="true" /> Founding Engineer <span>Full Stack Developer</span></div>
           <h2 id="startup-experience-heading">From beta.<br />To the <em>dinner rush.</em></h2>
           <p className={styles.intro}>My first startup. A restaurant operating system. The challenge: help turn a beta into a product teams could rely on through a busy service.</p>
           <p className={styles.teamNote}><span aria-hidden="true">CV</span> My contribution, as part of a <strong>5-engineer team.</strong></p>
-          <div className={styles.chapterTabs} role="tablist" aria-label="Explore my GT Restro contribution" aria-orientation="vertical">
-            {chapters.map(({ id, number, title, hint, Icon }, index) => <button key={id} id={`restro-tab-${id}`} type="button" role="tab" aria-selected={chapter === index} aria-controls={`restro-panel-${id}`} tabIndex={chapter === index ? 0 : -1} ref={element => { tabs.current[index] = element; }} onFocus={() => setPaused(true)} onKeyDown={event => moveTab(event, index)} onClick={() => selectChapter(index)}><span className={styles.tabNumber}>{number}</span><span><strong>{title}</strong><small>{hint}</small></span><Icon size={18} aria-hidden="true" /></button>)}
+          <div className={styles.chapterTabs} role="tablist" aria-label="Explore my GT Restro contribution" data-auto-playing={autoPlaying}>
+            {chapters.map(({ id, number, title, hint, Icon }, index) => <button key={id} id={`restro-tab-${id}`} type="button" role="tab" aria-selected={chapter === index} aria-controls={`restro-panel-${id}`} tabIndex={chapter === index ? 0 : -1} ref={element => { tabs.current[index] = element; }} onFocus={event => { if (event.currentTarget.matches(":focus-visible")) setPaused(true); }} onKeyDown={event => moveTab(event, index)} onClick={() => selectChapter(index)}><span className={styles.tabNumber}>{number}</span><span><strong>{title}</strong><small>{hint}</small></span><Icon size={18} aria-hidden="true" />{chapter === index && autoPlaying && <span key={`${chapter}-${cycle}`} className={styles.chapterProgress} aria-hidden="true" />}</button>)}
           </div>
-          {!reducedMotion && <button type="button" className={styles.cycleControl} onClick={() => setPaused(value => !value)} aria-label={paused ? "Resume automatic chapter changes" : "Pause automatic chapter changes"}>{paused ? "▶ Play chapters" : "Ⅱ Pause chapters"}<span>7s / chapter</span></button>}
+          {!reducedMotion && <button type="button" className={styles.cycleControl} onClick={() => setPaused(value => !value)} aria-label={paused ? "Resume automatic chapter changes" : "Pause automatic chapter changes"}>{paused ? "▶ Play chapters" : "Ⅱ Pause chapters"}<span>4s / chapter</span></button>}
           <a className={styles.visitLink} href="https://gtrestro.com" target="_blank" rel="noopener noreferrer">Explore GT Restro <ArrowUpRight size={18} aria-hidden="true" /></a>
         </div>
-        <div ref={showcase} className={styles.showcase} data-blueprint-card onFocusCapture={() => setPaused(true)}>
+        <div className={styles.showcase} data-blueprint-card onFocusCapture={() => setInteracting(true)} onBlurCapture={event => { if (!event.currentTarget.contains(event.relatedTarget as Node | null)) setInteracting(false); }}>
           <div className={styles.showcaseHeader}><div className={styles.brand}><span>GT</span><strong>Restro<span>RESTAURANT OPERATING SYSTEM</span></strong></div><span className={styles.productLabel}>{chapter === 0 ? "THE PRODUCT" : "THE ENGINEERING"}</span></div>
           <div className={styles.panelStack}>{chapters.map(({ id }, index) => <div key={id} id={`restro-panel-${id}`} role="tabpanel" aria-labelledby={`restro-tab-${id}`} tabIndex={chapter === index ? 0 : -1} hidden={chapter !== index} className={styles.panel}>
             {index === 0 ? <ProductView /> : index === 1 ? <PerformanceView /> : <OfflineView />}

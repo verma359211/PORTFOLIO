@@ -601,3 +601,12 @@
     transition: none;
   }
 }
+
+@media (max-width: 699px) {
+  :global(body:has(input:focus, textarea:focus, select:focus)) .switcher { visibility: hidden; }
+}
+@media (max-width: 360px) {
+  .options button { font-size: 11px; padding-inline: 9px; gap: 4px; }
+  .options button svg { width: 13px; height: 13px; }
+  .motionButton { width: 32px; min-width: 32px; }
+}

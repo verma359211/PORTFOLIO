@@ -221,3 +221,41 @@
   .workflowPrint { width: 50%; }
   .resultPrint { width: 42%; }
 }
+
+@media (max-width: 760px) {
+  .section { padding: 24px 20px 0; }
+  .sectionHeader { gap: 10px; margin-bottom: 20px; }
+  .sectionHeader h2 { font-size: 34px; }
+  .eyebrow { font-size: 10px; letter-spacing: 1px; margin-bottom: 10px; }
+  .intro { line-height: 1.5; }
+  .projectGrid { gap: 24px; }
+  .cardTop { padding: 14px 16px 0; }
+  .projectIntro { padding: 10px 16px 4px; }
+  .projectIntro h3 { font-size: 27px; }
+  .projectIcon { width: 32px; height: 32px; }
+  .screenshotCollage { aspect-ratio: 1.9; margin: 0 12px; }
+  .productPrint { width: 62%; }
+  .workflowPrint { width: 52%; }
+  .resultPrint { width: 45%; top: 22%; }
+  .projectDetails { padding: 16px; }
+  .detailEyebrow { font-size: 9px; margin-bottom: 6px; }
+  .plainExplanation h4 { font-size: 21px; margin-bottom: 7px; }
+  .plainExplanation > p:not(.detailEyebrow) { font-size: 14px; line-height: 1.5; }
+  .useSteps { padding: 10px 0; gap: 14px; }
+  .useSteps span { display: inline; margin-right: 4px; }
+  .useSteps li { font-size: 11px; }
+  .proofRow { padding: 10px 0; }
+  .proofRow strong { font-size: 23px; line-height: 1.2; }
+  .proofRow span { font-size: 11px; line-height: 1.4; }
+  .proofRow > div + div { padding-left: 12px; }
+  .techHighlights { padding: 12px 0 6px; }
+  .techHighlights ul { gap: 8px; }
+  .techHighlights li { padding-left: 7px; }
+  .techHighlights strong { font-size: 12px; }
+  .techHighlights li > span { font-size: 11px; line-height: 1.35; }
+  .notes { margin-bottom: 6px; }
+  .notes summary { min-height: 44px; }
+  .actions { gap: 6px; }
+  .primaryLink { min-height: 44px; padding: 10px; }
+  .sourceLink { min-height: 44px; font-size: 11px; }
+}

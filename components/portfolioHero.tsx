@@ -180,11 +180,11 @@ const HeroIntroduction = () => (
     </p>
 
     <p className={styles.introCopy}>
-      I build thoughtful digital products
+      I build thoughtful digital products{" "}
       <br />
-      with code, design,
+      with code, design,{" "}
       <br />
-      and systems thinking —
+      and systems thinking —{" "}
       <br />
       from idea to impact.
     </p>
