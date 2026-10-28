@@ -273,7 +273,7 @@
   padding: 19px 12px 15px;
   border: 1px solid #bac5ce;
   border-radius: 3px 5px 4px 2px;
-  background: #d8dfe3;
+  background: #e6eaed;
   text-decoration: none;
   color: #17364f;
   box-shadow:
@@ -295,7 +295,8 @@
       transparent 65.6%
     ),
     url("/assets/feedback/cool-paper.webp") center / 380px 380px;
-  opacity: 0.85;
+  opacity: 0.78;
+  filter: brightness(1.07);
   pointer-events: none;
 }
 .resume::after {
