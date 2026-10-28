@@ -456,16 +456,24 @@
     width: 40px;
     height: 40px;
   }
-  .launcher {
-    min-height: 40px;
-    font-size: 11px;
-  }
   .submit {
     min-height: 44px;
   }
   .star {
     width: 38px;
   }
+}
+@media (max-width: 699px) {
+  .launcher {
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    min-height: 44px;
+    padding: 0;
+    gap: 0;
+  }
+  .launcher > span { display: none; }
+  .launcher > svg { width: 20px; height: 20px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .panel {

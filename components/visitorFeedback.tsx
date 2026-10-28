@@ -368,6 +368,7 @@ export default function VisitorFeedback() {
         ref={trigger}
         className={styles.launcher}
         type="button"
+        aria-label="Feedback & résumé"
         aria-expanded={open}
         aria-controls="visitor-feedback"
         onClick={toggle}

@@ -112,7 +112,7 @@ export const aboutTimelineContent = {
       title: "School — Curiosity Takes Shape",
       shortTitle: "Curiosity",
       description:
-        "My hometown, school years, and earliest interests will be added here. This chapter represents the curiosity that eventually pulled me towards technology.",
+        "School was where my curiosity began to take shape—through classroom questions, shared experiences, and friendships that stayed with me as I found my way into technology.",
       caption: "Always questioning. Always exploring.",
       photoNotice: "Photographs from my school years.",
       cycleMs: 5100,

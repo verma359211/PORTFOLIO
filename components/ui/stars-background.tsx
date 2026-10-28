@@ -84,11 +84,7 @@ export const StarsBackground: React.FC<StarBackgroundProps> = ({
 			resizeObserver.observe(canvasRef.current);
 		}
 
-		return () => {
-			if (canvasRef.current) {
-				resizeObserver.unobserve(canvasRef.current);
-			}
-		};
+		return () => resizeObserver.disconnect();
 	}, [
 		starDensity,
 		allStarsTwinkle,

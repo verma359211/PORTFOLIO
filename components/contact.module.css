@@ -739,3 +739,4 @@
   .field input, .field textarea { font-size: 16px; }
   .contactSection { padding-bottom: calc(88px + env(safe-area-inset-bottom)); }
 }
+.honeypot { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }

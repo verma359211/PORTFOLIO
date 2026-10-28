@@ -202,3 +202,5 @@ html.motion-ready
     transition: none;
   }
 }
+.skip-link { position: fixed; top: 10px; left: 10px; z-index: 2000; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); border-radius: 4px; background: #f5f9ff; color: #17364f; font: 600 14px sans-serif; }
+.skip-link:focus { width: auto; height: auto; padding: 12px 18px; clip-path: none; outline: 2px solid #17364f; outline-offset: 2px; }

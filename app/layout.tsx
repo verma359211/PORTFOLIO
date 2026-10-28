@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   description:
     "Chandan Verma's experiments in software, systems, and building real products. Explore my work as a full-stack developer and founding engineer.",
   applicationName: "an ongoing experiment",
+  alternates: { canonical: "/" },
   manifest: "/site.webmanifest",
   icons: {
     icon: [

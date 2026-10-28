@@ -7,11 +7,11 @@ const AboutPageHero = () => {
 	return (
 		<div className="text-white py-16 max-w-[1440px] mx-auto px-6">
 			<section className="mb-20">
-				<h2 className="text-5xl font-bold mb-8">ABOUT ME</h2>
+				<h1 className="text-5xl font-bold mb-8">ABOUT ME</h1>
 				<div className="max-w-2xl mb-8">
 					<p className="text-xl mb-4">
-						just a newbie developer trying to make the web a little less broken,
-						one line of code at a time
+						I’m Chandan Verma, a full-stack developer and product builder
+						building useful software, from the interface to the systems behind it.
 					</p>
 					{/* <p className="text-xl mb-8">Has B.tech CSE background.</p> */}
 					<p className="text-gray-300 mb-8">
@@ -22,24 +22,23 @@ const AboutPageHero = () => {
 						things that not only work but make a difference. So take a look
 						around, my work speaks for itself!
 					</p>
-					<button className="bg-[#D3E97A] text-black px-6 py-3 rounded-full flex items-center space-x-2 hover:bg-[#bde676] transition-colors">
 						<a
 							href={RESUME_URL}
 							target="_blank"
-							className="flex items-center space-x-2"
+							className="bg-[#D3E97A] text-black px-6 py-3 rounded-full inline-flex items-center space-x-2 hover:bg-[#bde676] transition-colors"
 							rel="noopener noreferrer"
 						>
 							<span>VIEW RESUME</span>
 							<span>•</span>
 						</a>
-					</button>
 				</div>
 				<div className="w-full h-screen">
 					<div className="relative w-full h-full rounded-3xl overflow-hidden">
 						<Image
 							src="/image/groupPhoto.jpg"
 							alt="Group headshot"
-							layout="fill"
+							fill
+							sizes="(max-width: 1440px) 100vw, 1440px"
 							className="object-cover"
 							priority
 						/>

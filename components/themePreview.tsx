@@ -37,6 +37,7 @@ export default function ThemePreview({
 
   return (
     <PortfolioThemeContext.Provider value={theme}>
+      <a href="#portfolio-content" className="skip-link" data-skip-link>Skip to content</a>
       <aside className={styles.switcher} aria-label="Theme preview controls">
         <span className={styles.label}>THEME PREVIEW</span>
         <div
@@ -81,7 +82,7 @@ export default function ThemePreview({
           </button>
         )}
       </aside>
-      <main className={className} data-portfolio-page>
+      <main id="portfolio-main" tabIndex={-1} className={className} data-portfolio-page>
         {theme !== "light" && <ThemeScenery theme={theme} paused={paused} />}
         {children}
       </main>

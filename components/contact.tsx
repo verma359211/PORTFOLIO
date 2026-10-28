@@ -10,7 +10,7 @@ import {
   Send,
   Twitter,
 } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import styles from "./contact.module.css";
 import { RESUME_URL } from "../lib/portfolioLinks";
@@ -57,6 +57,10 @@ const EMPTY_FORM: FormData = {
 const ContactSection = () => {
   const [formData, setFormData] = useState<FormData>(EMPTY_FORM);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [website, setWebsite] = useState("");
+  const inFlight = useRef(false);
+  const requestController = useRef<AbortController | null>(null);
+  useEffect(() => () => requestController.current?.abort(), []);
   const [submitStatus, setSubmitStatus] = useState<{
     type: "success" | "error";
     message: string;
@@ -73,14 +77,22 @@ const ContactSection = () => {
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
+    if (inFlight.current) return;
+    inFlight.current = true;
     setIsSubmitting(true);
     setSubmitStatus(null);
+    requestController.current = new AbortController();
+    const timeout = window.setTimeout(
+      () => requestController.current?.abort(),
+      25_000,
+    );
 
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, website }),
+        signal: requestController.current.signal,
       });
       const data = await response.json();
 
@@ -93,7 +105,10 @@ const ContactSection = () => {
       } else {
         setSubmitStatus({
           type: "error",
-          message: "The message could not be sent. Please email me directly.",
+          message:
+            response.status === 429
+              ? "Please wait a minute before sending again."
+              : "The message could not be sent. Please email me directly.",
         });
       }
     } catch {
@@ -102,6 +117,8 @@ const ContactSection = () => {
         message: "Something went wrong. Please email me directly.",
       });
     } finally {
+      window.clearTimeout(timeout);
+      inFlight.current = false;
       setIsSubmitting(false);
     }
   };
@@ -203,7 +220,23 @@ const ContactSection = () => {
               <span className={styles.formIndex}>05 / 05</span>
             </div>
 
-            <form className={styles.form} onSubmit={handleSubmit}>
+            <form
+              className={styles.form}
+              onSubmit={handleSubmit}
+              aria-busy={isSubmitting}
+            >
+              <div className={styles.honeypot} aria-hidden="true">
+                <label>
+                  Leave this blank
+                  <input
+                    name="website"
+                    value={website}
+                    onChange={(event) => setWebsite(event.target.value)}
+                    tabIndex={-1}
+                    autoComplete="off"
+                  />
+                </label>
+              </div>
               <div className={styles.fieldGrid}>
                 <FormField
                   id="name"
@@ -212,6 +245,7 @@ const ContactSection = () => {
                   value={formData.name}
                   onChange={handleChange}
                   autoComplete="name"
+                  maxLength={100}
                 />
                 <FormField
                   id="email"
@@ -221,6 +255,7 @@ const ContactSection = () => {
                   value={formData.email}
                   onChange={handleChange}
                   autoComplete="email"
+                  maxLength={254}
                 />
               </div>
 
@@ -230,6 +265,7 @@ const ContactSection = () => {
                 placeholder="A product, role, collaboration…"
                 value={formData.subject}
                 onChange={handleChange}
+                maxLength={160}
               />
 
               <label className={styles.field} htmlFor="message">
@@ -241,6 +277,7 @@ const ContactSection = () => {
                   rows={5}
                   placeholder="The useful context, the ambitious idea, or just a hello."
                   required
+                  maxLength={5000}
                 />
               </label>
 
@@ -286,6 +323,7 @@ function FormField({
   value,
   onChange,
   autoComplete,
+  maxLength,
 }: {
   id: keyof FormData;
   type?: "text" | "email";
@@ -294,6 +332,7 @@ function FormField({
   value: string;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   autoComplete?: string;
+  maxLength?: number;
 }) {
   return (
     <label className={styles.field} htmlFor={id}>
@@ -305,6 +344,7 @@ function FormField({
         onChange={onChange}
         placeholder={placeholder}
         autoComplete={autoComplete}
+        maxLength={maxLength}
         required
       />
     </label>

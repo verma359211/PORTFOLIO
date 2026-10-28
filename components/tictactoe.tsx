@@ -29,8 +29,18 @@ function Tictactoe() {
     if (!showReward) return;
 
     const previousOverflow = document.body.style.overflow;
+    const previousFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") setShowReward(false);
+      if (event.key === "Tab") {
+        const dialog = closeButtonRef.current?.closest('[role="dialog"]');
+        const focusable = dialog?.querySelectorAll<HTMLElement>('a[href], button:not([disabled]), [tabindex="0"]');
+        if (!focusable?.length) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+        else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+      }
     };
 
     document.body.style.overflow = "hidden";
@@ -40,6 +50,7 @@ function Tictactoe() {
     return () => {
       document.body.style.overflow = previousOverflow;
       document.removeEventListener("keydown", handleKeyDown);
+      previousFocus?.focus({ preventScroll: true });
     };
   }, [showReward]);
 

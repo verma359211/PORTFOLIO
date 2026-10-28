@@ -38,7 +38,7 @@ const PortfolioHero = () => {
       <HeroGrid />
       <PortfolioHeader />
 
-      <div className={styles.heroStage}>
+      <div id="portfolio-content" tabIndex={-1} className={styles.heroStage}>
         <div className={styles.createWord} aria-hidden="true">
           CREATE
         </div>

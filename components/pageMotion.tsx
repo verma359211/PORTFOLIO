@@ -32,10 +32,6 @@ function PageMotion() {
     const revealTimers: number[] = [];
 
     root.classList.add("motion-ready");
-    if (window.location.hash) {
-      window.history.replaceState(null, "", window.location.pathname);
-    }
-
     const pageMotionStart = performance.now();
 
     const revealSection = (section: HTMLElement) => {
@@ -123,7 +119,9 @@ function PageMotion() {
     let smoothScrollFrame = 0;
 
     const scrollToTarget = (targetId: string) => {
-      const id = decodeURIComponent(targetId.replace(/^#/, ""));
+      let id: string;
+      try { id = decodeURIComponent(targetId.replace(/^#/, "")); }
+      catch { return false; }
       const target = document.getElementById(id);
       if (!target) return false;
 
@@ -169,6 +167,7 @@ function PageMotion() {
     const handleSectionNavClick = (event: MouseEvent) => {
       if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
       const target = event.target as HTMLElement | null;
+      if (target?.closest("[data-skip-link]")) return;
       const trigger = target?.closest<HTMLElement>(
         "[data-scroll-target], a[href^='#']",
       );
