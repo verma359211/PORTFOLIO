@@ -14,10 +14,8 @@
 :global(html[data-portfolio-theme="space"]) .screenshotPrint { border-radius: 10px; padding: 4px; background: #c6b4ff30; border-color: #c6b4ff66; }
 :global(html[data-portfolio-theme="space"]) .screenshotPrint img { border-radius: 6px; }
 :global(html[data-portfolio-theme="space"]) .screenshotCollage figcaption { font: 12px var(--theme-font-body); color: var(--lab-muted); }
-:global(html[data-portfolio-theme="space"]) .primaryLink { border-radius: 999px; box-shadow: 0 4px 0 #08091670; }
 :global(html[data-portfolio-theme="space"]) .badge { border-radius: 999px; }
 :global(html[data-portfolio-theme="space"]) .projectIcon { border-radius: 50%; }
-:global(html[data-portfolio-theme="blueprint"]) .primaryLink { border-radius: 2px; box-shadow: 3px 3px 0 #18334b2b; }
 :global(html[data-portfolio-theme="blueprint"]) .projectIndex,
 :global(html[data-portfolio-theme="blueprint"]) .detailEyebrow { font-family: var(--theme-font-label); }
 :global(html[data-portfolio-theme="blueprint"]) .section { --lab-accent: #96e4ff; --lab-line: #b8e2ff38; --lab-muted: #b7cfe6; }
@@ -153,10 +151,8 @@
 .notes summary::-webkit-details-marker { display: none; }
 .notes[open] summary svg { transform: rotate(180deg); }
 .notes p { margin: 8px 0; }
-.actions { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: auto; }
-.primaryLink, .sourceLink { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-size: 12px; }
-.primaryLink { color: var(--lab-button-ink, #fff); background: var(--lab-accent); border: 1px solid var(--lab-accent); padding: 12px 16px; border-radius: 3px; font-weight: 600; transition: background 160ms; }
-.primaryLink:hover { background: var(--lab-hover, var(--lab-ink)); }
+.actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; margin-top: auto; }
+.sourceLink { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-size: 12px; }
 .sourceLink { font-size: 11px; color: var(--lab-ink); padding: 10px 0; }
 .sourceLink:hover, .nextStep a:hover { color: var(--lab-accent); text-decoration: underline; }
 .nextStep { margin: 8px 0 0; font-size: 10px; line-height: 1.5; color: var(--lab-muted); }
@@ -178,7 +174,6 @@
   .reportTitle { font-size: 20px; }
   .actions { flex-wrap: wrap; }
   .sourceLink { font-size: 10px; }
-  .primaryLink { font-size: 11px; padding: 12px; }
   .engineeringStory { min-height: 86px; }
 }
 @media (max-width: 760px) {
@@ -256,6 +251,5 @@
   .notes { margin-bottom: 6px; }
   .notes summary { min-height: 44px; }
   .actions { gap: 6px; }
-  .primaryLink { min-height: 44px; padding: 10px; }
   .sourceLink { min-height: 44px; font-size: 11px; }
 }

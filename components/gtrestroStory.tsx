@@ -2,8 +2,9 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState, type KeyboardEvent } from "react";
-import { ArrowDown, ArrowRight, ArrowUpRight, Check, ChevronDown, Cloud, Code2, Database, Layers3, Monitor, ReceiptText, ShieldCheck, Smartphone, Utensils, Wifi, WifiOff, Zap } from "lucide-react";
+import { ArrowDown, ArrowRight, Check, ChevronDown, Cloud, Code2, Database, Layers3, Monitor, ReceiptText, ShieldCheck, Smartphone, Utensils, Wifi, WifiOff, Zap } from "lucide-react";
 import styles from "./gtrestroStory.module.css";
+import LiveProjectLink from "./liveProjectLink";
 
 const chapters = [
   { id: "floor", number: "01", title: "Connect the whole floor.", hint: "Counter → kitchen → customer", Icon: Utensils },
@@ -131,7 +132,7 @@ export default function GTRestroStory() {
             {chapters.map(({ id, number, title, hint, Icon }, index) => <button key={id} id={`restro-tab-${id}`} type="button" role="tab" aria-selected={chapter === index} aria-controls={`restro-panel-${id}`} tabIndex={chapter === index ? 0 : -1} ref={element => { tabs.current[index] = element; }} onFocus={event => { if (event.currentTarget.matches(":focus-visible")) setPaused(true); }} onKeyDown={event => moveTab(event, index)} onClick={() => selectChapter(index)}><span className={styles.tabNumber}>{number}</span><span><strong>{title}</strong><small>{hint}</small></span><Icon size={18} aria-hidden="true" />{chapter === index && autoPlaying && <span key={`${chapter}-${cycle}`} className={styles.chapterProgress} aria-hidden="true" />}</button>)}
           </div>
           {!reducedMotion && <button type="button" className={styles.cycleControl} onClick={() => setPaused(value => !value)} aria-label={paused ? "Resume automatic chapter changes" : "Pause automatic chapter changes"}>{paused ? "▶ Play chapters" : "Ⅱ Pause chapters"}<span>4s / chapter</span></button>}
-          <a className={styles.visitLink} href="https://gtrestro.com" target="_blank" rel="noopener noreferrer">Explore GT Restro <ArrowUpRight size={18} aria-hidden="true" /></a>
+          <div className={styles.liveAction}><LiveProjectLink href="https://gtrestro.com">Visit GT Restro</LiveProjectLink><p>Live and serving restaurants. Take a look inside.</p></div>
         </div>
         <div className={styles.showcase} data-blueprint-card onFocusCapture={() => setInteracting(true)} onBlurCapture={event => { if (!event.currentTarget.contains(event.relatedTarget as Node | null)) setInteracting(false); }}>
           <div className={styles.showcaseHeader}><div className={styles.brand}><span>GT</span><strong>Restro<span>RESTAURANT OPERATING SYSTEM</span></strong></div><span className={styles.productLabel}>{chapter === 0 ? "THE PRODUCT" : "THE ENGINEERING"}</span></div>

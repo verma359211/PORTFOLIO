@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { ArrowUpRight, ChevronDown, Code2, Cpu, Search } from "lucide-react";
 import styles from "./engineeringShowcase.module.css";
+import LiveProjectLink from "./liveProjectLink";
 
 const links = {
   scale: "https://scalelab.chandanverma.space",
@@ -15,8 +16,9 @@ const links = {
 function ExternalLink({ href, children, primary = false }: {
   href: string; children: React.ReactNode; primary?: boolean;
 }) {
-  return <a href={href} target="_blank" rel="noopener noreferrer" className={primary ? styles.primaryLink : styles.sourceLink}>
-    {children}{primary ? <ArrowUpRight size={17} aria-hidden="true" /> : <Code2 size={16} aria-hidden="true" />}
+  if (primary) return <LiveProjectLink href={href}>{children}</LiveProjectLink>;
+  return <a href={href} target="_blank" rel="noopener noreferrer" className={styles.sourceLink}>
+    {children}<Code2 size={16} aria-hidden="true" />
   </a>;
 }
 
@@ -62,11 +64,11 @@ export default function EngineeringShowcase() {
     <div className={styles.sectionHeader} data-reveal-item>
       <div><p className={styles.eyebrow}><span /> PERSONAL BUILDS / ENGINEERING LAB</p>
         <h2 id="engineering-lab-heading">Built to be <em>explored.</em></h2></div>
-      <p className={styles.intro}>Two featured builds. More experiments below.<br />Designed, built and shipped by me.<br /><span>Go beyond the interface. See the engineering.</span></p>
+      <p className={styles.intro}>Two live apps. Built and shipped by me.<br />Open them. Try them. See what happens.<br /><span>More experiments below.</span></p>
     </div>
     <div className={styles.projectGrid}>
       <article className={styles.project} aria-labelledby="scalelab-title" data-blueprint-card data-reveal-item>
-        <div className={styles.cardTop}><span className={styles.projectIndex}>01 / DISTRIBUTED SYSTEMS</span><span className={styles.badge}>SOLO BUILD</span></div>
+        <div className={styles.cardTop}><span className={styles.projectIndex}>01 / DISTRIBUTED SYSTEMS</span><span className={styles.badge}>LIVE · SOLO BUILD</span></div>
         <div className={styles.projectIntro}>
           <h3 id="scalelab-title"><span className={styles.projectIcon}><Cpu aria-hidden="true" /></span>ScaleLab</h3>
         </div>
@@ -86,12 +88,12 @@ export default function EngineeringShowcase() {
             { tech: "Prometheus + Grafana", purpose: "App & infrastructure metrics" },
           ]} />
           <details className={styles.notes}><summary>The engineering underneath <ChevronDown size={15} aria-hidden="true" /></summary><p>I built the application, load controller, observability dashboard and infrastructure. The hardest part: running write-heavy tests without corrupting the demo store.</p><p>Isolated benchmark products, transactional stock updates, PostgreSQL shards and automatic cleanup make those experiments repeatable. React · TypeScript · Node.js · Prometheus · Grafana · Docker.</p></details>
-          <div className={styles.actions}><ExternalLink href={links.scale} primary>Explore ScaleLab</ExternalLink><ExternalLink href={links.scaleSource}>Source & architecture</ExternalLink></div>
+          <div className={styles.actions}><ExternalLink href={links.scale} primary>Try ScaleLab</ExternalLink><ExternalLink href={links.scaleSource}>Source & architecture</ExternalLink></div>
           <p className={styles.nextStep}>Open the dashboard. Explore a working system under load.</p>
         </div>
       </article>
       <article className={`${styles.project} ${styles.traceProject}`} aria-labelledby="bugtracer-title" data-blueprint-card data-reveal-item>
-        <div className={styles.cardTop}><span className={styles.projectIndex}>02 / AGENTIC AI</span><span className={styles.badge}>SOLO BUILD</span></div>
+        <div className={styles.cardTop}><span className={styles.projectIndex}>02 / AGENTIC AI</span><span className={styles.badge}>LIVE · SOLO BUILD</span></div>
         <div className={styles.projectIntro}>
           <h3 id="bugtracer-title"><span className={styles.projectIcon}><Search aria-hidden="true" /></span>Bug Tracer</h3>
         </div>
@@ -111,7 +113,7 @@ export default function EngineeringShowcase() {
             { tech: "FastAPI + Groq", purpose: "Python API & AI inference" },
           ]} />
           <details className={styles.notes}><summary>The engineering underneath <ChevronDown size={15} aria-hidden="true" /></summary><p>I built the agent, retrieval pipeline, reproduction sandbox, interface and buggy target app. The hardest part: distinguishing an actual application bug from a broken generated test.</p><p>Deterministic classification, bounded repairs and validated citations keep the diagnosis grounded. Generated tests run in GitHub Actions, never on the agent server. Frontend reports return source-backed hypotheses.</p><p>Working V0 prototype. 38 agent tests and 8 target-app tests passing. Evaluation results are controlled cases, not production-user outcomes.</p></details>
-          <div className={styles.actions}><ExternalLink href={links.agent} primary>Explore Bug Tracer</ExternalLink><ExternalLink href={links.agentSource}>Source & architecture</ExternalLink></div>
+          <div className={styles.actions}><ExternalLink href={links.agent} primary>Try Bug Tracer</ExternalLink><ExternalLink href={links.agentSource}>Source & architecture</ExternalLink></div>
           <p className={styles.nextStep}>Need a bug to investigate? <a href={links.target} target="_blank" rel="noopener noreferrer">Try the deliberately buggy store <ArrowUpRight size={12} aria-hidden="true" /></a></p>
         </div>
       </article>

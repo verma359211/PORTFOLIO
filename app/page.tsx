@@ -13,6 +13,7 @@ import PageMotion from "../components/pageMotion";
 import styles from "./page.module.css";
 import ThemePreview from "../components/themePreview";
 import EngineeringShowcase from "../components/engineeringShowcase";
+import VisitorFeedback from "../components/visitorFeedback";
 
 const SHOW_IMAGE_SLIDESHOW = false;
 
@@ -50,6 +51,7 @@ export default function Home() {
         )}
         {/* <MasonryGallery /> */}
         <ContactSection />
+        <VisitorFeedback />
       </ThemePreview>
     </React.StrictMode>
   );

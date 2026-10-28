@@ -1,0 +1,125 @@
+.link {
+  --live-bg: #0b513c;
+  --live-ink: #fffdf3;
+  --live-shadow: #0b513c25;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  width: fit-content;
+  max-width: 100%;
+  min-height: 50px;
+  padding: 10px 12px 10px 15px;
+  border: 1px solid transparent;
+  border-radius: 9px;
+  background: var(--live-bg);
+  color: var(--live-ink);
+  box-shadow:
+    0 5px 0 var(--live-shadow),
+    0 8px 24px var(--live-shadow);
+  text-decoration: none;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+:global(html[data-portfolio-theme="blueprint"]) .link {
+  --live-bg: #ffda8b;
+  --live-ink: #17364f;
+  --live-shadow: #071b3940;
+  border-radius: 3px;
+  border-color: #fff0cc;
+  box-shadow: 4px 4px 0 var(--live-shadow);
+}
+:global(html[data-portfolio-theme="space"]) .link {
+  --live-bg: #bdf4dc;
+  --live-ink: #193b33;
+  --live-shadow: #05061555;
+  border-radius: 999px;
+}
+.status {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 6px;
+  padding-right: 11px;
+  border-right: 1px solid currentColor;
+  font: 700 10px/1 var(--theme-font-label, monospace);
+  letter-spacing: 0.06em;
+}
+.dot {
+  position: relative;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+.dot::after {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border: 1px solid currentColor;
+  border-radius: inherit;
+  opacity: 0;
+}
+/* A short invitation on entering view, rather than endless motion. */
+.link[data-seen="true"] .dot::after {
+  animation: livePulse 2s ease-out 2;
+}
+.label {
+  font: 700 14px/1.3 var(--theme-font-body, sans-serif);
+}
+.arrow {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #ffffff26;
+}
+.arrow svg {
+  transition: transform 180ms ease;
+}
+.link:hover {
+  transform: translateY(-2px);
+}
+.link:hover .arrow svg {
+  transform: translate(2px, -2px);
+}
+.link:focus-visible {
+  outline: 3px solid var(--live-bg);
+  outline-offset: 5px;
+}
+@keyframes livePulse {
+  0% {
+    opacity: 0.65;
+    transform: scale(0.6);
+  }
+  90%,
+  100% {
+    opacity: 0;
+    transform: scale(1.8);
+  }
+}
+@media (max-width: 380px) {
+  .link {
+    gap: 9px;
+    padding-inline: 11px;
+  }
+  .label {
+    font-size: 13px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .link,
+  .arrow svg {
+    transition: none;
+  }
+  .link[data-seen="true"] .dot::after {
+    animation: none;
+  }
+  .link:hover,
+  .link:hover .arrow svg {
+    transform: none;
+  }
+}
