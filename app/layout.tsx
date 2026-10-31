@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import SiteBackground from "../components/siteBackground";
 
 import "./globals.css";
@@ -56,6 +57,7 @@ export default function RootLayout({
       <body suppressHydrationWarning>
         <SiteBackground />
         {children}
+        <Analytics />
       </body>
     </html>
   );
