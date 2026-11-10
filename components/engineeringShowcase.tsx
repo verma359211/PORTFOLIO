@@ -64,11 +64,11 @@ export default function EngineeringShowcase() {
     <div className={styles.sectionHeader} data-reveal-item>
       <div><p className={styles.eyebrow}><span /> PERSONAL BUILDS / ENGINEERING LAB</p>
         <h2 id="engineering-lab-heading">Built to be <em>explored.</em></h2></div>
-      <p className={styles.intro}>Two live apps. Built and shipped by me.<br />Open them. Try them. See what happens.<br /><span>More experiments below.</span></p>
+      <p className={styles.intro}>Two shipped apps. Built by me.<br />Explore the engineering behind each one.<br /><span>Bug Tracer is live. ScaleLab is temporarily offline.</span></p>
     </div>
     <div className={styles.projectGrid}>
       <article className={styles.project} aria-labelledby="scalelab-title" data-blueprint-card data-reveal-item>
-        <div className={styles.cardTop}><span className={styles.projectIndex}>01 / DISTRIBUTED SYSTEMS</span><span className={styles.badge}>LIVE · SOLO BUILD</span></div>
+        <div className={styles.cardTop}><span className={styles.projectIndex}>01 / DISTRIBUTED SYSTEMS</span><span className={styles.badge}>DEMO OFFLINE · SOLO BUILD</span></div>
         <div className={styles.projectIntro}>
           <h3 id="scalelab-title"><span className={styles.projectIcon}><Cpu aria-hidden="true" /></span>ScaleLab</h3>
         </div>
@@ -88,8 +88,8 @@ export default function EngineeringShowcase() {
             { tech: "Prometheus + Grafana", purpose: "App & infrastructure metrics" },
           ]} />
           <details className={styles.notes}><summary>The engineering underneath <ChevronDown size={15} aria-hidden="true" /></summary><p>I built the application, load controller, observability dashboard and infrastructure. The hardest part: running write-heavy tests without corrupting the demo store.</p><p>Isolated benchmark products, transactional stock updates, PostgreSQL shards and automatic cleanup make those experiments repeatable. React · TypeScript · Node.js · Prometheus · Grafana · Docker.</p></details>
-          <div className={styles.actions}><ExternalLink href={links.scale} primary>Try ScaleLab</ExternalLink><ExternalLink href={links.scaleSource}>Source & architecture</ExternalLink></div>
-          <p className={styles.nextStep}>Open the dashboard. Explore a working system under load.</p>
+          <div className={styles.actions}><LiveProjectLink href={links.scale} disabled statusLabel="OFFLINE">ScaleLab demo unavailable</LiveProjectLink><ExternalLink href={links.scaleSource}>Source & architecture</ExternalLink></div>
+          <p className={styles.nextStep}>The hosted lab is paused while deployment credits are unavailable. The complete source and architecture remain open.</p>
         </div>
       </article>
       <article className={`${styles.project} ${styles.traceProject}`} aria-labelledby="bugtracer-title" data-blueprint-card data-reveal-item>

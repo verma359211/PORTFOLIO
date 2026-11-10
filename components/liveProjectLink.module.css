@@ -83,8 +83,29 @@
 .link:hover {
   transform: translateY(-2px);
 }
+.link:disabled {
+  --live-bg: #7b8589;
+  --live-ink: #f5f7f7;
+  --live-shadow: #071b3926;
+  cursor: not-allowed;
+  opacity: 0.72;
+  box-shadow: 2px 2px 0 var(--live-shadow);
+}
+.link:disabled .dot {
+  background: transparent;
+  border: 1px solid currentColor;
+}
+.link:disabled .arrow {
+  opacity: 0.45;
+}
+.link:disabled:hover {
+  transform: none;
+}
 .link:hover .arrow svg {
   transform: translate(2px, -2px);
+}
+.link:disabled:hover .arrow svg {
+  transform: none;
 }
 .link:focus-visible {
   outline: 3px solid var(--live-bg);
